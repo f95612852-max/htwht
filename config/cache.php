@@ -142,5 +142,5 @@ return [
         str_slug(env('APP_NAME', 'laravel'), '_').'_cache'
     ),
 
-    'limiter' => env('CACHE_LIMITER_DRIVER', 'redis'),
+    'limiter' => env('CACHE_LIMITER_DRIVER', 'database'),
 ];

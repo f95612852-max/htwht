@@ -1,5 +1,25 @@
 <?php
 
+// Fallback routes for testing (when domain doesn't match)
+Route::middleware(['validemail', 'twofactor', 'localization'])->group(function () {
+    Route::get('/', 'SiteController@home')->name('timeline.personal.fallback');
+    Route::redirect('/home', '/')->name('home.fallback');
+    Auth::routes();
+    
+    // Social Authentication Routes
+    Route::get('auth/google', 'Auth\SocialAuthController@redirectToGoogle')->name('auth.google.fallback');
+    Route::get('auth/google/callback', 'Auth\SocialAuthController@handleGoogleCallback');
+    Route::get('auth/apple', 'Auth\SocialAuthController@redirectToApple')->name('auth.apple.fallback');
+    Route::get('auth/apple/callback', 'Auth\SocialAuthController@handleAppleCallback');
+    
+    // Verification Routes
+    Route::middleware('auth')->group(function () {
+        Route::get('settings/verification', 'VerificationController@index')->name('verification.index.fallback');
+        Route::post('settings/verification', 'VerificationController@store')->name('verification.store.fallback');
+        Route::get('settings/earnings', 'EarningsController@index')->name('earnings.index.fallback');
+    });
+});
+
 Route::domain(config('pixelfed.domain.app'))->middleware(['validemail', 'twofactor', 'localization'])->group(function () {
     Route::get('/', 'SiteController@home')->name('timeline.personal');
     Route::redirect('/home', '/')->name('home');
