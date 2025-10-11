@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.aws
+    ports:
+      - "8080:80"
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_HOST=db
+      - DB_DATABASE=pixelfed
+      - DB_USERNAME=pixelfed
+      - DB_PASSWORD=pixelfed
+      - REDIS_HOST=redis
+      - CENTRALIZED_MODE=true
+      - AWS_ENABLED=true
+      - AWS_ENDPOINT=http://localstack:4566
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_BUCKET=pixelfed-test
+    volumes:
+      - ./storage:/var/www/html/storage
+    depends_on:
+      - db
+      - redis
+      - localstack
+    networks:
+      - pixelfed
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: pixelfed
+      MYSQL_USER: pixelfed
+      MYSQL_PASSWORD: pixelfed
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - pixelfed
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - pixelfed
+
+  # LocalStack for AWS services simulation
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      - SERVICES=s3,ses,cloudfront
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    ports:
+      - "4566:4566"
+    volumes:
+      - localstack_data:/tmp/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - pixelfed
+
+volumes:
+  db_data:
+  localstack_data:
+
+networks:
+  pixelfed:
+    driver: bridge
