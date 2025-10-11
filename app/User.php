@@ -27,6 +27,8 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             '2fa_setup_at' => 'datetime',
             'last_active_at' => 'datetime',
+            'verified_at' => 'datetime',
+            'is_verified' => 'boolean',
         ];
     }
 
@@ -50,6 +52,10 @@ class User extends Authenticatable
         'notify_follow',
         'notify_mention',
         'notify_comment',
+        'is_verified',
+        'verified_at',
+        'google_id',
+        'apple_id',
     ];
 
     /**
@@ -129,5 +135,35 @@ class User extends Authenticatable
     public function routeNotificationForExpo()
     {
         return $this->expo_token;
+    }
+
+    public function verificationRequests()
+    {
+        return $this->hasMany(\App\Models\VerificationRequest::class);
+    }
+
+    public function earnings()
+    {
+        return $this->hasOne(\App\Models\UserEarnings::class);
+    }
+
+    public function postViews()
+    {
+        return $this->hasMany(\App\Models\PostViewLog::class, 'viewer_id');
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->is_verified;
+    }
+
+    public function hasGoogleAuth(): bool
+    {
+        return !empty($this->google_id);
+    }
+
+    public function hasAppleAuth(): bool
+    {
+        return !empty($this->apple_id);
     }
 }

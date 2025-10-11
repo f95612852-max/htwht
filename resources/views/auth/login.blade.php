@@ -94,6 +94,28 @@
                         </button>
 
                     </form>
+
+                    <!-- Social Login Options -->
+                    <div class="mt-4">
+                        <div class="text-center mb-3">
+                            <small class="text-muted">أو سجل الدخول باستخدام</small>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="{{ route('auth.google') }}" class="btn btn-outline-danger btn-block btn-sm rounded-pill">
+                                    <i class="fab fa-google mr-2"></i>
+                                    Google
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="{{ route('auth.apple') }}" class="btn btn-outline-dark btn-block btn-sm rounded-pill">
+                                    <i class="fab fa-apple mr-2"></i>
+                                    Apple
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     @if(
                         (config_cache('pixelfed.open_registration') && config('remote-auth.mastodon.enabled')) ||
                         (config('remote-auth.mastodon.ignore_closed_state') && config('remote-auth.mastodon.enabled'))

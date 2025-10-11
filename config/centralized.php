@@ -42,4 +42,47 @@ return [
         'max_name_length' => env('MAX_NAME_LENGTH', 30),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Verification System
+    |--------------------------------------------------------------------------
+    */
+
+    'verification' => [
+        'enabled' => env('VERIFICATION_ENABLED', true),
+        'admin_email' => env('VERIFICATION_ADMIN_EMAIL', env('MAIL_FROM_ADDRESS')),
+        'max_file_size' => env('VERIFICATION_MAX_FILE_SIZE', 5120), // KB
+        'allowed_file_types' => ['jpg', 'jpeg', 'png', 'pdf'],
+        'review_time_hours' => env('VERIFICATION_REVIEW_TIME', 48),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Earnings System
+    |--------------------------------------------------------------------------
+    */
+
+    'earnings' => [
+        'enabled' => env('EARNINGS_ENABLED', true),
+        'rate_per_thousand_views' => env('EARNINGS_RATE_PER_THOUSAND', 0.3),
+        'minimum_payout' => env('EARNINGS_MINIMUM_PAYOUT', 10.0),
+        'calculation_frequency' => env('EARNINGS_CALCULATION_FREQUENCY', 'hourly'),
+        'view_deduplication_hours' => env('EARNINGS_VIEW_DEDUP_HOURS', 24),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Social Authentication
+    |--------------------------------------------------------------------------
+    */
+
+    'social_auth' => [
+        'google' => [
+            'enabled' => env('GOOGLE_CLIENT_ID') && env('GOOGLE_CLIENT_SECRET'),
+        ],
+        'apple' => [
+            'enabled' => env('APPLE_CLIENT_ID') && env('APPLE_CLIENT_SECRET'),
+        ],
+    ],
+
 ];

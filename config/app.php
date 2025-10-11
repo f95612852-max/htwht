@@ -162,6 +162,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         // App\Providers\TelescopeServiceProvider::class,
         App\Providers\PassportServiceProvider::class,
+        App\Providers\CentralizedFeaturesServiceProvider::class,
 
     ],
 

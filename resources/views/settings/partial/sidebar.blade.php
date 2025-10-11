@@ -38,6 +38,21 @@
             <li class="nav-item pl-3 {{request()->is('settings/timeline*')?'active':''}}">
                 <a class="nav-link font-weight-light text-muted" href="{{route('settings.timeline')}}">{{__('settings.timelines')}}</a>
             </li>
+            
+            <!-- Centralized Features -->
+            <li class="nav-item pl-3 {{request()->is('settings/verification*')?'active':''}}">
+                <a class="nav-link font-weight-light text-muted" href="{{route('verification.index')}}">
+                    <i class="fas fa-check-circle text-primary mr-2"></i>
+                    التوثيق
+                </a>
+            </li>
+            <li class="nav-item pl-3 {{request()->is('settings/earnings*')?'active':''}}">
+                <a class="nav-link font-weight-light text-muted" href="{{route('earnings.index')}}">
+                    <i class="fas fa-dollar-sign text-success mr-2"></i>
+                    الأرباح
+                </a>
+            </li>
+            
             <li class="nav-item">
                 <hr>
             </li>

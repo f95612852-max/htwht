@@ -12,6 +12,14 @@ Route::domain(config('pixelfed.domain.app'))->middleware(['validemail', 'twofact
     Route::get('auth/oidc/start', 'RemoteOidcController@start');
     Route::get('auth/oidc/callback', 'RemoteOidcController@handleCallback');
 
+    // Social Authentication Routes
+    Route::get('auth/google', 'Auth\SocialAuthController@redirectToGoogle')->name('auth.google');
+    Route::get('auth/google/callback', 'Auth\SocialAuthController@handleGoogleCallback');
+    Route::get('auth/apple', 'Auth\SocialAuthController@redirectToApple')->name('auth.apple');
+    Route::get('auth/apple/callback', 'Auth\SocialAuthController@handleAppleCallback');
+    Route::post('auth/google/unlink', 'Auth\SocialAuthController@unlinkGoogle')->name('auth.google.unlink');
+    Route::post('auth/apple/unlink', 'Auth\SocialAuthController@unlinkApple')->name('auth.apple.unlink');
+
     Route::get('auth/raw/mastodon/start', 'RemoteAuthController@startRedirect');
     Route::post('auth/raw/mastodon/config', 'RemoteAuthController@getConfig');
     Route::post('auth/raw/mastodon/domains', 'RemoteAuthController@getAuthDomains');
@@ -483,17 +491,38 @@ Route::domain(config('pixelfed.domain.app'))->middleware(['validemail', 'twofact
     Route::get('g/{hid}', 'GroupController@groupShortLinkRedirect');
 
     Route::get('stories/{username}', 'ProfileController@stories');
-    Route::get('p/{id}', 'StatusController@shortcodeRedirect');
+    Route::get('p/{id}', 'StatusController@shortcodeRedirect')->middleware('track.views');
     Route::get('c/{collection}', 'CollectionController@show');
     Route::get('p/{username}/{id}/c', 'CommentController@showAll');
     Route::get('p/{username}/{id}/embed', 'StatusController@showEmbed');
     Route::get('p/{username}/{id}/edit', 'StatusController@edit');
     Route::post('p/{username}/{id}/edit', 'StatusController@editStore');
     Route::get('p/{username}/{id}.json', 'StatusController@showObject');
-    Route::get('p/{username}/{id}', 'StatusController@show');
+    Route::get('p/{username}/{id}', 'StatusController@show')->middleware('track.views');
     Route::get('{username}/embed', 'ProfileController@embed');
     Route::get('{username}/live', 'LiveStreamController@showProfilePlayer');
     Route::get('@{username}@{domain}', 'SiteController@legacyWebfingerRedirect');
     Route::get('@{username}', 'SiteController@legacyProfileRedirect');
     Route::get('{username}', 'ProfileController@show');
+
+    // Verification Routes
+    Route::middleware('auth')->group(function () {
+        Route::get('settings/verification', 'VerificationController@index')->name('verification.index');
+        Route::post('settings/verification', 'VerificationController@store')->name('verification.store');
+        Route::get('verification/{verificationRequest}', 'VerificationController@show')->name('verification.show');
+        
+        // Earnings Routes
+        Route::get('settings/earnings', 'EarningsController@index')->name('earnings.index');
+        Route::get('api/earnings', 'EarningsController@api')->name('earnings.api');
+        Route::get('api/earnings/stats', 'EarningsController@viewStats')->name('earnings.stats');
+        Route::get('earnings/explain', 'EarningsController@explain')->name('earnings.explain');
+    });
+
+    // Admin Verification Routes
+    Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+        Route::get('verification', 'VerificationController@adminIndex')->name('admin.verification.index');
+        Route::get('verification/{verificationRequest}', 'VerificationController@adminShow')->name('admin.verification.show');
+        Route::post('verification/{verificationRequest}/approve', 'VerificationController@approve')->name('admin.verification.approve');
+        Route::post('verification/{verificationRequest}/reject', 'VerificationController@reject')->name('admin.verification.reject');
+    });
 });
