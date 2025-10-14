@@ -4,17 +4,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Centralized Pixelfed Configuration
+    | Centralized Pix Configuration
     |--------------------------------------------------------------------------
     |
-    | Configuration for centralized Pixelfed instance
+    | Configuration for centralized Pix instance
     |
     */
 
     'enabled' => env('CENTRALIZED_MODE', true),
 
     'single_instance' => [
-        'name' => env('APP_NAME', 'Pixelfed'),
+        'name' => env('APP_NAME', 'Pix'),
         'domain' => env('APP_DOMAIN', parse_url(env('APP_URL'), PHP_URL_HOST)),
         'description' => env('APP_DESCRIPTION', 'A centralized photo sharing platform'),
     ],
@@ -27,11 +27,19 @@ return [
         'remote_media' => false,
     ],
 
+    'firebase' => [
+        'enabled' => env('FIREBASE_ENABLED', true),
+        'storage' => env('FIREBASE_STORAGE_ENABLED', true),
+        'firestore' => env('FIREBASE_FIRESTORE_ENABLED', true),
+        'auth' => env('FIREBASE_AUTH_ENABLED', true),
+    ],
+
+    // AWS services are disabled in favor of Firebase
     'aws' => [
-        'enabled' => env('AWS_ENABLED', false),
-        's3_storage' => env('AWS_S3_ENABLED', false),
-        'ses_email' => env('AWS_SES_ENABLED', false),
-        'cloudfront_cdn' => env('AWS_CLOUDFRONT_ENABLED', false),
+        'enabled' => false,
+        's3_storage' => false,
+        'ses_email' => false,
+        'cloudfront_cdn' => false,
     ],
 
     'limits' => [

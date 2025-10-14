@@ -29,7 +29,7 @@ class CuratedRegisterConfirmEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to Pixelfed! Please Confirm Your Email',
+            subject: 'Welcome to Pix! Please Confirm Your Email',
         );
     }
 

@@ -44,14 +44,14 @@ class StoreStatusEditRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'status' => 'sometimes|max:'.config_cache('pixelfed.max_caption_length', 500),
+            'status' => 'sometimes|max:'.config_cache('pix.max_caption_length', 500),
             'spoiler_text' => 'nullable|string|max:140',
             'sensitive' => 'sometimes|boolean',
             'media_ids' => [
                 'nullable',
                 'required_without:status',
                 'array',
-                'max:'.(int) config_cache('pixelfed.max_album_length'),
+                'max:'.(int) config_cache('pix.max_album_length'),
                 function (string $attribute, mixed $value, Closure $fail) {
                     Media::whereProfileId($this->user()->profile_id)
                         ->where(function ($query) {

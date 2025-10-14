@@ -26,7 +26,7 @@ class BeagleService
                     ->timeout(5)
                     ->connectTimeout(5)
                     ->retry(2, 500)
-                    ->get('https://beagle.pixelfed.net/api/v1/common/suggestions/rules');
+                    ->get('https://beagle.pix.net/api/v1/common/suggestions/rules');
             } catch (RequestException $e) {
                 return;
             } catch (ConnectionException $e) {
@@ -63,11 +63,11 @@ class BeagleService
             try {
                 $res = Http::withOptions(['allow_redirects' => false])
                     ->withHeaders([
-                        'X-Pixelfed-Api' => 1,
+                        'X-Pix-Api' => 1,
                     ])->timeout(5)
                     ->connectTimeout(5)
                     ->retry(2, 500)
-                    ->get('https://beagle.pixelfed.net/api/v1/discover');
+                    ->get('https://beagle.pix.net/api/v1/discover');
             } catch (RequestException $e) {
                 return;
             } catch (ConnectionException $e) {
@@ -110,7 +110,7 @@ class BeagleService
                 })
                 ->map(function ($post) {
                     $domain = parse_url($post['id'], PHP_URL_HOST);
-                    if ($domain === config_cache('pixelfed.domain.app')) {
+                    if ($domain === config_cache('pix.domain.app')) {
                         $parts = explode('/', $post['id']);
                         $id = array_last($parts);
 

@@ -12,21 +12,21 @@ use App\Services\StatusService;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class MediaS3GarbageCollector extends Command
+class MediaFirebaseGarbageCollector extends Command
 {
     /**
     * The name and signature of the console command.
     *
     * @var string
     */
-    protected $signature = 'media:s3gc {--limit=200} {--huge} {--log-errors}';
+    protected $signature = 'media:firebasegc {--limit=200} {--huge} {--log-errors}';
 
     /**
     * The console command description.
     *
     * @var string
     */
-    protected $description = 'Delete (local) media uploads that exist on S3';
+    protected $description = 'Delete (local) media uploads that exist on Firebase Storage';
 
     /**
     * Create a new command instance.
@@ -45,7 +45,7 @@ class MediaS3GarbageCollector extends Command
     */
     public function handle()
     {
-        $enabled = (bool) config_cache('pixelfed.cloud_storage');
+        $enabled = (bool) config_cache('pix.cloud_storage');
         if(!$enabled) {
             $this->error('Cloud storage not enabled. Exiting...');
             return;

@@ -372,14 +372,14 @@ class AdminApiController extends Controller
         return collect([
             [
                 'name' => 'ActivityPub Federation',
-                'description' => 'Enable activitypub federation support, compatible with Pixelfed, Mastodon and other platforms.',
+                'description' => 'Enable activitypub federation support, compatible with Pix, Mastodon and other platforms.',
                 'key' => 'federation.activitypub.enabled',
             ],
 
             [
                 'name' => 'Open Registration',
                 'description' => 'Allow new account registrations.',
-                'key' => 'pixelfed.open_registration',
+                'key' => 'pix.open_registration',
             ],
 
             [
@@ -391,13 +391,13 @@ class AdminApiController extends Controller
             [
                 'name' => 'Require Email Verification',
                 'description' => 'Require new accounts to verify their email address.',
-                'key' => 'pixelfed.enforce_email_verification',
+                'key' => 'pix.enforce_email_verification',
             ],
 
             [
                 'name' => 'AutoSpam Detection',
                 'description' => 'Detect and remove spam from public timelines.',
-                'key' => 'pixelfed.bouncer.enabled',
+                'key' => 'pix.bouncer.enabled',
             ],
         ])
             ->map(function ($s) {
@@ -423,10 +423,10 @@ class AdminApiController extends Controller
 
         $allowedKeys = [
             'federation.activitypub.enabled',
-            'pixelfed.open_registration',
+            'pix.open_registration',
             'instance.stories.enabled',
-            'pixelfed.enforce_email_verification',
-            'pixelfed.bouncer.enabled',
+            'pix.enforce_email_verification',
+            'pix.bouncer.enabled',
         ];
 
         $key = $request->input('key');
@@ -438,14 +438,14 @@ class AdminApiController extends Controller
         return collect([
             [
                 'name' => 'ActivityPub Federation',
-                'description' => 'Enable activitypub federation support, compatible with Pixelfed, Mastodon and other platforms.',
+                'description' => 'Enable activitypub federation support, compatible with Pix, Mastodon and other platforms.',
                 'key' => 'federation.activitypub.enabled',
             ],
 
             [
                 'name' => 'Open Registration',
                 'description' => 'Allow new account registrations.',
-                'key' => 'pixelfed.open_registration',
+                'key' => 'pix.open_registration',
             ],
 
             [
@@ -457,13 +457,13 @@ class AdminApiController extends Controller
             [
                 'name' => 'Require Email Verification',
                 'description' => 'Require new accounts to verify their email address.',
-                'key' => 'pixelfed.enforce_email_verification',
+                'key' => 'pix.enforce_email_verification',
             ],
 
             [
                 'name' => 'AutoSpam Detection',
                 'description' => 'Detect and remove spam from public timelines.',
-                'key' => 'pixelfed.bouncer.enabled',
+                'key' => 'pix.bouncer.enabled',
             ],
         ])
             ->map(function ($s) {
@@ -550,7 +550,7 @@ class AdminApiController extends Controller
         abort_if($user->is_admin == true && $action !== 'refresh_stats', 400, 'Cannot moderate admin accounts');
 
         if ($action === 'delete') {
-            if (config('pixelfed.account_deletion') == false) {
+            if (config('pix.account_deletion') == false) {
                 abort(404);
             }
 

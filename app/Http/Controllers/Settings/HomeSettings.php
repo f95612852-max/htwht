@@ -23,7 +23,7 @@ trait HomeSettings
         $id = Auth::user()->profile_id;
         $storage = [];
         $used = Media::whereProfileId($id)->sum('size');
-        $storage['limit'] = config_cache('pixelfed.max_account_size') * 1024;
+        $storage['limit'] = config_cache('pix.max_account_size') * 1024;
         $storage['used'] = $used;
         $storage['percentUsed'] = ceil($storage['used'] / $storage['limit'] * 100);
         $storage['limitPretty'] = PrettyNumber::size($storage['limit']);
@@ -36,8 +36,8 @@ trait HomeSettings
     public function homeUpdate(Request $request)
     {
         $this->validate($request, [
-            'name' => 'nullable|string|max:'.config('pixelfed.max_name_length'),
-            'bio' => 'nullable|string|max:'.config('pixelfed.max_bio_length'),
+            'name' => 'nullable|string|max:'.config('pix.max_name_length'),
+            'bio' => 'nullable|string|max:'.config('pix.max_bio_length'),
             'website' => 'nullable|url',
             'language' => 'nullable|string|min:2|max:5',
             'pronouns' => 'nullable|array|max:4',
@@ -57,7 +57,7 @@ trait HomeSettings
             $layout = ! in_array($layout, ['metro', 'moment']) ? 'metro' : $layout;
         }
 
-        $enforceEmailVerification = config_cache('pixelfed.enforce_email_verification');
+        $enforceEmailVerification = config_cache('pix.enforce_email_verification');
 
         // Only allow email to be updated if not yet verified
         if (! $enforceEmailVerification || ! $changes && $user->email_verified_at) {
@@ -165,7 +165,7 @@ trait HomeSettings
         $user = Auth::user();
         $profile = $user->profile;
 
-        $validate = config_cache('pixelfed.enforce_email_verification');
+        $validate = config_cache('pix.enforce_email_verification');
 
         if ($user->email != $email) {
             $changes = true;

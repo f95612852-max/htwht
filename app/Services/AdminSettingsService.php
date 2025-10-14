@@ -26,10 +26,10 @@ class AdminSettingsService
 
     public static function getFeatures()
     {
-        $cloud_storage = (bool) config_cache('pixelfed.cloud_storage');
+        $cloud_storage = (bool) config_cache('pix.cloud_storage');
         $cloud_disk = config('filesystems.cloud');
         $cloud_ready = ! empty(config('filesystems.disks.'.$cloud_disk.'.key')) && ! empty(config('filesystems.disks.'.$cloud_disk.'.secret'));
-        $openReg = (bool) config_cache('pixelfed.open_registration');
+        $openReg = (bool) config_cache('pix.open_registration');
         $curOnboarding = (bool) config_cache('instance.curated_registration.enabled');
         $regState = $openReg ? 'open' : ($curOnboarding ? 'filtered' : 'closed');
 
@@ -39,10 +39,10 @@ class AdminSettingsService
             'activitypub_enabled' => (bool) config_cache('federation.activitypub.enabled'),
             'authorized_fetch' => (bool) config_cache('federation.activitypub.authorized_fetch'),
             'account_migration' => (bool) config_cache('federation.migration'),
-            'mobile_apis' => (bool) config_cache('pixelfed.oauth_enabled'),
+            'mobile_apis' => (bool) config_cache('pix.oauth_enabled'),
             'stories' => (bool) config_cache('instance.stories.enabled'),
-            'instagram_import' => (bool) config_cache('pixelfed.import.instagram.enabled'),
-            'autospam_enabled' => (bool) config_cache('pixelfed.bouncer.enabled'),
+            'instagram_import' => (bool) config_cache('pix.import.instagram.enabled'),
+            'autospam_enabled' => (bool) config_cache('pix.bouncer.enabled'),
         ];
     }
 
@@ -71,12 +71,12 @@ class AdminSettingsService
     public static function getMedia()
     {
         return [
-            'max_photo_size' => config_cache('pixelfed.max_photo_size'),
-            'max_album_length' => config_cache('pixelfed.max_album_length'),
-            'image_quality' => config_cache('pixelfed.image_quality'),
-            'media_types' => config_cache('pixelfed.media_types'),
-            'optimize_image' => (bool) config_cache('pixelfed.optimize_image'),
-            'optimize_video' => (bool) config_cache('pixelfed.optimize_video'),
+            'max_photo_size' => config_cache('pix.max_photo_size'),
+            'max_album_length' => config_cache('pix.max_album_length'),
+            'image_quality' => config_cache('pix.image_quality'),
+            'media_types' => config_cache('pix.media_types'),
+            'optimize_image' => (bool) config_cache('pix.optimize_image'),
+            'optimize_video' => (bool) config_cache('pix.optimize_video'),
         ];
     }
 
@@ -100,9 +100,9 @@ class AdminSettingsService
         }
 
         return [
-            'require_email_verification' => (bool) config_cache('pixelfed.enforce_email_verification'),
-            'enforce_account_limit' => (bool) config_cache('pixelfed.enforce_account_limit'),
-            'max_account_size' => config_cache('pixelfed.max_account_size'),
+            'require_email_verification' => (bool) config_cache('pix.enforce_email_verification'),
+            'enforce_account_limit' => (bool) config_cache('pix.enforce_account_limit'),
+            'max_account_size' => config_cache('pix.max_account_size'),
             'admin_autofollow' => (bool) config_cache('account.autofollow'),
             'admin_autofollow_accounts' => $autoFollow,
             'max_user_blocks' => (int) config_cache('instance.user_filters.max_user_blocks'),
@@ -114,19 +114,19 @@ class AdminSettingsService
     public static function getPosts()
     {
         return [
-            'max_caption_length' => config_cache('pixelfed.max_caption_length'),
-            'max_altext_length' => config_cache('pixelfed.max_altext_length'),
+            'max_caption_length' => config_cache('pix.max_caption_length'),
+            'max_altext_length' => config_cache('pix.max_altext_length'),
         ];
     }
 
     public static function getPlatform()
     {
         return [
-            'allow_app_registration' => (bool) config_cache('pixelfed.allow_app_registration'),
-            'app_registration_rate_limit_attempts' => config_cache('pixelfed.app_registration_rate_limit_attempts'),
-            'app_registration_rate_limit_decay' => config_cache('pixelfed.app_registration_rate_limit_decay'),
-            'app_registration_confirm_rate_limit_attempts' => config_cache('pixelfed.app_registration_confirm_rate_limit_attempts'),
-            'app_registration_confirm_rate_limit_decay' => config_cache('pixelfed.app_registration_confirm_rate_limit_decay'),
+            'allow_app_registration' => (bool) config_cache('pix.allow_app_registration'),
+            'app_registration_rate_limit_attempts' => config_cache('pix.app_registration_rate_limit_attempts'),
+            'app_registration_rate_limit_decay' => config_cache('pix.app_registration_rate_limit_decay'),
+            'app_registration_confirm_rate_limit_attempts' => config_cache('pix.app_registration_confirm_rate_limit_attempts'),
+            'app_registration_confirm_rate_limit_decay' => config_cache('pix.app_registration_confirm_rate_limit_decay'),
             'allow_post_embeds' => (bool) config_cache('instance.embed.post'),
             'allow_profile_embeds' => (bool) config_cache('instance.embed.profile'),
             'captcha_enabled' => (bool) config_cache('captcha.enabled'),
@@ -140,7 +140,7 @@ class AdminSettingsService
 
     public static function getStorage()
     {
-        $cloud_storage = (bool) config_cache('pixelfed.cloud_storage');
+        $cloud_storage = (bool) config_cache('pix.cloud_storage');
         $cloud_disk = config('filesystems.cloud');
         $cloud_ready = ! empty(config('filesystems.disks.'.$cloud_disk.'.key')) && ! empty(config('filesystems.disks.'.$cloud_disk.'.secret'));
         $primaryDisk = (bool) $cloud_ready && $cloud_storage;

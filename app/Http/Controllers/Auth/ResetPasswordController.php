@@ -91,7 +91,7 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm(Request $request)
     {
-		if(config('pixelfed.bouncer.cloud_ips.ban_logins')) {
+		if(config('pix.bouncer.cloud_ips.ban_logins')) {
 			abort_if(BouncerService::checkIp($request->ip()), 404);
 		}
 
@@ -106,7 +106,7 @@ class ResetPasswordController extends Controller
 
     public function reset(Request $request)
     {
-		if(config('pixelfed.bouncer.cloud_ips.ban_logins')) {
+		if(config('pix.bouncer.cloud_ips.ban_logins')) {
 			abort_if(BouncerService::checkIp($request->ip()), 404);
 		}
 

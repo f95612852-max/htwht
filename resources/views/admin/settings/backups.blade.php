@@ -5,7 +5,7 @@
 @section('section')
   <div class="title">
     <h3 class="font-weight-bold">Site Backups</h3>
-    <p class="lead">Enable automatic backups, stored locally or S3/Spaces/Wasabi</p>
+    <p class="lead">Enable automatic backups, stored locally or Firebase Storage</p>
   </div>
   <hr>
   <p class="alert alert-warning">

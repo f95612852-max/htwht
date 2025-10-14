@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>{{ $title ?? config_cache('app.name', 'Pixelfed') }}</title>
-    <meta property="og:site_name" content="{{ config_cache('app.name', 'pixelfed') }}">
-    <meta property="og:title" content="{{ $title ?? config_cache('app.name', 'pixelfed') }}">
+    <title>{{ $title ?? config_cache('app.name', 'Pix') }}</title>
+    <meta property="og:site_name" content="{{ config_cache('app.name', 'pix') }}">
+    <meta property="og:title" content="{{ $title ?? config_cache('app.name', 'pix') }}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{$status['url']}}">
     <meta name="medium" content="image">
@@ -43,7 +43,7 @@
             @if($layout != 'compact')
             <div class="card-body">
                 <div class="view-more mb-2">
-                    <a class="font-weight-bold" href="{{$status['url']}}" target="_blank">View More on Pixelfed</a>
+                    <a class="font-weight-bold" href="{{$status['url']}}" target="_blank">View More on Pix</a>
                 </div>
                 <hr>
                 <div class="caption">
@@ -67,8 +67,8 @@
                     </p>
                 </div>
                 <div>
-                    <a class="small font-weight-bold text-muted pr-1" href="{{config('app.url')}}" target="_blank">{{config('pixelfed.domain.app')}}</a>
-                    <img src="/img/pixelfed-icon-color.svg" width="26" height="26" />
+                    <a class="small font-weight-bold text-muted pr-1" href="{{config('app.url')}}" target="_blank">{{config('pix.domain.app')}}</a>
+                    <img src="/img/pix-icon-color.svg" width="26" height="26" />
                 </div>
             </div>
         </div>

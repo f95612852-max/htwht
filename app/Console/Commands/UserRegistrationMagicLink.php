@@ -36,7 +36,7 @@ class UserRegistrationMagicLink extends Command
             $this->line(' ');
             $this->info('Example: ');
             $this->info('php artisan user:app-magic-link --username=dansup');
-            $this->info('php artisan user:app-magic-link --email=dansup@pixelfed.com');
+            $this->info('php artisan user:app-magic-link --email=dansup@pix.com');
             return;
         }
         $user = User::when($username, function($q, $username) {
@@ -69,7 +69,7 @@ class UserRegistrationMagicLink extends Command
             return;
         }
 
-        $appUrl = 'pixelfed://confirm-account/'. $user->app_register_token . '?rt=' . $verify->random_token;
+        $appUrl = 'pix://confirm-account/'. $user->app_register_token . '?rt=' . $verify->random_token;
         $this->line(' ');
         $this->info('Magic link found! Copy the following link and send to user');
         $this->line(' ');

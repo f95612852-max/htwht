@@ -20,7 +20,7 @@ class CuratedRegisterController extends Controller
         if (! $allowWhenDisabled) {
             abort_unless((bool) config_cache('instance.curated_registration.enabled'), 404);
 
-            if ((bool) config_cache('pixelfed.open_registration')) {
+            if ((bool) config_cache('pix.open_registration')) {
                 abort_if(config('instance.curated_registration.state.only_enabled_on_closed_reg'), 404);
             } else {
                 abort_unless(config('instance.curated_registration.state.fallback_on_closed_reg'), 404);

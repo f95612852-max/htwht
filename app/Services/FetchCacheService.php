@@ -30,7 +30,7 @@ class FetchCacheService
         }
 
         $headers = [
-            'User-Agent' => '(Pixelfed/'.config('pixelfed.version').'; +'.config('app.url').')',
+            'User-Agent' => '(Pix/'.config('pix.version').'; +'.config('app.url').')',
         ];
 
         if ($allowRedirects) {

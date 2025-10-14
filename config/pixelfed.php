@@ -17,10 +17,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Pixelfed Version
+    | Pix Version
     |--------------------------------------------------------------------------
     |
-    | This value is the version of your Pixelfed instance.
+    | This value is the version of your Pix instance.
     |
     */
     'version' => '0.12.6',
@@ -185,7 +185,7 @@ return [
     | Enable Cloud Storage
     |--------------------------------------------------------------------------
     |
-    | Store media on object storage like S3, Digital Ocean Spaces, Rackspace
+    | Store media on Firebase Storage
     |
     */
     'cloud_storage' => env('PF_ENABLE_CLOUD', false),
@@ -275,10 +275,10 @@ return [
     |--------------------------------------------------------------------------
     |
     | Don't require photos & video to finish optimization &
-    | upload to S3 if enabled before posting. If disabled
+    | upload to Firebase Storage if enabled before posting. If disabled
     | users will have to wait until processed before posting,
     | sacrificing the user experience to ensure media is federated
-    | using S3 urls (if enabled). Default: off
+    | using Firebase Storage urls (if enabled). Default: off
     |
     */
     'media_fast_process' => env('PF_MEDIA_FAST_PROCESS', true),

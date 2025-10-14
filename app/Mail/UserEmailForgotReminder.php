@@ -29,7 +29,7 @@ class UserEmailForgotReminder extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '[' . config('pixelfed.domain.app') . '] Pixelfed Account Email Reminder',
+            subject: '[' . config('pix.domain.app') . '] Pix Account Email Reminder',
         );
     }
 

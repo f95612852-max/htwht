@@ -280,7 +280,7 @@ trait AdminReportController
         Cache::forget('admin-dash:reports:spam-count:30d');
 
         if ($action == 'delete-account') {
-            if (config('pixelfed.account_deletion') == false) {
+            if (config('pix.account_deletion') == false) {
                 abort(404);
             }
 
@@ -990,7 +990,7 @@ trait AdminReportController
                 break;
 
             case 'delete':
-                if (config('pixelfed.account_deletion') == false) {
+                if (config('pix.account_deletion') == false) {
                     abort(404);
                 }
 
@@ -1256,7 +1256,7 @@ trait AdminReportController
 
         abort_if(
             $action === 'delete-profile' &&
-            ! config('pixelfed.account_deletion'),
+            ! config('pix.account_deletion'),
             404,
             "Cannot delete profile, account_deletion is disabled.\n\n Set `ACCOUNT_DELETION=true` in .env and re-cache config."
         );
@@ -1599,10 +1599,10 @@ trait AdminReportController
             $profiles = ModeratedProfile::get();
             $res = AdminModeratedProfileResource::collection($profiles);
             echo json_encode([
-                '_pixelfed_export' => true,
+                '_pix_export' => true,
                 'meta' => [
-                    'ns' => 'https://pixelfed.org',
-                    'origin' => config('pixelfed.domain.app'),
+                    'ns' => 'https://pix.org',
+                    'origin' => config('pix.domain.app'),
                     'date' => now()->format('c'),
                     'type' => 'moderated-profiles',
                     'version' => "1.0"
@@ -1694,7 +1694,7 @@ trait AdminReportController
         $url = $request->input('url');
         $host = parse_url($url, PHP_URL_HOST);
 
-        abort_if($host === config('pixelfed.domain.app'), 400, 'You cannot add local users!');
+        abort_if($host === config('pix.domain.app'), 400, 'You cannot add local users!');
 
         $exists = ModeratedProfile::whereProfileUrl($url)->exists();
         abort_if($exists, 400, 'Moderated profile already exists!');

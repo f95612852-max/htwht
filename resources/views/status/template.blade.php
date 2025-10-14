@@ -12,7 +12,7 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item font-weight-bold" href="{{$item->url()}}">Go to post</a>
           <a class="dropdown-item font-weight-bold" href="{{route('report.form')}}?type=post&id={{$item->id}}">Report</a>
-          {{-- <a class="dropdown-item font-weight-bold" href="#" onclick="pixelfed.embed.onclick(this)">Embed</a> --}}
+          {{-- <a class="dropdown-item font-weight-bold" href="#" onclick="pix.embed.onclick(this)">Embed</a> --}}
         @if(Auth::check())
           @if(Auth::user()->profile->id !== $item->profile->id)
           <div class="dropdown-divider"></div>

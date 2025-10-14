@@ -36,7 +36,7 @@ class AutospamService
     public static function eligible()
     {
         return Cache::remember(self::CHCKD_CACHE_KEY, 86400, function () {
-            if (! (bool) config_cache('pixelfed.bouncer.enabled') || ! (bool) config_cache('autospam.enabled')) {
+            if (! (bool) config_cache('pix.bouncer.enabled') || ! (bool) config_cache('autospam.enabled')) {
                 return false;
             }
 

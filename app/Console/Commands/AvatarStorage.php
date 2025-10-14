@@ -41,7 +41,7 @@ class AvatarStorage extends Command
      */
     public function handle()
     {
-        $this->info('Pixelfed Avatar Storage Manager');
+        $this->info('Pix Avatar Storage Manager');
         $this->line(' ');
         $segments = [
             [
@@ -82,7 +82,7 @@ class AvatarStorage extends Command
 
         $this->line(' ');
 
-        if((bool) config_cache('pixelfed.cloud_storage')) {
+        if((bool) config_cache('pix.cloud_storage')) {
             $this->info('✅ - Cloud storage configured');
             $this->line(' ');
         }
@@ -92,7 +92,7 @@ class AvatarStorage extends Command
             $this->line(' ');
         }
 
-        if((bool) config_cache('pixelfed.cloud_storage') && config('instance.avatar.local_to_cloud')) {
+        if((bool) config_cache('pix.cloud_storage') && config('instance.avatar.local_to_cloud')) {
             $disk = Storage::disk(config_cache('filesystems.cloud'));
             $exists = $disk->exists('cache/avatars/default.jpg');
             $state = $exists ? '✅' : '❌';
@@ -100,7 +100,7 @@ class AvatarStorage extends Command
             $this->info($msg);
         }
 
-        $options = (bool) config_cache('pixelfed.cloud_storage') && config('instance.avatar.local_to_cloud') ?
+        $options = (bool) config_cache('pix.cloud_storage') && config('instance.avatar.local_to_cloud') ?
             [
                 'Cancel',
                 'Upload default avatar to cloud',
@@ -164,7 +164,7 @@ class AvatarStorage extends Command
 
     protected function uploadAvatarsToCloud()
     {
-        if(!(bool) config_cache('pixelfed.cloud_storage') || !config('instance.avatar.local_to_cloud')) {
+        if(!(bool) config_cache('pix.cloud_storage') || !config('instance.avatar.local_to_cloud')) {
             $this->error('Enable cloud storage and avatar cloud storage to perform this action');
             return;
         }
@@ -213,7 +213,7 @@ class AvatarStorage extends Command
             return;
         }
 
-        if((bool) config_cache('pixelfed.cloud_storage') == false && config_cache('federation.avatars.store_local') == false) {
+        if((bool) config_cache('pix.cloud_storage') == false && config_cache('federation.avatars.store_local') == false) {
             $this->error('You have cloud storage disabled and local avatar storage disabled, we cannot refetch avatars.');
             return;
         }

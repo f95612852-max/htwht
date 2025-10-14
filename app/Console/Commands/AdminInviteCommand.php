@@ -35,7 +35,7 @@ class AdminInviteCommand extends Command
         $this->info('    / ____/ />  </  __/ / __/  __/ /_/ /    ');
         $this->info('   /_/   /_/_/|_|\___/_/_/  \___/\__,_/     ');
         $this->info(' ');
-        $this->info('    Pixelfed Admin Inviter');
+        $this->info('    Pix Admin Inviter');
         $this->line(' ');
         $this->info('    Manage user registration invite links');
         $this->line(' ');

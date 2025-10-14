@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="mobile-web-app-capable" content="yes">
-	<title>Pixelfed Installer</title>
+	<title>Pix Installer</title>
 	<link rel="manifest" href="/manifest.json">
 	<link href="/css/app.css" rel="stylesheet" data-stylesheet="light">
 	<style type="text/css">
@@ -58,15 +58,15 @@
 					<div class="col-12">
 						<p class="text-center py-3">
 							<a href="/installer">
-								<img src="/img/pixelfed-icon-color.svg" width="60" height="60">
+								<img src="/img/pix-icon-color.svg" width="60" height="60">
 							</a>
 						</p>
 
 						<router-view></router-view>
 
 						<p class="d-flex justify-content-between text-white pt-2 px-2">
-							<a class="font-weight-bold text-white" href="https://docs.pixelfed.org/running-pixelfed/installation.html" target="_blank">Help</a>
-							<span class="font-weight-bold">v{{config('pixelfed.version')}}</span>
+							<a class="font-weight-bold text-white" href="https://docs.pix.org/running-pix/installation.html" target="_blank">Help</a>
+							<span class="font-weight-bold">v{{config('pix.version')}}</span>
 						</p>
 					</div>
 				</div>

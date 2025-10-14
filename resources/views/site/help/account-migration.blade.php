@@ -14,6 +14,6 @@
     </div>
     @endif
 
-    <p class="lead">Account Migration is a feature that allows users to move their account followers from one Pixelfed instance (server) to another.</p>
+    <p class="lead">Account Migration is a feature that allows users to move their account followers from one Pix instance (server) to another.</p>
     <p class="lead">This can be useful if a user wants to switch to a different instance due to preferences for its community, policies, or features.</p>
 @endsection

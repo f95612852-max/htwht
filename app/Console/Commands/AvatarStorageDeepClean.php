@@ -38,13 +38,13 @@ class AvatarStorageDeepClean extends Command
         $this->info('    / ____/ />  </  __/ / __/  __/ /_/ /    ');
         $this->info('   /_/   /_/_/|_|\___/_/_/  \___/\__,_/     ');
         $this->info(' ');
-        $this->info('    Pixelfed Avatar Deep Cleaner');
+        $this->info('    Pix Avatar Deep Cleaner');
         $this->line(' ');
         $this->info('    Purge/delete old and outdated avatars from remote accounts');
         $this->line(' ');
 
         $storage = [
-            'cloud' => (bool) config_cache('pixelfed.cloud_storage'),
+            'cloud' => (bool) config_cache('pix.cloud_storage'),
             'local' => boolval(config_cache('federation.avatars.store_local'))
         ];
 

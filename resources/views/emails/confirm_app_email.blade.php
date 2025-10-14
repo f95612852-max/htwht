@@ -14,5 +14,5 @@ Complete Account Registration
 <p>If you did not create this account, please disregard this email.</p>
 
 Thanks,<br>
-<a href="{{ config('app.url') }}">{{ config('pixelfed.domain.app') }}</a>
+<a href="{{ config('app.url') }}">{{ config('pix.domain.app') }}</a>
 </x-mail::message>

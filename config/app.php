@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Pixelfed'),
+    'name' => env('APP_NAME', 'Pix'),
 
     /*
     |--------------------------------------------------------------------------
@@ -101,10 +101,10 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'short_description' => env('PF_SHORT_DESCRIPTION', 'Pixelfed is an image sharing platform, an ethical alternative to centralized platforms.'),
-    'description' => env('PF_DESCRIPTION', 'Pixelfed is an image sharing platform, an ethical alternative to centralized platforms.'),
+    'short_description' => env('PF_SHORT_DESCRIPTION', 'Pix is an image sharing platform, an ethical alternative to centralized platforms.'),
+    'description' => env('PF_DESCRIPTION', 'Pix is an image sharing platform, an ethical alternative to centralized platforms.'),
     'rules' => env('PF_RULES', null),
-    'logo' => '/img/pixelfed-icon-color.svg',
+    'logo' => '/img/pix-icon-color.svg',
     'banner_image' => '/storage/headers/default.jpg',
     'dev_log' => env('PIXELFED_DEV_LOG', false),
 
@@ -163,6 +163,7 @@ return [
         // App\Providers\TelescopeServiceProvider::class,
         App\Providers\PassportServiceProvider::class,
         App\Providers\CentralizedFeaturesServiceProvider::class,
+        App\Providers\FirebaseServiceProvider::class,
 
     ],
 

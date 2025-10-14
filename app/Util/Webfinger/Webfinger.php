@@ -54,7 +54,7 @@ class Webfinger
             ],
             [
                 'rel' => 'http://ostatus.org/schema/1.0/subscribe',
-                'template' => 'https://'.config_cache('pixelfed.domain.app').'/authorize_interaction?uri={uri}',
+                'template' => 'https://'.config_cache('pix.domain.app').'/authorize_interaction?uri={uri}',
             ],
         ];
     }

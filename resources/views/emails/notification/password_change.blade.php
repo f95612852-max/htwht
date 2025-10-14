@@ -7,10 +7,10 @@ Hello &commat;{{$user->username}},
 <p>The password for your account has been changed.</p>
 @endcomponent
 
-<small>If you did not make this change and believe your Pixelfed account has been compromised, please reset your password immediately or contact the instance admin if you're locked out of your account.</small>
+<small>If you did not make this change and believe your Pix account has been compromised, please reset your password immediately or contact the instance admin if you're locked out of your account.</small>
 
 <br>
 
 Thanks,<br>
-{{ config('pixelfed.domain.app') }}
+{{ config('pix.domain.app') }}
 @endcomponent

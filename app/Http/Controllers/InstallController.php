@@ -98,7 +98,7 @@ class InstallController extends Controller
     	abort_if(file_exists(base_path('.env')), 404);
 
 		$driver = $request->input('db_driver', 'mysql');
-		$name = $request->input('db_name', 'pixelfed');
+		$name = $request->input('db_name', 'pix');
 		$host = $request->input('db_host', 'localhost');
 		$username = $request->input('db_username');
 		$password = $request->input('db_password');
@@ -122,7 +122,7 @@ class InstallController extends Controller
     	@copy($source, $target);
 
     	$this->updateConfig('APP_URL=http://localhost', 'APP_URL=https://'.$request->input('domain'));
-    	$this->updateConfig('APP_NAME="Pixelfed Prod"', 'APP_NAME="'.$request->input('name').'"');
+    	$this->updateConfig('APP_NAME="Pix Prod"', 'APP_NAME="'.$request->input('name').'"');
     	$this->updateConfig('APP_DOMAIN="localhost"', 'APP_DOMAIN="'.$request->input('domain').'"');
     	$this->updateConfig('ADMIN_DOMAIN="localhost"', 'ADMIN_DOMAIN="'.$request->input('domain').'"');
     	$this->updateConfig('SESSION_DOMAIN="localhost"', 'SESSION_DOMAIN="'.$request->input('domain').'"');
@@ -130,9 +130,9 @@ class InstallController extends Controller
     	$this->updateConfig('DB_CONNECTION=mysql', 'DB_CONNECTION='.$request->input('db_driver'));
     	$this->updateConfig('DB_HOST=127.0.0.1', 'DB_HOST='.$request->input('db_host'));
     	$this->updateConfig('DB_PORT=3306', 'DB_PORT='.$request->input('db_port'));
-    	$this->updateConfig('DB_DATABASE=pixelfed', 'DB_DATABASE='.$request->input('db_name'));
-    	$this->updateConfig('DB_USERNAME=pixelfed', 'DB_USERNAME='.$request->input('db_username'));
-    	$this->updateConfig('DB_PASSWORD=pixelfed', 'DB_PASSWORD='.$request->input('db_password'));
+    	$this->updateConfig('DB_DATABASE=pix', 'DB_DATABASE='.$request->input('db_name'));
+    	$this->updateConfig('DB_USERNAME=pix', 'DB_USERNAME='.$request->input('db_username'));
+    	$this->updateConfig('DB_PASSWORD=pix', 'DB_PASSWORD='.$request->input('db_password'));
 
     	$this->updateConfig('CACHE_DRIVER=redis', 'CACHE_DRIVER='.$request->input('cache_driver'));
     	$this->updateConfig('QUEUE_DRIVER=redis', 'QUEUE_DRIVER='.$request->input('queue_driver'));
@@ -197,7 +197,7 @@ class InstallController extends Controller
     public function precheckDatabase(Request $request)
     {
     	$driver = $request->input('db_driver', 'mysql');
-		$name = $request->input('db_name', 'pixelfed');
+		$name = $request->input('db_name', 'pix');
 		$host = $request->input('db_host', 'localhost');
 		$username = $request->input('db_username');
 		$password = $request->input('db_password');

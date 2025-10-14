@@ -238,7 +238,7 @@ trait AdminUserController
         $user = User::findOrFail($id);
         $profile = $user->profile;
 
-        if (config('pixelfed.account_deletion') == false) {
+        if (config('pix.account_deletion') == false) {
             abort(404);
         }
 

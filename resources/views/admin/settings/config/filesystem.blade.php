@@ -5,7 +5,7 @@
 	  <div class="col-sm-9">
 	    <select class="form-control" disabled>
 	      <option {{config('filesystems.default') == 'local' ? 'selected=""':''}}>Local</option>
-	      <option {{config('filesystems.default') == 's3' ? 'selected=""':''}}>S3</option>
+	      <option {{config('filesystems.default') == 'firebase' ? 'selected=""':''}}>Firebase Storage</option>
 	      <option {{config('filesystems.default') == 'spaces' ? 'selected=""':''}}>Digital Ocean Spaces</option>
 	    </select>
 	  </div>

@@ -27,7 +27,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
-use App\Http\Controllers\PixelfedDirectoryController;
+use App\Http\Controllers\PixDirectoryController;
 use \DateInterval;
 use \DatePeriod;
 use App\Http\Resources\AdminSpamReport;
@@ -107,7 +107,7 @@ trait AdminAutospamController
 		}
 
 		return [
-			'autospam_enabled' => (bool) config_cache('pixelfed.bouncer.enabled') ?? false,
+			'autospam_enabled' => (bool) config_cache('pix.bouncer.enabled') ?? false,
 			'nlp_enabled' => (bool) AutospamService::active(),
 			'files' => $files,
 			'open' => $open,

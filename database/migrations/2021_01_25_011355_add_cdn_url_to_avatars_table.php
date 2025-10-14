@@ -14,7 +14,7 @@ class AddCdnUrlToAvatarsTable extends Migration
 	public function up()
 	{
 		Schema::table('avatars', function (Blueprint $table) {
-			$table->string('cdn_url')->unique()->index()->nullable()->after('remote_url');
+			$table->string('cdn_url')->unique()->index()->nullable()->after('media_path');
 			$table->unsignedInteger('size')->nullable()->after('cdn_url');
 			$table->boolean('is_remote')->nullable()->index()->after('cdn_url');
 			$table->dropColumn('thumb_path');

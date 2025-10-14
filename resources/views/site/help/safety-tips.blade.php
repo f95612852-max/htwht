@@ -36,7 +36,7 @@
   <div class="card border-left-blue mb-3">
     <div class="card-body">
       <p class="h5">Know the age guidelines</p>
-      <p class="mb-0">Please keep in mind that Pixelfed is meant for people over the age of 16 or 13 depending on where you live.</p>
+      <p class="mb-0">Please keep in mind that Pix is meant for people over the age of 16 or 13 depending on where you live.</p>
     </div>
   </div>
 

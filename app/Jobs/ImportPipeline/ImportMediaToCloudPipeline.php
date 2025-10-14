@@ -77,7 +77,7 @@ class ImportMediaToCloudPipeline implements ShouldQueue, ShouldBeUniqueUntilProc
         if(
             $ip->status_id === null ||
             $ip->uploaded_to_s3 === true ||
-            (bool) config_cache('pixelfed.cloud_storage') === false) {
+            (bool) config_cache('pix.cloud_storage') === false) {
             return;
         }
 

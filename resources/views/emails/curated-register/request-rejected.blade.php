@@ -1,7 +1,7 @@
 @component('mail::message')
 Hello **{{'@'.$verify->username}}**,
 
-We appreciate the time you took to apply for an account on {{ config('pixelfed.domain.app') }}.
+We appreciate the time you took to apply for an account on {{ config('pix.domain.app') }}.
 
 Unfortunately, after reviewing your [application]({{route('help.curated-onboarding')}}), we have decided not to proceed with the activation of your account.
 
@@ -12,7 +12,7 @@ We appreciate your understanding. If you believe this decision was made in error
 <br>
 
 Thanks,<br>
-<a href="{{ config('app.url') }}">{{ config('pixelfed.domain.app') }}</a>
+<a href="{{ config('app.url') }}">{{ config('pix.domain.app') }}</a>
 <br>
 <hr>
 <p style="font-size:10pt;">This is an automated message, please be aware that replies to this email cannot be monitored or responded to.</p>

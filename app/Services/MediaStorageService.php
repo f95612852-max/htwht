@@ -18,7 +18,7 @@ class MediaStorageService
 {
     public static function store(Media $media)
     {
-        if ((bool) config_cache('pixelfed.cloud_storage') == true && config('filesystems.default') === 'local') {
+        if ((bool) config_cache('pix.cloud_storage') == true && config('filesystems.default') === 'local') {
             (new self)->cloudStore($media);
         }
     }
@@ -29,7 +29,7 @@ class MediaStorageService
             return;
         }
 
-        if ((bool) config_cache('pixelfed.cloud_storage') == true && config('filesystems.default') === 'local') {
+        if ((bool) config_cache('pix.cloud_storage') == true && config('filesystems.default') === 'local') {
             return (new self)->cloudMove($media);
         }
 
@@ -60,7 +60,7 @@ class MediaStorageService
         $len = (int) $h['content-length'];
         $mime = $h['content-type'];
 
-        if ($len < 10 || $len > ((config_cache('pixelfed.max_photo_size') * 1000))) {
+        if ($len < 10 || $len > ((config_cache('pix.max_photo_size') * 1000))) {
             return false;
         }
 
@@ -103,9 +103,10 @@ class MediaStorageService
         $media->optimized_url = $url;
         $media->replicated_at = now();
         $media->save();
-        if ((bool) config_cache('pixelfed.cloud_storage') && (bool) config('media.delete_local_after_cloud')) {
-            $s3Domain = config('filesystems.disks.s3.url') ?? config('filesystems.disks.s3.endpoint');
-            if (str_contains($url, $s3Domain)) {
+        if ((bool) config_cache('pix.cloud_storage') && (bool) config('media.delete_local_after_cloud')) {
+            // Firebase Storage - always delete local files after cloud upload
+            $firebaseDomain = config('firebase.storage.bucket');
+            if ($firebaseDomain && str_contains($url, 'firebase')) {
                 if (file_exists($path)) {
                     unlink($path);
                 }
@@ -145,7 +146,7 @@ class MediaStorageService
         ];
 
         $mime = $head['mime'];
-        $max_size = (int) config_cache('pixelfed.max_photo_size') * 1000;
+        $max_size = (int) config_cache('pix.max_photo_size') * 1000;
         $media->size = $head['length'];
         $media->remote_media = true;
         $media->save();
@@ -227,7 +228,7 @@ class MediaStorageService
         ];
 
         $mime = $head['mime'];
-        $max_size = (int) config('pixelfed.max_avatar_size') * 1000;
+        $max_size = (int) config('pix.max_avatar_size') * 1000;
 
         if (! $skipRecentCheck) {
             if ($avatar->last_fetched_at && $avatar->last_fetched_at->gt(now()->subMonths(3))) {

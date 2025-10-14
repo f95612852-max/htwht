@@ -11,11 +11,11 @@
 <p>
   <a class="text-dark font-weight-bold" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
     <i class="fas fa-chevron-down mr-2"></i>
-    How do I use Pixelfed Direct?
+    How do I use Pix Direct?
   </a>
   <div class="collapse" id="collapse1">
     <div>
-      <p>Pixelfed Direct lets you send messages to another account. You can send the following things as a message on Pixelfed Direct:</p>
+      <p>Pix Direct lets you send messages to another account. You can send the following things as a message on Pix Direct:</p>
       <ul>
         <li>
           Photos or videos you take or upload from your library
@@ -36,15 +36,15 @@
           Locations
         </li>
       </ul>
-      <p>To see messages you've sent with Pixelfed Direct, tap <i class="far fa-comment-dots"></i> in the top right of feed. From there, you can manage the messages you've sent and received.</p>
-      <p>Photos or videos sent with Pixelfed Direct can't be shared through Pixelfed to other sites like Mastodon or Twitter, and won't appear on hashtag and location pages.</p>
+      <p>To see messages you've sent with Pix Direct, tap <i class="far fa-comment-dots"></i> in the top right of feed. From there, you can manage the messages you've sent and received.</p>
+      <p>Photos or videos sent with Pix Direct can't be shared through Pix to other sites like Mastodon or Twitter, and won't appear on hashtag and location pages.</p>
     </div>
   </div>
 </p>
 {{-- <p> 
   <a class="text-dark font-weight-bold" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
     <i class="fas fa-chevron-down mr-2"></i>
-    How do I manage messages I've recieved with Pixelfed Direct?
+    How do I manage messages I've recieved with Pix Direct?
   </a>
   <div class="collapse" id="collapse2">
     <div>
@@ -55,7 +55,7 @@
 <p> 
   <a class="text-dark font-weight-bold" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
     <i class="fas fa-chevron-down mr-2"></i>
-    How do I unsend a message I've sent using Pixelfed Direct?
+    How do I unsend a message I've sent using Pix Direct?
   </a>
   <div class="collapse" id="collapse3">
     <div class="mt-2">
@@ -66,7 +66,7 @@
 <p> 
   <a class="text-dark font-weight-bold" data-toggle="collapse" href="#collapse4" role="button" aria-expanded="false" aria-controls="collapse4">
     <i class="fas fa-chevron-down mr-2"></i>
-    Can I use Pixelfed Direct to send messages to people I’m not following?
+    Can I use Pix Direct to send messages to people I’m not following?
   </a>
   <div class="collapse" id="collapse4">
     <div class="mt-2">
@@ -77,7 +77,7 @@
 <p> 
   <a class="text-dark font-weight-bold" data-toggle="collapse" href="#collapse5" role="button" aria-expanded="false" aria-controls="collapse5">
     <i class="fas fa-chevron-down mr-2"></i>
-    How do I report content that I've recieved in a Pixelfed Direct message?
+    How do I report content that I've recieved in a Pix Direct message?
   </a>
   <div class="collapse" id="collapse5">
     <div class="mt-2">

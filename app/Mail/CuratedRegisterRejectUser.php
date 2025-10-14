@@ -29,7 +29,7 @@ class CuratedRegisterRejectUser extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Your ' . config('pixelfed.domain.app') . ' Registration Update',
+            subject: 'Your ' . config('pix.domain.app') . ' Registration Update',
         );
     }
 

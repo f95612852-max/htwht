@@ -21,10 +21,10 @@ trait AdminSettingsController
 {
     public function settings(Request $request)
     {
-        $cloud_storage = ConfigCacheService::get('pixelfed.cloud_storage');
+        $cloud_storage = ConfigCacheService::get('pix.cloud_storage');
         $cloud_disk = config('filesystems.cloud');
         $cloud_ready = ! empty(config('filesystems.disks.'.$cloud_disk.'.key')) && ! empty(config('filesystems.disks.'.$cloud_disk.'.secret'));
-        $types = explode(',', ConfigCacheService::get('pixelfed.media_types'));
+        $types = explode(',', ConfigCacheService::get('pix.media_types'));
         $rules = ConfigCacheService::get('app.rules') ? json_decode(ConfigCacheService::get('app.rules'), true) : null;
         $jpeg = in_array('image/jpg', $types) || in_array('image/jpeg', $types);
         $png = in_array('image/png', $types);
@@ -34,7 +34,7 @@ trait AdminSettingsController
 
         $availableAdmins = User::whereIsAdmin(true)->get();
         $currentAdmin = config_cache('instance.admin.pid') ? AccountService::get(config_cache('instance.admin.pid'), true) : null;
-        $openReg = (bool) config_cache('pixelfed.open_registration');
+        $openReg = (bool) config_cache('pix.open_registration');
         $curOnboarding = (bool) config_cache('instance.curated_registration.enabled');
         $regState = $openReg ? 'open' : ($curOnboarding ? 'filtered' : 'closed');
         $accountMigration = (bool) config_cache('federation.migration');
@@ -96,7 +96,7 @@ trait AdminSettingsController
                 break;
         }
 
-        ConfigCacheService::put('pixelfed.open_registration', (bool) $orb);
+        ConfigCacheService::put('pix.open_registration', (bool) $orb);
         ConfigCacheService::put('instance.curated_registration.enabled', (bool) $cob);
 
         if ($request->filled('admin_account_id')) {
@@ -120,7 +120,7 @@ trait AdminSettingsController
             return 200;
         }
 
-        $media_types = explode(',', config_cache('pixelfed.media_types'));
+        $media_types = explode(',', config_cache('pix.media_types'));
         $media_types_original = $media_types;
 
         $mimes = [
@@ -143,17 +143,17 @@ trait AdminSettingsController
         }
 
         if ($media_types !== $media_types_original) {
-            ConfigCacheService::put('pixelfed.media_types', implode(',', array_unique($media_types)));
+            ConfigCacheService::put('pix.media_types', implode(',', array_unique($media_types)));
         }
 
         $keys = [
             'name' => 'app.name',
             'short_description' => 'app.short_description',
             'long_description' => 'app.description',
-            'max_photo_size' => 'pixelfed.max_photo_size',
-            'max_album_length' => 'pixelfed.max_album_length',
-            'image_quality' => 'pixelfed.image_quality',
-            'account_limit' => 'pixelfed.max_account_size',
+            'max_photo_size' => 'pix.max_photo_size',
+            'max_album_length' => 'pix.max_album_length',
+            'image_quality' => 'pix.image_quality',
+            'account_limit' => 'pix.max_account_size',
             'custom_css' => 'uikit.custom.css',
             'custom_js' => 'uikit.custom.js',
             'about_title' => 'about.title',
@@ -171,16 +171,16 @@ trait AdminSettingsController
 
         $bools = [
             'activitypub' => 'federation.activitypub.enabled',
-            // 'open_registration' => 'pixelfed.open_registration',
-            'mobile_apis' => 'pixelfed.oauth_enabled',
+            // 'open_registration' => 'pix.open_registration',
+            'mobile_apis' => 'pix.oauth_enabled',
             'stories' => 'instance.stories.enabled',
-            'ig_import' => 'pixelfed.import.instagram.enabled',
-            'spam_detection' => 'pixelfed.bouncer.enabled',
-            'require_email_verification' => 'pixelfed.enforce_email_verification',
-            'enforce_account_limit' => 'pixelfed.enforce_account_limit',
+            'ig_import' => 'pix.import.instagram.enabled',
+            'spam_detection' => 'pix.bouncer.enabled',
+            'require_email_verification' => 'pix.enforce_email_verification',
+            'enforce_account_limit' => 'pix.enforce_account_limit',
             'show_custom_css' => 'uikit.show_custom.css',
             'show_custom_js' => 'uikit.show_custom.js',
-            'cloud_storage' => 'pixelfed.cloud_storage',
+            'cloud_storage' => 'pix.cloud_storage',
             'account_autofollow' => 'account.autofollow',
             'show_directory' => 'instance.landing.show_directory',
             'show_explore_feed' => 'instance.landing.show_explore',
@@ -284,7 +284,7 @@ trait AdminSettingsController
     public function settingsSystem(Request $request)
     {
         $sys = [
-            'pixelfed' => config('pixelfed.version'),
+            'pix' => config('pix.version'),
             'php' => phpversion(),
             'laravel' => app()->version(),
         ];
@@ -320,10 +320,10 @@ trait AdminSettingsController
 
     public function settingsApiFetch(Request $request)
     {
-        $cloud_storage = ConfigCacheService::get('pixelfed.cloud_storage');
+        $cloud_storage = ConfigCacheService::get('pix.cloud_storage');
         $cloud_disk = config('filesystems.cloud');
         $cloud_ready = ! empty(config('filesystems.disks.'.$cloud_disk.'.key')) && ! empty(config('filesystems.disks.'.$cloud_disk.'.secret'));
-        $types = explode(',', ConfigCacheService::get('pixelfed.media_types'));
+        $types = explode(',', ConfigCacheService::get('pix.media_types'));
         $rules = ConfigCacheService::get('app.rules') ? json_decode(ConfigCacheService::get('app.rules'), true) : [];
         $jpeg = in_array('image/jpg', $types) || in_array('image/jpeg', $types);
         $png = in_array('image/png', $types);
@@ -333,7 +333,7 @@ trait AdminSettingsController
 
         $availableAdmins = User::whereIsAdmin(true)->get();
         $currentAdmin = config_cache('instance.admin.pid') ? AccountService::get(config_cache('instance.admin.pid'), true) : null;
-        $openReg = (bool) config_cache('pixelfed.open_registration');
+        $openReg = (bool) config_cache('pix.open_registration');
         $curOnboarding = (bool) config_cache('instance.curated_registration.enabled');
         $regState = $openReg ? 'open' : ($curOnboarding ? 'filtered' : 'closed');
         $accountMigration = (bool) config_cache('federation.migration');
@@ -544,29 +544,29 @@ trait AdminSettingsController
         ]);
 
         $regStatus = $request->input('registration_status');
-        ConfigCacheService::put('pixelfed.open_registration', $regStatus === 'open');
+        ConfigCacheService::put('pix.open_registration', $regStatus === 'open');
         ConfigCacheService::put('instance.curated_registration.enabled', $regStatus === 'filtered');
         $cloudStorage = $request->boolean('cloud_storage');
-        if ($cloudStorage !== (bool) config_cache('pixelfed.cloud_storage')) {
+        if ($cloudStorage !== (bool) config_cache('pix.cloud_storage')) {
             if (! $cloudStorage) {
-                ConfigCacheService::put('pixelfed.cloud_storage', false);
+                ConfigCacheService::put('pix.cloud_storage', false);
             } else {
                 $cloud_disk = config('filesystems.cloud');
                 $cloud_ready = ! empty(config('filesystems.disks.'.$cloud_disk.'.key')) && ! empty(config('filesystems.disks.'.$cloud_disk.'.secret'));
                 if (! $cloud_ready) {
                     return redirect()->back()->withErrors(['cloud_storage' => 'Must configure cloud storage before enabling!']);
                 } else {
-                    ConfigCacheService::put('pixelfed.cloud_storage', true);
+                    ConfigCacheService::put('pix.cloud_storage', true);
                 }
             }
         }
         ConfigCacheService::put('federation.activitypub.authorized_fetch', $request->boolean('authorized_fetch'));
         ConfigCacheService::put('federation.activitypub.enabled', $request->boolean('activitypub_enabled'));
         ConfigCacheService::put('federation.migration', $request->boolean('account_migration'));
-        ConfigCacheService::put('pixelfed.oauth_enabled', $request->boolean('mobile_apis'));
+        ConfigCacheService::put('pix.oauth_enabled', $request->boolean('mobile_apis'));
         ConfigCacheService::put('instance.stories.enabled', $request->boolean('stories'));
-        ConfigCacheService::put('pixelfed.import.instagram.enabled', $request->boolean('instagram_import'));
-        ConfigCacheService::put('pixelfed.bouncer.enabled', $request->boolean('autospam_enabled'));
+        ConfigCacheService::put('pix.import.instagram.enabled', $request->boolean('instagram_import'));
+        ConfigCacheService::put('pix.bouncer.enabled', $request->boolean('autospam_enabled'));
 
         Cache::forget('api:v1:instance-data-response-v1');
         Cache::forget('api:v2:instance-data-response-v2');
@@ -616,12 +616,12 @@ trait AdminSettingsController
             }
         }
 
-        ConfigCacheService::put('pixelfed.media_types', $request->input('media_types'));
-        ConfigCacheService::put('pixelfed.image_quality', $request->input('image_quality'));
-        ConfigCacheService::put('pixelfed.max_album_length', $request->input('max_album_length'));
-        ConfigCacheService::put('pixelfed.max_photo_size', $request->input('max_photo_size'));
-        ConfigCacheService::put('pixelfed.optimize_image', $request->boolean('optimize_image'));
-        ConfigCacheService::put('pixelfed.optimize_video', $request->boolean('optimize_video'));
+        ConfigCacheService::put('pix.media_types', $request->input('media_types'));
+        ConfigCacheService::put('pix.image_quality', $request->input('image_quality'));
+        ConfigCacheService::put('pix.max_album_length', $request->input('max_album_length'));
+        ConfigCacheService::put('pix.max_photo_size', $request->input('max_photo_size'));
+        ConfigCacheService::put('pix.optimize_image', $request->boolean('optimize_image'));
+        ConfigCacheService::put('pix.optimize_video', $request->boolean('optimize_video'));
 
         Cache::forget('api:v1:instance-data:rules');
         Cache::forget('api:v1:instance-data-response-v1');
@@ -660,8 +660,8 @@ trait AdminSettingsController
             'max_altext_length' => 'required|integer|min:5|max:40000',
         ]);
 
-        ConfigCacheService::put('pixelfed.max_caption_length', $request->input('max_caption_length'));
-        ConfigCacheService::put('pixelfed.max_altext_length', $request->input('max_altext_length'));
+        ConfigCacheService::put('pix.max_caption_length', $request->input('max_caption_length'));
+        ConfigCacheService::put('pix.max_altext_length', $request->input('max_altext_length'));
         $res = [
             'max_caption_length' => $request->input('max_caption_length'),
             'max_altext_length' => $request->input('max_altext_length'),
@@ -692,11 +692,11 @@ trait AdminSettingsController
             'custom_emoji_enabled' => 'required',
         ]);
 
-        ConfigCacheService::put('pixelfed.allow_app_registration', $request->boolean('allow_app_registration'));
-        ConfigCacheService::put('pixelfed.app_registration_rate_limit_attempts', $request->input('app_registration_rate_limit_attempts'));
-        ConfigCacheService::put('pixelfed.app_registration_rate_limit_decay', $request->input('app_registration_rate_limit_decay'));
-        ConfigCacheService::put('pixelfed.app_registration_confirm_rate_limit_attempts', $request->input('app_registration_confirm_rate_limit_attempts'));
-        ConfigCacheService::put('pixelfed.app_registration_confirm_rate_limit_decay', $request->input('app_registration_confirm_rate_limit_decay'));
+        ConfigCacheService::put('pix.allow_app_registration', $request->boolean('allow_app_registration'));
+        ConfigCacheService::put('pix.app_registration_rate_limit_attempts', $request->input('app_registration_rate_limit_attempts'));
+        ConfigCacheService::put('pix.app_registration_rate_limit_decay', $request->input('app_registration_rate_limit_decay'));
+        ConfigCacheService::put('pix.app_registration_confirm_rate_limit_attempts', $request->input('app_registration_confirm_rate_limit_attempts'));
+        ConfigCacheService::put('pix.app_registration_confirm_rate_limit_decay', $request->input('app_registration_confirm_rate_limit_decay'));
         ConfigCacheService::put('instance.embed.post', $request->boolean('allow_post_embeds'));
         ConfigCacheService::put('instance.embed.profile', $request->boolean('allow_profile_embeds'));
         ConfigCacheService::put('federation.custom_emoji.enabled', $request->boolean('custom_emoji_enabled'));
@@ -784,9 +784,9 @@ trait AdminSettingsController
             }
         }
 
-        ConfigCacheService::put('pixelfed.enforce_email_verification', $request->boolean('require_email_verification'));
-        ConfigCacheService::put('pixelfed.enforce_account_limit', $request->boolean('enforce_account_limit'));
-        ConfigCacheService::put('pixelfed.max_account_size', $request->input('max_account_size'));
+        ConfigCacheService::put('pix.enforce_email_verification', $request->boolean('require_email_verification'));
+        ConfigCacheService::put('pix.enforce_account_limit', $request->boolean('enforce_account_limit'));
+        ConfigCacheService::put('pix.max_account_size', $request->input('max_account_size'));
         ConfigCacheService::put('account.autofollow', $request->boolean('admin_autofollow'));
         ConfigCacheService::put('instance.user_filters.max_user_blocks', (int) $request->input('max_user_blocks'));
         ConfigCacheService::put('instance.user_filters.max_user_mutes', (int) $request->input('max_user_mutes'));
@@ -824,7 +824,7 @@ trait AdminSettingsController
             'disk_config.url' => 'nullable',
         ]);
 
-        ConfigCacheService::put('pixelfed.cloud_storage', $request->input('primary_disk') === 'cloud');
+        ConfigCacheService::put('pix.cloud_storage', $request->input('primary_disk') === 'cloud');
         $res = [
             'primary_disk' => $request->input('primary_disk'),
         ];
@@ -876,7 +876,7 @@ trait AdminSettingsController
                     $endpoint,
                 );
                 if (! $isValid) {
-                    return response()->json(['error' => true, 's3_vce' => true, 'message' => "<div class='border border-danger text-danger p-3 font-weight-bold rounded-lg'>The S3/Spaces credentials you provided are invalid, or the bucket does not have the proper permissions.</div><br/>Please check all fields and try again.<br/><br/><strong>Any cloud storage configuration changes you made have NOT been saved due to invalid credentials.</strong>"], 400);
+                    return response()->json(['error' => true, 'firebase_vce' => true, 'message' => "<div class='border border-danger text-danger p-3 font-weight-bold rounded-lg'>The Firebase Storage credentials you provided are invalid, or the bucket does not have the proper permissions.</div><br/>Please check all fields and try again.<br/><br/><strong>Any cloud storage configuration changes you made have NOT been saved due to invalid credentials.</strong>"], 400);
                 }
 
                 ConfigCacheService::put($dkey . 'key', $key);

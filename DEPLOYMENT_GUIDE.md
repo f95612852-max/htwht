@@ -2,7 +2,7 @@
 
 ## نظرة عامة
 
-تم تحويل هذا المشروع من Pixelfed إلى منصة تواصل اجتماعي مركزية تتضمن:
+تم تحويل هذا المشروع من Pix إلى منصة تواصل اجتماعي مركزية تتضمن:
 
 - ✅ تسجيل الدخول بـ Google و Apple
 - ✅ نظام التوثيق بالعلامة الزرقاء
@@ -32,7 +32,7 @@ chmod +x setup-centralized.sh
 
 ```bash
 # إنشاء قاعدة البيانات
-mysql -u root -p -e "CREATE DATABASE pixelfed_centralized CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -p -e "CREATE DATABASE pix_centralized CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
 # تشغيل الهجرات
 php artisan migrate
@@ -53,7 +53,7 @@ APP_URL=https://yourdomain.com
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=pixelfed_centralized
+DB_DATABASE=pix_centralized
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 
@@ -107,7 +107,7 @@ server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
     server_name yourdomain.com;
-    root /path/to/pixelfed/public;
+    root /path/to/pix/public;
 
     ssl_certificate /path/to/ssl/cert.pem;
     ssl_certificate_key /path/to/ssl/private.key;
@@ -147,9 +147,9 @@ server {
 ### 5. تكوين Supervisor للطوابير
 
 ```ini
-[program:pixelfed-worker]
+[program:pix-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php /path/to/pixelfed/artisan queue:work redis --sleep=3 --tries=3 --max-time=3600
+command=php /path/to/pix/artisan queue:work redis --sleep=3 --tries=3 --max-time=3600
 autostart=true
 autorestart=true
 stopasgroup=true
@@ -157,7 +157,7 @@ killasgroup=true
 user=www-data
 numprocs=4
 redirect_stderr=true
-stdout_logfile=/path/to/pixelfed/storage/logs/worker.log
+stdout_logfile=/path/to/pix/storage/logs/worker.log
 stopwaitsecs=3600
 ```
 
@@ -165,7 +165,7 @@ stopwaitsecs=3600
 
 ```bash
 # إضافة إلى crontab
-* * * * * cd /path/to/pixelfed && php artisan schedule:run >> /dev/null 2>&1
+* * * * * cd /path/to/pix && php artisan schedule:run >> /dev/null 2>&1
 ```
 
 ## إعداد OAuth
@@ -222,7 +222,7 @@ php artisan schedule:list
 
 ```bash
 # التحقق من حالة العمال
-sudo supervisorctl status pixelfed-worker:*
+sudo supervisorctl status pix-worker:*
 
 # مراقبة الطوابير
 php artisan queue:monitor redis
@@ -278,7 +278,7 @@ php artisan earnings:calculate --recalculate
 
 ```bash
 # نسخ احتياطي لقاعدة البيانات
-mysqldump -u username -p pixelfed_centralized > backup_$(date +%Y%m%d).sql
+mysqldump -u username -p pix_centralized > backup_$(date +%Y%m%d).sql
 
 # تحديث التبعيات
 composer update --no-dev
@@ -303,7 +303,7 @@ openssl s_client -connect yourdomain.com:443
 
 ```bash
 # إعادة تشغيل العمال
-sudo supervisorctl restart pixelfed-worker:*
+sudo supervisorctl restart pix-worker:*
 
 # التحقق من Redis
 redis-cli ping
@@ -337,8 +337,8 @@ composer audit
 # نسخ احتياطي يومي
 #!/bin/bash
 DATE=$(date +%Y%m%d_%H%M%S)
-mysqldump -u username -p pixelfed_centralized > /backups/db_$DATE.sql
-tar -czf /backups/files_$DATE.tar.gz /path/to/pixelfed/storage
+mysqldump -u username -p pix_centralized > /backups/db_$DATE.sql
+tar -czf /backups/files_$DATE.tar.gz /path/to/pix/storage
 ```
 
 ### 3. مراقبة الأمان

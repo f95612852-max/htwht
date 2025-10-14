@@ -8,7 +8,7 @@
         <h1>Registration is closed</h1>
         <p class="lead mb-0">We have closed registrations on this instance.</p>
         <hr>
-        <p class="lead">You can find a list of active pixelfed instances on <a href="https://the-federation.info/pixelfed" rel="external nofollow noopener">https://the-federation.info/pixelfed</a> or <a href="https://fediverse.network/pixelfed" rel="external nofollow noopener">https://fediverse.network/pixelfed</a></p>
+        <p class="lead">You can find a list of active pix instances on <a href="https://the-federation.info/pix" rel="external nofollow noopener">https://the-federation.info/pix</a> or <a href="https://fediverse.network/pix" rel="external nofollow noopener">https://fediverse.network/pix</a></p>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\SoftwareUpdateController;
 
-Route::domain(config('pixelfed.domain.app'))->middleware(['validemail', 'twofactor', 'localization'])->group(function () {
+Route::domain(config('pix.domain.app'))->middleware(['validemail', 'twofactor', 'localization'])->group(function () {
     Route::group(['prefix' => 'api'], function () {
         Route::get('search', 'SearchController@searchAPI');
         Route::post('status/view', 'StatusController@storeView');
@@ -60,7 +60,7 @@ Route::domain(config('pixelfed.domain.app'))->middleware(['validemail', 'twofact
             Route::get('statuses/{id}/state', 'Api\ApiV1Controller@statusState');
         });
 
-        Route::group(['prefix' => 'pixelfed'], function() {
+        Route::group(['prefix' => 'pix'], function() {
             Route::group(['prefix' => 'v1'], function() {
                 Route::get('accounts/verify_credentials', 'ApiController@verifyCredentials');
                 Route::get('accounts/relationships', 'Api\ApiV1Controller@accountRelationshipsById');

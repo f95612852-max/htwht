@@ -260,7 +260,7 @@ trait AdminInstanceController
 			$chk = hash('sha256', json_encode($json, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES));
 			$json['_sha256'] = $chk;
 			echo json_encode($json, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
-		}, 'pixelfed-instances-mod.json');
+		}, 'pix-instances-mod.json');
 	}
 
 	public function importBackup(Request $request)

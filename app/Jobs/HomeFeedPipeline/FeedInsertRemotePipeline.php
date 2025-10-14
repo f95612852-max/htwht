@@ -87,7 +87,7 @@ class FeedInsertRemotePipeline implements ShouldQueue, ShouldBeUniqueUntilProces
         $domain = strtolower(parse_url($status['url'], PHP_URL_HOST));
         $skipIds = [];
 
-        if(strtolower(config('pixelfed.domain.app')) !== $domain) {
+        if(strtolower(config('pix.domain.app')) !== $domain) {
             $skipIds = UserDomainBlock::where('domain', $domain)->pluck('profile_id')->toArray();
         }
 

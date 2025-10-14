@@ -12,7 +12,7 @@ return [
     | a subdomain on the same app domain.
     |
     */
-    'domain' => env('PORTFOLIO_DOMAIN', config('pixelfed.domain.app')),
+    'domain' => env('PORTFOLIO_DOMAIN', config('pix.domain.app')),
 
     /*
     |--------------------------------------------------------------------------

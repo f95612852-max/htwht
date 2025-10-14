@@ -16,7 +16,7 @@
   </div>
   <div class="py-4">
     <p class="font-weight-bold h5 pb-3">Discover Categories <span class="badge badge-success">NEW</span></p>
-    <p>Discover Categories are a new feature that may not be supported on every Pixelfed instance.</p>
+    <p>Discover Categories are a new feature that may not be supported on every Pix instance.</p>
     <ul>
       <li class="mb-3 ">Click the <i class="far fa-compass fa-sm"></i> icon.</li>
       <li class="mb-3 ">On the discover page, you will see a list of Category cards that links to each Discover Category.</li>

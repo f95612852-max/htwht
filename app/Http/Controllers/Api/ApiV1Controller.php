@@ -132,7 +132,7 @@ class ApiV1Controller extends Controller
      */
     public function apps(Request $request)
     {
-        abort_if(! (bool) config_cache('pixelfed.oauth_enabled'), 404);
+        abort_if(! (bool) config_cache('pix.oauth_enabled'), 404);
 
         $this->validate($request, [
             'client_name' => 'required',
@@ -238,12 +238,12 @@ class ApiV1Controller extends Controller
         abort_if(! $request->user() || ! $request->user()->token(), 403);
         abort_unless($request->user()->tokenCan('write'), 403);
 
-        if (config('pixelfed.bouncer.cloud_ips.ban_api')) {
+        if (config('pix.bouncer.cloud_ips.ban_api')) {
             abort_if(BouncerService::checkIp($request->ip()), 404);
         }
 
         $this->validate($request, [
-            'avatar' => 'sometimes|mimetypes:image/jpeg,image/jpg,image/png|max:'.config('pixelfed.max_avatar_size'),
+            'avatar' => 'sometimes|mimetypes:image/jpeg,image/jpg,image/png|max:'.config('pix.max_avatar_size'),
             'display_name' => 'nullable|string|max:30',
             'note' => 'nullable|string|max:200',
             'locked' => 'nullable',
@@ -253,7 +253,7 @@ class ApiV1Controller extends Controller
         ], [
             'required' => 'The :attribute field is required.',
             'avatar.mimetypes' => 'The file must be in jpeg or png format',
-            'avatar.max' => 'The :attribute exceeds the file size limit of '.PrettyNumber::size(config('pixelfed.max_avatar_size'), true, false),
+            'avatar.max' => 'The :attribute exceeds the file size limit of '.PrettyNumber::size(config('pix.max_avatar_size'), true, false),
         ]);
 
         $user = $request->user();
@@ -1716,31 +1716,31 @@ class ApiV1Controller extends Controller
             });
 
             return [
-                'uri' => config('pixelfed.domain.app'),
+                'uri' => config('pix.domain.app'),
                 'title' => config_cache('app.name'),
                 'short_description' => config_cache('app.short_description'),
                 'description' => config_cache('app.description'),
                 'email' => config('instance.email'),
-                'version' => '3.5.3 (compatible; Pixelfed '.config('pixelfed.version').')',
+                'version' => '3.5.3 (compatible; Pix '.config('pix.version').')',
                 'urls' => [
                     'streaming_api' => null,
                 ],
                 'stats' => $stats,
                 'thumbnail' => config_cache('app.banner_image') ?? url(Storage::url('public/headers/default.jpg')),
                 'languages' => [config('app.locale')],
-                'registrations' => (bool) config_cache('pixelfed.open_registration'),
+                'registrations' => (bool) config_cache('pix.open_registration'),
                 'approval_required' => (bool) config_cache('instance.curated_registration.enabled'),
                 'contact_account' => $contact,
                 'rules' => $rules,
-                'mobile_registration' => (bool) config_cache('pixelfed.open_registration') && config('auth.in_app_registration'),
+                'mobile_registration' => (bool) config_cache('pix.open_registration') && config('auth.in_app_registration'),
                 'configuration' => [
                     'media_attachments' => [
                         'image_matrix_limit' => 2073600,
-                        'image_size_limit' => config_cache('pixelfed.max_photo_size') * 1024,
-                        'supported_mime_types' => explode(',', config_cache('pixelfed.media_types')),
+                        'image_size_limit' => config_cache('pix.max_photo_size') * 1024,
+                        'supported_mime_types' => explode(',', config_cache('pix.media_types')),
                         'video_frame_rate_limit' => 120,
                         'video_matrix_limit' => 2073600,
-                        'video_size_limit' => config_cache('pixelfed.max_photo_size') * 1024,
+                        'video_size_limit' => config_cache('pix.max_photo_size') * 1024,
                     ],
                     'polls' => [
                         'max_characters_per_option' => 50,
@@ -1750,8 +1750,8 @@ class ApiV1Controller extends Controller
                     ],
                     'statuses' => [
                         'characters_reserved_per_url' => 23,
-                        'max_characters' => (int) config_cache('pixelfed.max_caption_length'),
-                        'max_media_attachments' => (int) config_cache('pixelfed.max_album_length'),
+                        'max_characters' => (int) config_cache('pix.max_caption_length'),
+                        'max_media_attachments' => (int) config_cache('pix.max_album_length'),
                     ],
                 ],
             ];
@@ -1803,17 +1803,17 @@ class ApiV1Controller extends Controller
         $this->validate($request, [
             'file.*' => [
                 'required_without:file',
-                'mimetypes:'.config_cache('pixelfed.media_types'),
-                'max:'.config_cache('pixelfed.max_photo_size'),
+                'mimetypes:'.config_cache('pix.media_types'),
+                'max:'.config_cache('pix.max_photo_size'),
             ],
             'file' => [
                 'required_without:file.*',
-                'mimetypes:'.config_cache('pixelfed.media_types'),
-                'max:'.config_cache('pixelfed.max_photo_size'),
+                'mimetypes:'.config_cache('pix.media_types'),
+                'max:'.config_cache('pix.max_photo_size'),
             ],
             'filter_name' => 'nullable|string|max:24',
             'filter_class' => 'nullable|alpha_dash|max:24',
-            'description' => 'nullable|string|max:'.config_cache('pixelfed.max_altext_length'),
+            'description' => 'nullable|string|max:'.config_cache('pix.max_altext_length'),
         ]);
 
         $user = $request->user();
@@ -1847,8 +1847,8 @@ class ApiV1Controller extends Controller
         $sizeInKbs = (int) ceil($fileSize / 1000);
         $updatedAccountSize = (int) $accountSize + (int) $sizeInKbs;
 
-        if ((bool) config_cache('pixelfed.enforce_account_limit') == true) {
-            $limit = (int) config_cache('pixelfed.max_account_size');
+        if ((bool) config_cache('pix.enforce_account_limit') == true) {
+            $limit = (int) config_cache('pix.max_account_size');
             if ($updatedAccountSize >= $limit) {
                 abort(403, 'Account size limit reached.');
             }
@@ -1857,7 +1857,7 @@ class ApiV1Controller extends Controller
         $filterClass = in_array($request->input('filter_class'), Filter::classes()) ? $request->input('filter_class') : null;
         $filterName = in_array($request->input('filter_name'), Filter::names()) ? $request->input('filter_name') : null;
 
-        $mimes = explode(',', config_cache('pixelfed.media_types'));
+        $mimes = explode(',', config_cache('pix.media_types'));
         if (in_array($photo->getMimeType(), $mimes) == false) {
             abort(403, 'Invalid or unsupported mime type.');
         }
@@ -1948,7 +1948,7 @@ class ApiV1Controller extends Controller
         abort_unless($request->user()->tokenCan('write'), 403);
 
         $this->validate($request, [
-            'description' => 'nullable|string|max:'.config_cache('pixelfed.max_altext_length'),
+            'description' => 'nullable|string|max:'.config_cache('pix.max_altext_length'),
         ]);
 
         $user = $request->user();
@@ -2029,17 +2029,17 @@ class ApiV1Controller extends Controller
         $this->validate($request, [
             'file.*' => [
                 'required_without:file',
-                'mimetypes:'.config_cache('pixelfed.media_types'),
-                'max:'.config_cache('pixelfed.max_photo_size'),
+                'mimetypes:'.config_cache('pix.media_types'),
+                'max:'.config_cache('pix.max_photo_size'),
             ],
             'file' => [
                 'required_without:file.*',
-                'mimetypes:'.config_cache('pixelfed.media_types'),
-                'max:'.config_cache('pixelfed.max_photo_size'),
+                'mimetypes:'.config_cache('pix.media_types'),
+                'max:'.config_cache('pix.max_photo_size'),
             ],
             'filter_name' => 'nullable|string|max:24',
             'filter_class' => 'nullable|alpha_dash|max:24',
-            'description' => 'nullable|string|max:'.config_cache('pixelfed.max_altext_length'),
+            'description' => 'nullable|string|max:'.config_cache('pix.max_altext_length'),
             'replace_id' => 'sometimes',
         ]);
 
@@ -2074,8 +2074,8 @@ class ApiV1Controller extends Controller
         $sizeInKbs = (int) ceil($fileSize / 1000);
         $updatedAccountSize = (int) $accountSize + (int) $sizeInKbs;
 
-        if ((bool) config_cache('pixelfed.enforce_account_limit') == true) {
-            $limit = (int) config_cache('pixelfed.max_account_size');
+        if ((bool) config_cache('pix.enforce_account_limit') == true) {
+            $limit = (int) config_cache('pix.max_account_size');
             if ($updatedAccountSize >= $limit) {
                 abort(403, 'Account size limit reached.');
             }
@@ -2084,7 +2084,7 @@ class ApiV1Controller extends Controller
         $filterClass = in_array($request->input('filter_class'), Filter::classes()) ? $request->input('filter_class') : null;
         $filterName = in_array($request->input('filter_name'), Filter::names()) ? $request->input('filter_name') : null;
 
-        $mimes = explode(',', config_cache('pixelfed.media_types'));
+        $mimes = explode(',', config_cache('pix.media_types'));
         if (in_array($photo->getMimeType(), $mimes) == false) {
             abort(403, 'Invalid or unsupported mime type.');
         }
@@ -3610,9 +3610,9 @@ class ApiV1Controller extends Controller
         abort_unless($request->user()->tokenCan('write'), 403);
 
         $this->validate($request, [
-            'status' => 'nullable|string|max:'.(int) config_cache('pixelfed.max_caption_length'),
+            'status' => 'nullable|string|max:'.(int) config_cache('pix.max_caption_length'),
             'in_reply_to_id' => 'nullable',
-            'media_ids' => 'sometimes|array|max:'.(int) config_cache('pixelfed.max_album_length'),
+            'media_ids' => 'sometimes|array|max:'.(int) config_cache('pix.max_album_length'),
             'sensitive' => 'nullable',
             'visibility' => 'string|in:private,unlisted,public,direct',
             'spoiler_text' => 'sometimes|max:140',
@@ -3743,7 +3743,7 @@ class ApiV1Controller extends Controller
             $mimes = [];
 
             foreach ($ids as $k => $v) {
-                if ($k + 1 > (int) config_cache('pixelfed.max_album_length')) {
+                if ($k + 1 > (int) config_cache('pix.max_album_length')) {
                     continue;
                 }
                 $m = Media::whereUserId($user->id)->whereNull('status_id')->findOrFail($v);

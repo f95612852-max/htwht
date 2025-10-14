@@ -22,7 +22,7 @@ class FollowTest extends TestCase
                 'creator' => 'http://mastodon.example.org/users/admin#main-key',
                 'created' => '2018-02-17T13:29:31Z',
             ],
-            'object' => 'http://pixelfed.dev/users/dsup',
+            'object' => 'http://pix.dev/users/dsup',
             'nickname' => 'dsup',
             'id' => 'http://mastodon.example.org/users/admin#follows/2',
             'actor' => 'http://mastodon.example.org/users/admin',

@@ -1,11 +1,22 @@
-# HTWHT - Centralized Social Media Platform
+# Pix - Centralized Social Media Platform
 
-A centralized social media platform based on Pixelfed, featuring:
+A centralized social media platform powered by **Firebase**, featuring:
 
-- Google & Apple Sign-In authentication
-- Blue verification badge system
-- Earnings system (0.3$ per 1000 post views)
-- Centralized architecture (no federation)
+- 🔥 **Complete Firebase Integration** - Storage, Authentication, Firestore
+- 📱 **Mobile App Ready** - Flutter & React Native support
+- 🚀 **AWS-Free Architecture** - No AWS dependencies
+- 🔐 Google & Apple Sign-In authentication
+- ✅ Blue verification badge system
+- 💰 Earnings system (0.3$ per 1000 post views)
+- 🌐 Centralized architecture (no federation)
+
+## 🔥 Firebase Features
+
+- **Firebase Storage**: All media files (images, videos) stored in Firebase
+- **Firestore Database**: Real-time data synchronization
+- **Firebase Authentication**: Ready for mobile app integration
+- **Firebase Hosting**: Optional web hosting
+- **Firebase Functions**: Serverless backend functions (optional)
 
 ## Features
 
@@ -24,7 +35,14 @@ A centralized social media platform based on Pixelfed, featuring:
 - Detailed earnings dashboard
 - View tracking and analytics
 
-## Quick Setup
+## 🚀 Quick Firebase Setup
+
+### 1. Firebase Setup (Required)
+Before running the application, you must set up Firebase:
+
+📖 **[Complete Firebase Setup Guide](FIREBASE_SETUP.md)**
+
+### 2. Quick Application Setup
 
 Run the automated setup script:
 
@@ -63,6 +81,20 @@ DB_PORT=3306
 DB_DATABASE=your_database
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
+
+# Firebase Configuration (Required)
+FIREBASE_PROJECT_ID=your-project-id
+FIREBASE_CREDENTIALS_PATH=/path/to/firebase-credentials.json
+FIREBASE_DATABASE_URL=https://your-project-id-default-rtdb.firebaseio.com/
+FIREBASE_STORAGE_DEFAULT_BUCKET=your-project-id.appspot.com
+
+# Disable AWS (Important)
+AWS_ENABLED=false
+S3_STORAGE=false
+
+# Storage Configuration
+FILESYSTEM_CLOUD=firebase
+FILESYSTEM_DISK=firebase
 
 # Google OAuth
 GOOGLE_CLIENT_ID=your_google_client_id
@@ -114,9 +146,32 @@ Run the feature test script:
 php test-centralized-features.php
 ```
 
+## 📱 Mobile App Integration
+
+This version is fully prepared for mobile app development:
+
+### Flutter Integration
+```yaml
+dependencies:
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.15.3
+  firebase_storage: ^11.5.6
+  cloud_firestore: ^4.13.6
+```
+
+### React Native Integration
+```bash
+npm install @react-native-firebase/app
+npm install @react-native-firebase/auth
+npm install @react-native-firebase/storage
+```
+
+📖 **[Complete Mobile Integration Guide](FIREBASE_SETUP.md#-ربط-التطبيق-المحمول)**
+
 ## Features Documentation
 
 See [CENTRALIZED_FEATURES.md](CENTRALIZED_FEATURES.md) for detailed documentation of all centralized features.
+See [FIREBASE_SETUP.md](FIREBASE_SETUP.md) for complete Firebase setup and mobile integration.
 
 ## API Endpoints
 
@@ -124,6 +179,21 @@ See [CENTRALIZED_FEATURES.md](CENTRALIZED_FEATURES.md) for detailed documentatio
 - `GET /auth/google` - Google OAuth login
 - `GET /auth/apple` - Apple Sign In
 - `GET /auth/{provider}/callback` - OAuth callback
+- `POST /api/auth/login` - Mobile app login
+- `POST /api/auth/register` - Mobile app registration
+- `GET /api/auth/user` - Get authenticated user
+
+### Posts & Media (Mobile API)
+- `GET /api/posts` - Get posts feed
+- `POST /api/posts` - Create new post
+- `GET /api/posts/{id}` - Get specific post
+- `DELETE /api/posts/{id}` - Delete post
+- `POST /api/media/upload` - Upload media to Firebase Storage
+
+### Profile (Mobile API)
+- `GET /api/profile` - Get user profile
+- `PUT /api/profile` - Update profile
+- `POST /api/profile/avatar` - Update profile picture
 
 ### Verification
 - `GET /settings/verification` - Verification request form
@@ -175,10 +245,10 @@ php artisan view:cache
 
 ### 2. Set Up Supervisor
 ```bash
-sudo cp /tmp/pixelfed-worker.conf /etc/supervisor/conf.d/
+sudo cp /tmp/pix-worker.conf /etc/supervisor/conf.d/
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl start pixelfed-worker:*
+sudo supervisorctl start pix-worker:*
 ```
 
 ### 3. Configure Web Server
@@ -200,6 +270,6 @@ For technical support:
 
 ## License
 
-This project is based on Pixelfed and maintains the same licensing terms.
+This project is based on Pix and maintains the same licensing terms.
 
 See the installation guide for detailed setup instructions.

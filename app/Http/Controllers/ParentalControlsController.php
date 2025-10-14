@@ -22,14 +22,14 @@ class ParentalControlsController extends Controller
             abort_unless($request->user()->has_roles === 0, 404);
         }
         abort_unless(config('instance.parental_controls.enabled'), 404);
-        if(config_cache('pixelfed.open_registration') == false) {
+        if(config_cache('pix.open_registration') == false) {
             abort_if(config('instance.parental_controls.limits.respect_open_registration'), 404);
         }
         if($maxUserCheck == true) {
-            $hasLimit = config('pixelfed.enforce_max_users');
+            $hasLimit = config('pix.enforce_max_users');
             if($hasLimit) {
                 $count = User::where(function($q){ return $q->whereNull('status')->orWhereNotIn('status', ['deleted','delete']); })->count();
-                $limit = (int) config('pixelfed.max_users');
+                $limit = (int) config('pix.max_users');
 
                 abort_if($limit && $limit <= $count, 404);
             }

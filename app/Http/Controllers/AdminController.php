@@ -553,9 +553,9 @@ class AdminController extends Controller
                     return $query->groupBy('shortcode')->latest();
                 }
             } elseif ($sort == 'local') {
-                return $query->latest()->where('domain', '=', config('pixelfed.domain.app'));
+                return $query->latest()->where('domain', '=', config('pix.domain.app'));
             } elseif ($sort == 'remote') {
-                return $query->latest()->where('domain', '!=', config('pixelfed.domain.app'));
+                return $query->latest()->where('domain', '!=', config('pix.domain.app'));
             } elseif ($sort == 'duplicates') {
                 return $query->latest()->groupBy('shortcode')->havingRaw('count(*) > 1');
             } elseif ($sort == 'disabled') {
@@ -581,7 +581,7 @@ class AdminController extends Controller
             $res = [
                 'total' => CustomEmoji::count(),
                 'active' => CustomEmoji::whereDisabled(false)->count(),
-                'remote' => CustomEmoji::where('domain', '!=', config('pixelfed.domain.app'))->count(),
+                'remote' => CustomEmoji::where('domain', '!=', config('pix.domain.app'))->count(),
             ];
 
             if ($pg) {
@@ -626,7 +626,7 @@ class AdminController extends Controller
                 'starts_with::',
                 'ends_with::',
                 Rule::unique('custom_emoji')->where(function ($query) use ($request) {
-                    return $query->whereDomain(config('pixelfed.domain.app'))
+                    return $query->whereDomain(config('pix.domain.app'))
                         ->whereShortcode($request->input('shortcode'));
                 }),
             ],
@@ -635,7 +635,7 @@ class AdminController extends Controller
 
         $emoji = new CustomEmoji;
         $emoji->shortcode = $request->input('shortcode');
-        $emoji->domain = config('pixelfed.domain.app');
+        $emoji->domain = config('pix.domain.app');
         $emoji->save();
 
         $fileName = $emoji->id.'.'.$request->emoji->extension();

@@ -11,11 +11,11 @@ return [
         'remote' => [
             /*
             |--------------------------------------------------------------------------
-            | Store remote media on cloud/S3
+            | Store remote media on Firebase Storage
             |--------------------------------------------------------------------------
             |
-            | Set this to cache remote media on cloud/S3 filesystem drivers.
-            | Disabled by default.
+            | Set this to cache remote media on Firebase Storage.
+            | Enabled by default for centralized instances.
             |
             */
             'cloud' => env('MEDIA_REMOTE_STORE_CLOUD', false),

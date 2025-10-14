@@ -143,7 +143,7 @@ class CollectionController extends Controller
                 });
         }
 
-        $max = config('pixelfed.max_collection_length');
+        $max = config('pix.max_collection_length');
         if ($count >= $max) {
             abort(400, 'You can only add '.$max.' posts per collection');
         }

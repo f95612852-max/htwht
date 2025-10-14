@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RemoteAuth;
-use App\Rules\PixelfedUsername;
+use App\Rules\PixUsername;
 use App\Services\Account\RemoteAuthService;
 use App\Services\EmailService;
 use App\Services\MediaStorageService;
@@ -24,7 +24,7 @@ class RemoteAuthController extends Controller
     public function start(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -45,7 +45,7 @@ class RemoteAuthController extends Controller
     public function getAuthDomains(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -85,7 +85,7 @@ class RemoteAuthController extends Controller
     public function redirect(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -186,7 +186,7 @@ class RemoteAuthController extends Controller
     public function preflight(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -203,7 +203,7 @@ class RemoteAuthController extends Controller
     public function handleCallback(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -241,7 +241,7 @@ class RemoteAuthController extends Controller
     public function onboarding(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -257,7 +257,7 @@ class RemoteAuthController extends Controller
     public function sessionCheck(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -308,7 +308,7 @@ class RemoteAuthController extends Controller
     public function sessionGetMastodonData(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -346,7 +346,7 @@ class RemoteAuthController extends Controller
     public function sessionValidateUsername(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -361,7 +361,7 @@ class RemoteAuthController extends Controller
                 'required',
                 'min:2',
                 'max:30',
-                new PixelfedUsername,
+                new PixUsername,
             ],
         ]);
         $username = strtolower($request->input('username'));
@@ -378,7 +378,7 @@ class RemoteAuthController extends Controller
     public function sessionValidateEmail(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -410,7 +410,7 @@ class RemoteAuthController extends Controller
     public function sessionGetMastodonFollowers(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -444,7 +444,7 @@ class RemoteAuthController extends Controller
     public function handleSubmit(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -529,7 +529,7 @@ class RemoteAuthController extends Controller
     public function storeBio(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -554,7 +554,7 @@ class RemoteAuthController extends Controller
     public function accountToId(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -572,7 +572,7 @@ class RemoteAuthController extends Controller
         $account = $request->input('account');
         abort_unless(substr(strtolower($account), 0, 8) === 'https://', 404);
 
-        $host = strtolower(config('pixelfed.domain.app'));
+        $host = strtolower(config('pix.domain.app'));
         $domain = strtolower(parse_url($account, PHP_URL_HOST));
 
         if ($domain == $host) {
@@ -602,7 +602,7 @@ class RemoteAuthController extends Controller
     public function storeAvatar(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -622,7 +622,7 @@ class RemoteAuthController extends Controller
         $avatar->remote_url = $request->input('avatar_url');
         $avatar->save();
 
-        MediaStorageService::avatar($avatar, (bool) config_cache('pixelfed.cloud_storage') == false);
+        MediaStorageService::avatar($avatar, (bool) config_cache('pix.cloud_storage') == false);
 
         return [200];
     }
@@ -630,7 +630,7 @@ class RemoteAuthController extends Controller
     public function finishUp(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&
@@ -638,7 +638,7 @@ class RemoteAuthController extends Controller
         ), 404);
         abort_unless($request->user(), 404);
 
-        $currentWebfinger = '@'.$request->user()->username.'@'.config('pixelfed.domain.app');
+        $currentWebfinger = '@'.$request->user()->username.'@'.config('pix.domain.app');
         $ra = RemoteAuth::where('user_id', $request->user()->id)->firstOrFail();
         RemoteAuthService::submitToBeagle(
             $ra->webfinger,
@@ -653,7 +653,7 @@ class RemoteAuthController extends Controller
     public function handleLogin(Request $request)
     {
         abort_unless((
-            config_cache('pixelfed.open_registration') &&
+            config_cache('pix.open_registration') &&
             config('remote-auth.mastodon.enabled')
         ) || (
             config('remote-auth.mastodon.ignore_closed_state') &&

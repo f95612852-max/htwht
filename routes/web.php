@@ -20,7 +20,7 @@ Route::middleware(['validemail', 'twofactor', 'localization'])->group(function (
     });
 });
 
-Route::domain(config('pixelfed.domain.app'))->middleware(['validemail', 'twofactor', 'localization'])->group(function () {
+Route::domain(config('pix.domain.app'))->middleware(['validemail', 'twofactor', 'localization'])->group(function () {
     Route::get('/', 'SiteController@home')->name('timeline.personal');
     Route::redirect('/home', '/')->name('home');
     Route::get('web/directory', 'LandingController@directoryRedirect');

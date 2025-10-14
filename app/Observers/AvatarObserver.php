@@ -61,7 +61,7 @@ class AvatarObserver
             @unlink($path);
         }
 
-        if ((bool) config_cache('pixelfed.cloud_storage')) {
+        if ((bool) config_cache('pix.cloud_storage')) {
             $disk = Storage::disk(config('filesystems.cloud'));
             $base = Str::startsWith($avatar->media_path, 'cache/avatars/');
             if ($base && $disk->exists($avatar->media_path)) {

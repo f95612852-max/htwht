@@ -97,7 +97,7 @@
                 		</li>
                 		<li>
                 			<strong><span class="badge badge-primary">OAUTH</span> enabled: </strong>
-                			<span>{{ (bool) config_cache('pixelfed.oauth_enabled') ? '✅ true' : '❌ false' }}</span>
+                			<span>{{ (bool) config_cache('pix.oauth_enabled') ? '✅ true' : '❌ false' }}</span>
                 		</li>
                 		<li>
                 			<strong><span class="badge badge-primary">OAUTH</span> token_expiration</strong>
@@ -121,12 +121,12 @@
                 		@if(function_exists('shell_exec'))
                 			<li>
                 				<strong>Version:</strong>
-                				<span>{{config('pixelfed.version')}}-{{ @shell_exec('git log --pretty="%h" -n1 HEAD') ?? 'unknown git commit' }}</span>
+                				<span>{{config('pix.version')}}-{{ @shell_exec('git log --pretty="%h" -n1 HEAD') ?? 'unknown git commit' }}</span>
                 			</li>
                 		@else
                 			<li>
                 				<strong>Version:</strong>
-                				<span>{{config('pixelfed.version')}}</span>
+                				<span>{{config('pix.version')}}</span>
                 			</li>
                 		@endif
 
@@ -141,11 +141,11 @@
                 		</li>
                 		<li>
                 			<strong>APP_DOMAIN:</strong>
-                			<span>{{config_cache('pixelfed.domain.app')}}</span>
+                			<span>{{config_cache('pix.domain.app')}}</span>
                 		</li>
                 		<li>
                 			<strong>ADMIN_DOMAIN:</strong>
-                			<span>{{config_cache('pixelfed.domain.admin')}}</span>
+                			<span>{{config_cache('pix.domain.admin')}}</span>
                 		</li>
                 		<li>
                 			<strong>SESSION_DOMAIN:</strong>
@@ -224,7 +224,7 @@
 
                     	<hr>
                     	<p class="font-weight-bold text-muted">
-                    		Pixelfed Variables (No Secrets)
+                    		Pix Variables (No Secrets)
                     	</p>
                         <div class="table-responsive">
                             <table class="table">
@@ -692,172 +692,172 @@
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>ADMIN_DOMAIN</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.domain.admin')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.domain.admin')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>APP_DOMAIN</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.domain.app')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.domain.app')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MEMORY_LIMIT</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.memory_limit')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.memory_limit')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>OPEN_REGISTRATION</strong></td>
-                                		<td><span>{{config_cache('pixelfed.open_registration') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{config_cache('pix.open_registration') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MAX_ACCOUNT_SIZE (KB)</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.max_account_size')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.max_account_size')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MAX_PHOTO_SIZE (KB)</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.max_photo_size')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.max_photo_size')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MAX_AVATAR_SIZE (KB)</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.max_avatar_size')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.max_avatar_size')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MAX_CAPTION_LENGTH</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.max_caption_length')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.max_caption_length')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MAX_BIO_LENGTH</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.max_bio_length')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.max_bio_length')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MAX_NAME_LENGTH</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.max_name_length')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.max_name_length')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MIN_PASSWORD_LENGTH</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.min_password_length')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.min_password_length')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MAX_ALBUM_LENGTH</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.max_album_length')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.max_album_length')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>ENFORCE_EMAIL_VERIFICATION</strong></td>
-                                		<td><span>{{config_cache('pixelfed.enforce_email_verification') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{config_cache('pix.enforce_email_verification') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>IMAGE_QUALITY (1-100)</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.image_quality')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.image_quality')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>ACCOUNT_DELETION</strong></td>
-                                		<td><span>{{config_cache('pixelfed.account_deletion') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{config_cache('pix.account_deletion') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>ACCOUNT_DELETE_AFTER</strong></td>
-                                		<td><span>{{config_cache('pixelfed.account_delete_after') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{config_cache('pix.account_delete_after') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_ENABLE_CLOUD</strong></td>
-                                		<td><span>{{(bool) config_cache('pixelfed.cloud_storage') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{(bool) config_cache('pix.cloud_storage') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_MAX_USERS</strong></td>
-                                		<td><span>{{config_cache('pixelfed.max_users') ? config('pixelfed.max_users') : '❌ false'}}</span></td>
+                                		<td><span>{{config_cache('pix.max_users') ? config('pix.max_users') : '❌ false'}}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_OPTIMIZE_IMAGES</strong></td>
-                                		<td><span>{{(bool) config_cache('pixelfed.optimize_image') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{(bool) config_cache('pix.optimize_image') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_OPTIMIZE_VIDEOS</strong></td>
-                                		<td><span>{{(bool) config_cache('pixelfed.optimize_video') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{(bool) config_cache('pix.optimize_video') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_USER_INVITES</strong></td>
-                                		<td><span>{{config_cache('pixelfed.user_invites.enabled') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{config_cache('pix.user_invites.enabled') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_USER_INVITES_TOTAL_LIMIT</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.user_invites.limit.total')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.user_invites.limit.total')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_USER_INVITES_DAILY_LIMIT</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.user_invites.limit.daily')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.user_invites.limit.daily')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_USER_INVITES_MONTHLY_LIMIT</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.user_invites.limit.monthly')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.user_invites.limit.monthly')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_MAX_COLLECTION_LENGTH</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.max_collection_length')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.max_collection_length')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>MEDIA_TYPES</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.media_types')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.media_types')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>LIMIT_ACCOUNT_SIZE</strong></td>
-                                		<td><span>{{config_cache('pixelfed.enforce_account_limit') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{config_cache('pix.enforce_account_limit') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>IMPORT_INSTAGRAM</strong></td>
-                                		<td><span>{{config_cache('pixelfed.import.instagram.enabled') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{config_cache('pix.import.instagram.enabled') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>IMPORT_INSTAGRAM_POST_LIMIT</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.import.instagram.limits.posts')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.import.instagram.limits.posts')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>IMPORT_INSTAGRAM_SIZE_LIMIT</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.import.instagram.limits.size')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.import.instagram.limits.size')}}"</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>OAUTH_ENABLED</strong></td>
-                                		<td><span>{{ (bool) config_cache('pixelfed.oauth_enabled') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{ (bool) config_cache('pix.oauth_enabled') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_BOUNCER_ENABLED</strong></td>
-                                		<td><span>{{(bool) config_cache('pixelfed.bouncer.enabled') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{(bool) config_cache('pix.bouncer.enabled') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_MEDIA_FAST_PROCESS</strong></td>
-                                		<td><span>{{config_cache('pixelfed.media_fast_process') ? '✅ true' : '❌ false' }}</span></td>
+                                		<td><span>{{config_cache('pix.media_fast_process') ? '✅ true' : '❌ false' }}</span></td>
                                 	</tr>
                                 	<tr>
                                 		<td><span class="badge badge-primary">PIXELFED</span></td>
                                 		<td><strong>PF_MEDIA_MAX_ALTTEXT_LENGTH</strong></td>
-                                		<td><span>"{{config_cache('pixelfed.max_altext_length')}}"</span></td>
+                                		<td><span>"{{config_cache('pix.max_altext_length')}}"</span></td>
                                 	</tr>
 
                                 	<tr>
@@ -959,7 +959,7 @@
 
 	$('.copy-information').on('click', function(e) {
 		let text = document.querySelector('.information').innerText;
-		let payload = '=======================\n Pixelfed Instance Diagnostic v0.2 \n=======================\n' + text + '\n========= END =========\n';
+		let payload = '=======================\n Pix Instance Diagnostic v0.2 \n=======================\n' + text + '\n========= END =========\n';
 		navigator.clipboard.writeText(payload);
 		swal('Copied', 'Successfully copied diagnostic information to clipboard!', 'success');
 	});

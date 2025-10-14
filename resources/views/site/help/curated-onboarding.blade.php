@@ -8,7 +8,7 @@
 @if((bool) config_cache('instance.curated_registration.enabled') == false)
 <div class="card bg-danger mb-3">
     <div class="card-body">
-        @if((bool) config_cache('pixelfed.open_registration'))
+        @if((bool) config_cache('pix.open_registration'))
         <p class="mb-0 text-white font-weight-bold">Curated Onboarding is not available on this server, however anyone can join.</p>
         <hr>
         <p class="mb-0 text-center"><a href="/register" class="btn btn-light font-weight-bold rounded-pill">Create New Account</a></p>
@@ -31,7 +31,7 @@
 <ol>
     <li>
         <p class="h5 font-weight-bold mb-2">Application Submission</p>
-        <p style="font-size: 16px;line-height: 1.7;">Start your journey by providing your username and email, along with a personal note about why you're excited to join Pixelfed. This insight into your interests and aspirations helps us get to know you better.</p>
+        <p style="font-size: 16px;line-height: 1.7;">Start your journey by providing your username and email, along with a personal note about why you're excited to join Pix. This insight into your interests and aspirations helps us get to know you better.</p>
     </li>
     <hr class="my-5">
     <li>
@@ -49,17 +49,17 @@
 <ul>
     <li>
         <p class="h5 font-weight-bold mb-2">Fostering Quality Connections</p>
-        <p style="font-size: 16px;line-height: 1.7;">At Pixelfed, we believe in the power of meaningful connections. It's not just about how many people are in the community, but how they enrich and enliven our platform. Our curated onboarding process is designed to welcome members who share our enthusiasm for creativity and engagement, ensuring every interaction on Pixelfed is enjoyable and rewarding.</p>
+        <p style="font-size: 16px;line-height: 1.7;">At Pix, we believe in the power of meaningful connections. It's not just about how many people are in the community, but how they enrich and enliven our platform. Our curated onboarding process is designed to welcome members who share our enthusiasm for creativity and engagement, ensuring every interaction on Pix is enjoyable and rewarding.</p>
     </li>
     <hr class="my-5">
     <li>
         <p class="h5 font-weight-bold mb-2">Ensuring Safety and Respect</p>
-        <p style="font-size: 16px;line-height: 1.7;">A careful onboarding process is critical for maintaining a safe and respectful environment. It allows Pixelfed to align every new member with the platform's values of kindness and inclusivity.</p>
+        <p style="font-size: 16px;line-height: 1.7;">A careful onboarding process is critical for maintaining a safe and respectful environment. It allows Pix to align every new member with the platform's values of kindness and inclusivity.</p>
     </li>
     <hr class="my-5">
     <li>
         <p class="h5 font-weight-bold mb-2">Encouraging Community Engagement</p>
-        <p style="font-size: 16px;line-height: 1.7;">By engaging with applicants from the start, Pixelfed fosters a community that's not just active but passionate. This approach welcomes users who are genuinely interested in making a positive contribution to Pixelfed's vibrant community.</p>
+        <p style="font-size: 16px;line-height: 1.7;">By engaging with applicants from the start, Pix fosters a community that's not just active but passionate. This approach welcomes users who are genuinely interested in making a positive contribution to Pix's vibrant community.</p>
     </li>
 </ul>
 <hr class="my-5">
@@ -137,11 +137,11 @@
     </a>
     <div class="collapse mb-5" id="collapse7">
         <div>
-            <p>We understand that receiving a notification of rejection can be disappointing. Here's what you can consider if your application to join Pixelfed hasn't been successful:</p>
+            <p>We understand that receiving a notification of rejection can be disappointing. Here's what you can consider if your application to join Pix hasn't been successful:</p>
 
             <ul>
                 <li>
-                    <strong>Review Your Application:</strong> Reflect on the information you provided. Our decision may have been influenced by a variety of factors, including the clarity of your intentions or how well they align with our community values. Consider if there was any additional context or passion for Pixelfed that you could have included.
+                    <strong>Review Your Application:</strong> Reflect on the information you provided. Our decision may have been influenced by a variety of factors, including the clarity of your intentions or how well they align with our community values. Consider if there was any additional context or passion for Pix that you could have included.
                 </li>
                 <li>
                     <strong>Reapply with Updated Information:</strong> We encourage you to reapply if you feel your initial application didn’t fully capture your enthusiasm or alignment with our community values. However, we recommend exercising caution and thoughtfulness. Please take time to refine and enhance your application before resubmitting, as repetitive or frequent submissions can overwhelm our admin team. We value careful consideration and meaningful updates in reapplications, as this helps us maintain a fair and manageable review process for everyone. Your patience and understanding in this regard are greatly appreciated and can positively influence the outcome of future applications.
@@ -150,11 +150,11 @@
                     <strong>Seek Feedback:</strong> If you are seeking clarity on why your application wasn't successful, you're welcome to contact us for feedback. However, please be mindful that our admins handle a high volume of queries and applications. While we strive to provide helpful responses, our ability to offer detailed individual feedback may be limited. We ask for your patience and understanding in this matter. When reaching out, ensure your query is concise and considerate of the admins' time. This approach will help us assist you more effectively and maintain a positive interaction, even if your initial application didn't meet our criteria.
                 </li>
                 <li>
-                    <strong>Stay Engaged:</strong> Even if you're not a member yet, you can stay connected with Pixelfed through our public forums, blog, or social media channels. This will keep you updated on any changes or new features that might make our platform a better fit for you in the future.
+                    <strong>Stay Engaged:</strong> Even if you're not a member yet, you can stay connected with Pix through our public forums, blog, or social media channels. This will keep you updated on any changes or new features that might make our platform a better fit for you in the future.
                 </li>
             </ul>
 
-            <p>Remember, a rejection is not necessarily a reflection of your qualities or potential as a member of our community. It's often about finding the right fit at the right time. We appreciate your interest in Pixelfed and hope you won't be discouraged from exploring other ways to engage with our platform.</p>
+            <p>Remember, a rejection is not necessarily a reflection of your qualities or potential as a member of our community. It's often about finding the right fit at the right time. We appreciate your interest in Pix and hope you won't be discouraged from exploring other ways to engage with our platform.</p>
             </p>
         </div>
     </div>

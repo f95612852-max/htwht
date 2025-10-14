@@ -1,7 +1,7 @@
 @component('mail::message')
 Hello,
 
-You recently requested to know the email address associated with your username [**{{'@' . $user->username}}**]({{$user->url()}}) on [**{{config('pixelfed.domain.app')}}**]({{config('app.url')}}).
+You recently requested to know the email address associated with your username [**{{'@' . $user->username}}**]({{$user->url()}}) on [**{{config('pix.domain.app')}}**]({{config('app.url')}}).
 
 We're here to assist! Simply tap on the Login button below.
 
@@ -26,7 +26,7 @@ You can use this email address to log in to your account.
 Thank you for being a part of our community!
 
 Best regards,<br>
-<a href="{{ config('app.url') }}"><strong>{{ config('pixelfed.domain.app') }}</strong></a>
+<a href="{{ config('app.url') }}"><strong>{{ config('pix.domain.app') }}</strong></a>
 <br>
 <hr>
 <p style="font-size:10pt;">This is an automated message, please be aware that replies to this email cannot be monitored or responded to.</p>

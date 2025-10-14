@@ -74,7 +74,7 @@ class ImageUpdate implements ShouldQueue
             }
         }
 
-        if ((bool) config_cache('pixelfed.optimize_image') && $localFs) {
+        if ((bool) config_cache('pix.optimize_image') && $localFs) {
             if (in_array($media->mime, $this->protectedMimes) == true) {
                 try {
                     $thumbPath = storage_path('app/'.$media->thumbnail_path);
@@ -92,7 +92,7 @@ class ImageUpdate implements ShouldQueue
                     }
                 }
             }
-        } elseif ((bool) config_cache('pixelfed.optimize_image') && ! $localFs) {
+        } elseif ((bool) config_cache('pix.optimize_image') && ! $localFs) {
             if (in_array($media->mime, $this->protectedMimes) == true) {
                 $this->optimizeRemoteImages($media, $disk);
             }
@@ -130,12 +130,12 @@ class ImageUpdate implements ShouldQueue
     }
 
     /**
-     * Optimize images stored on remote storage (S3, etc)
+     * Optimize images stored on remote storage (Firebase Storage, etc)
      */
     protected function optimizeRemoteImages($media, $disk)
     {
         try {
-            $tempDir = sys_get_temp_dir().'/pixelfed_optimize_'.Str::random(18);
+            $tempDir = sys_get_temp_dir().'/pix_optimize_'.Str::random(18);
             mkdir($tempDir, 0755, true);
 
             if ($media->thumbnail_path) {

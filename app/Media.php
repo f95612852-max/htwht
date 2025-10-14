@@ -42,10 +42,10 @@ class Media extends Model
             return $this->cdn_url;
         }
 
-        // Use AWS S3 URL if configured
-        if (config('aws.s3.bucket')) {
-            $awsService = app(\App\Services\AwsService::class);
-            return $awsService->getCloudFrontUrl($this->media_path);
+        // Use Firebase Storage URL if configured
+        if (config('firebase.storage.default_bucket')) {
+            $firebaseService = app(\App\Services\FirebaseService::class);
+            return $firebaseService->getStorageUrl($this->media_path);
         }
 
         return url(Storage::url($this->media_path));

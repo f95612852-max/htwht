@@ -1,6 +1,6 @@
 <?php
 
-Route::domain(config('pixelfed.domain.admin'))->prefix('i/admin')->group(function () {
+Route::domain(config('pix.domain.admin'))->prefix('i/admin')->group(function () {
     Route::redirect('/', '/dashboard');
     Route::redirect('timeline', config('app.url').'/timeline');
     Route::get('settings/custom-css', 'AdminController@customCss')->name('admin.custom-css');

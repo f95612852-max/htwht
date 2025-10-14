@@ -63,7 +63,7 @@ class DeleteUserDomainBlock extends Command
             return;
         }
 
-        if($domain === config('pixelfed.domain.app')) {
+        if($domain === config('pix.domain.app')) {
             return;
         }
 

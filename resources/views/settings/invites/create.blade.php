@@ -4,14 +4,14 @@
 
   <div class="title">
     <h3 class="font-weight-bold">Send Invite</h3>
-    <p class="lead">Invite friends or family to join you on <span class="font-weight-bold">{{config('pixelfed.domain.app')}}</span></p>
+    <p class="lead">Invite friends or family to join you on <span class="font-weight-bold">{{config('pix.domain.app')}}</span></p>
   </div>
   <hr>
 
-  @if(config('pixelfed.user_invites.limit.daily') != 0)
+  @if(config('pix.user_invites.limit.daily') != 0)
   <div class="alert alert-warning">
     <div class="font-weight-bold">Warning</div>
-    <p class="mb-0">You may only send {{config('pixelfed.user_invites.limit.daily')}} invite(s) per day.</p>
+    <p class="mb-0">You may only send {{config('pix.user_invites.limit.daily')}} invite(s) per day.</p>
   </div>
   @endif
 

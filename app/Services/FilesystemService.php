@@ -2,81 +2,52 @@
 
 namespace App\Services;
 
-use Aws\S3\S3Client;
-use Aws\S3\Exception\S3Exception;
-use GuzzleHttp\Exception\ConnectException;
-use League\Flysystem\AwsS3V3\AwsS3V3Adapter;
-use League\Flysystem\Filesystem;
-use League\Flysystem\UnableToRetrieveMetadata;
-use League\Flysystem\FilesystemException;
-use League\Flysystem\UnableToListContents;
-use League\Flysystem\FileAttributes;
-use League\Flysystem\UnableToWriteFile;
+use App\Services\FirebaseService;
+use Exception;
 
 class FilesystemService
 {
     const VERIFY_FILE_NAME = 'cfstest.txt';
 
-    public static function getVerifyCredentials($key, $secret, $region, $bucket, $endpoint)
+    /**
+     * Verify Firebase Storage credentials
+     */
+    public static function getVerifyCredentials($projectId, $credentialsPath, $bucket)
     {
-        $client = new S3Client([
-            'version' => 'latest',
-            'region' => $region,
-            'endpoint' => $endpoint,
-            'credentials' => [
-                'key' => $key,
-                'secret' => $secret,
-            ]
-        ]);
-
-        $adapter = new AwsS3V3Adapter(
-            $client,
-            $bucket,
-        );
-
-        $throw = false;
-        $filesystem = new Filesystem($adapter);
-
-        $writable = false;
         try {
-            $filesystem->write(self::VERIFY_FILE_NAME, 'ok', []);
-            $writable = true;
-        } catch (FilesystemException | UnableToWriteFile $exception) {
-            $writable = false;
-        }
-
-        if(!$writable) {
-            return false;
-        }
-
-        try {
-            $response = $filesystem->read(self::VERIFY_FILE_NAME);
-            if($response === 'ok') {
-                $writable = true;
-                $res[] = self::VERIFY_FILE_NAME;
-            } else {
-                $writable = false;
+            $firebaseService = new FirebaseService();
+            $storage = $firebaseService->storage();
+            $bucket = $storage->getBucket($bucket);
+            
+            // Test write operation
+            $bucket->upload('ok', [
+                'name' => self::VERIFY_FILE_NAME
+            ]);
+            
+            // Test read operation
+            $object = $bucket->object(self::VERIFY_FILE_NAME);
+            $content = $object->downloadAsString();
+            
+            if ($content !== 'ok') {
+                return false;
             }
-        } catch (FilesystemException | UnableToReadFile $exception) {
-            $writable = false;
-        }
-
-        if(in_array(self::VERIFY_FILE_NAME, $res)) {
-            try {
-                $filesystem->delete(self::VERIFY_FILE_NAME);
-            } catch (FilesystemException | UnableToDeleteFile $exception) {
-                $writable = false;
-            }
-        }
-
-        if(!$writable) {
-            return false;
-        }
-
-        if(in_array(self::VERIFY_FILE_NAME, $res)) {
+            
+            // Test delete operation
+            $object->delete();
+            
             return true;
+            
+        } catch (Exception $e) {
+            return false;
         }
+    }
 
+    /**
+     * Legacy method for S3 compatibility - redirects to Firebase
+     */
+    public static function getVerifyS3Credentials($key, $secret, $region, $bucket, $endpoint)
+    {
+        // S3 is no longer supported, always return false
         return false;
     }
 }

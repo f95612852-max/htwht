@@ -29,7 +29,7 @@ class ImportPostController extends Controller
 
             'allow_video_posts' => config('import.instagram.allow_video_posts'),
 
-            'allow_image_webp' => config('import.instagram.allow_image_webp') && str_contains(config_cache('pixelfed.media_types'), 'image/webp'),
+            'allow_image_webp' => config('import.instagram.allow_image_webp') && str_contains(config_cache('pix.media_types'), 'image/webp'),
 
             'permissions' => [
                 'admins_only' => config('import.instagram.permissions.admins_only'),
@@ -203,7 +203,7 @@ class ImportPostController extends Controller
 
         $allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
 
-        if (config('import.instagram.allow_image_webp') && str_contains(config_cache('pixelfed.media_types'), 'image/webp')) {
+        if (config('import.instagram.allow_image_webp') && str_contains(config_cache('pix.media_types'), 'image/webp')) {
             $allowedMimeTypes[] = 'image/webp';
         }
 
@@ -219,7 +219,7 @@ class ImportPostController extends Controller
                 'required',
                 'file',
                 $mimes,
-                'max:' . config_cache('pixelfed.max_photo_size')
+                'max:' . config_cache('pix.max_photo_size')
             ]
         ]);
 

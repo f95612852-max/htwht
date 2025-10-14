@@ -182,9 +182,9 @@ class StatusDelete implements ShouldQueue
             'timeout' => config('federation.activitypub.delivery.timeout'),
         ]);
 
-        $version = config('pixelfed.version');
+        $version = config('pix.version');
         $appUrl = config('app.url');
-        $userAgent = "(Pixelfed/{$version}; +{$appUrl})";
+        $userAgent = "(Pix/{$version}; +{$appUrl})";
 
         $requests = function ($audience) use ($client, $activity, $profile, $payload, $userAgent) {
             foreach ($audience as $url) {

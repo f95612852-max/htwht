@@ -47,7 +47,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-		if(config('pixelfed.bouncer.cloud_ips.ban_logins')) {
+		if(config('pix.bouncer.cloud_ips.ban_logins')) {
 			abort_if(BouncerService::checkIp(request()->ip()), 404);
 		}
 
@@ -63,7 +63,7 @@ class LoginController extends Controller
      */
     public function validateLogin($request)
     {
-    	if(config('pixelfed.bouncer.cloud_ips.ban_logins')) {
+    	if(config('pix.bouncer.cloud_ips.ban_logins')) {
 			abort_if(BouncerService::checkIp($request->ip()), 404);
 		}
 

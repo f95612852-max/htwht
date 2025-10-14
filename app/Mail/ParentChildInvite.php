@@ -23,7 +23,7 @@ class ParentChildInvite extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'You\'ve been invited to join Pixelfed!',
+            subject: 'You\'ve been invited to join Pix!',
         );
     }
 

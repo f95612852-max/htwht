@@ -126,7 +126,7 @@
 
                 <div class="list-group-item details-list-item">
                     <p class="details-list-item-title">storage used</p>
-                    <p class="details-list-item-value text-truncate">{{PrettyNumber::size($profile->media()->sum('size'))}}<span class="text-muted"> / {{PrettyNumber::size(config_cache('pixelfed.max_account_size') * 1000)}}</p>
+                    <p class="details-list-item-value text-truncate">{{PrettyNumber::size($profile->media()->sum('size'))}}<span class="text-muted"> / {{PrettyNumber::size(config_cache('pix.max_account_size') * 1000)}}</p>
                 </div>
 
                 <div class="list-group-item details-list-item">

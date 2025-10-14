@@ -31,7 +31,7 @@
     </a>
     <div class="collapse" id="collapse2">
       <div>
-        Pixelfed is a federated application, changing your username is not supported in every <a href="https://en.wikipedia.org/wiki/Federated_architecture">federated software</a> so we cannot allow username changes. Your best option is to create a new account with your desired username.
+        Pix is a federated application, changing your username is not supported in every <a href="https://en.wikipedia.org/wiki/Federated_architecture">federated software</a> so we cannot allow username changes. Your best option is to create a new account with your desired username.
       </div>
     </div>
   </p>
@@ -149,7 +149,7 @@
     </a>
     <div class="collapse" id="migrate-collapse1">
       <div>
-        To migrate your account successfully, your old account must be on a Pixelfed or Mastodon server, or one that supports the Mastodon Account Migration <a href="https://docs.joinmastodon.org/spec/activitypub/#Move">extension</a>.
+        To migrate your account successfully, your old account must be on a Pix or Mastodon server, or one that supports the Mastodon Account Migration <a href="https://docs.joinmastodon.org/spec/activitypub/#Move">extension</a>.
         <hr>
         <p>Navigate to the <a href="/settings/account/aliases/manage">Account Aliases</a> page in the Settings to begin.</p>
       </div>
@@ -173,7 +173,7 @@
     </a>
     <div class="collapse" id="migrate-collapse3">
       <div>
-        Post migrations are officially supported on Pixelfed servers running v0.11.9+ and higher, and when enabled by server admins.
+        Post migrations are officially supported on Pix servers running v0.11.9+ and higher, and when enabled by server admins.
         <hr>
         It can take a few hours to process post migration imports, please contact admins if it takes longer than 24 hours.
       </div>
@@ -190,7 +190,7 @@
       <div>
         <p>If you temporarily disable your account, your profile, photos, comments and likes will be hidden until you reactivate it by logging back in. To temporarily disable your account:</p>
         <ol class="">
-          <li>Log into <a href="{{config('app.url')}}">{{config('pixelfed.domain.app')}}</a></li>
+          <li>Log into <a href="{{config('app.url')}}">{{config('pix.domain.app')}}</a></li>
           <li>Tap or click the <i class="far fa-user text-dark"></i> menu and select <span class="font-weight-bold text-dark"><i class="fas fa-cog pr-1"></i> Settings</span></li>
           <li>Navigate to the <a href="{{route('settings.security')}}">Security Settings</a></li>
           <li>Confirm your account password.</li>
@@ -200,7 +200,7 @@
       </div>
     </div>
   </p>
-  @if(config('pixelfed.account_deletion'))
+  @if(config('pix.account_deletion'))
   <p> 
     <a class="text-dark font-weight-bold" data-toggle="collapse" href="#del-collapse2" role="button" aria-expanded="false" aria-controls="del-collapse2">
       <i class="fas fa-chevron-down mr-2"></i>
@@ -208,19 +208,19 @@
     </a>
     <div class="collapse" id="del-collapse2">
       <div>
-        @if(config('pixelfed.account_delete_after') == false)
+        @if(config('pix.account_delete_after') == false)
         <div class="bg-light p-3 mb-4">
           <p class="mb-0">When you delete your account, your profile, photos, videos, comments, likes and followers will be <b>permanently removed</b>. If you'd just like to take a break, you can <a href="{{route('settings.remove.temporary')}}">temporarily disable</a> your account instead.</p>
         </div>
         @else
         <div class="bg-light p-3 mb-4">
-          <p class="mb-0">When you delete your account, your profile, photos, videos, comments, likes and followers will be <b>permanently removed</b> after {{config('pixelfed.account_delete_after')}} days. You can log in during that period to prevent your account from permanent deletion. If you'd just like to take a break, you can <a href="{{route('settings.remove.temporary')}}">temporarily disable</a> your account instead.</p>
+          <p class="mb-0">When you delete your account, your profile, photos, videos, comments, likes and followers will be <b>permanently removed</b> after {{config('pix.account_delete_after')}} days. You can log in during that period to prevent your account from permanent deletion. If you'd just like to take a break, you can <a href="{{route('settings.remove.temporary')}}">temporarily disable</a> your account instead.</p>
         </div>
         @endif
         <p>After you delete your account, you can't sign up again with the same username on this instance or add that username to another account on this instance, and we can't reactivate deleted accounts.</p>
         <p>To permanently delete your account:</p>
         <ol class="">
-          <li>Go to <a href="{{route('settings.remove.permanent')}}">the <span class="font-weight-bold">Delete Your Account</span> page</a>.  If you're not logged into pixelfed on the web, you'll be asked to log in first. You can't delete your account from within a mobile app.</li>
+          <li>Go to <a href="{{route('settings.remove.permanent')}}">the <span class="font-weight-bold">Delete Your Account</span> page</a>.  If you're not logged into pix on the web, you'll be asked to log in first. You can't delete your account from within a mobile app.</li>
           <li>Navigate to the <a href="{{route('settings.security')}}">Security Settings</a></li>
           <li>Confirm your account password.</li>
           <li>Scroll down to the Danger Zone section and click on the <span class="btn btn-sm btn-outline-danger py-1 font-weight-bold">Delete</span> button.</li>

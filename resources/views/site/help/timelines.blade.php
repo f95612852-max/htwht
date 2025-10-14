@@ -7,7 +7,7 @@
 	</div>
 	<hr>
 	<p class="lead">Timelines are chronological feeds of posts.</p>
-	{{-- <p class="font-weight-bold h5 py-3">Pixelfed has 3 different timelines:</p> --}}
+	{{-- <p class="font-weight-bold h5 py-3">Pix has 3 different timelines:</p> --}}
 
 	<ul class="list-unstyled">
 		<li class="lead mb-2">

@@ -59,13 +59,13 @@ class ComposeController extends Controller
         $this->validate($request, [
             'file.*' => [
                 'required_without:file',
-                'mimetypes:'.config_cache('pixelfed.media_types'),
-                'max:'.config_cache('pixelfed.max_photo_size'),
+                'mimetypes:'.config_cache('pix.media_types'),
+                'max:'.config_cache('pix.max_photo_size'),
             ],
             'file' => [
                 'required_without:file.*',
-                'mimetypes:'.config_cache('pixelfed.media_types'),
-                'max:'.config_cache('pixelfed.max_photo_size'),
+                'mimetypes:'.config_cache('pix.media_types'),
+                'max:'.config_cache('pix.max_photo_size'),
             ],
             'filter_name' => 'nullable|string|max:24',
             'filter_class' => 'nullable|alpha_dash|max:24',
@@ -94,14 +94,14 @@ class ComposeController extends Controller
         $sizeInKbs = (int) ceil($fileSize / 1000);
         $updatedAccountSize = (int) $accountSize + (int) $sizeInKbs;
 
-        if ((bool) config_cache('pixelfed.enforce_account_limit') == true) {
-            $limit = (int) config_cache('pixelfed.max_account_size');
+        if ((bool) config_cache('pix.enforce_account_limit') == true) {
+            $limit = (int) config_cache('pix.max_account_size');
             if ($updatedAccountSize >= $limit) {
                 abort(403, 'Account size limit reached.');
             }
         }
 
-        $mimes = explode(',', config_cache('pixelfed.media_types'));
+        $mimes = explode(',', config_cache('pix.media_types'));
 
         abort_if(in_array($photo->getMimeType(), $mimes) == false, 400, 'Invalid media format');
 
@@ -168,8 +168,8 @@ class ComposeController extends Controller
             'file' => function () {
                 return [
                     'required',
-                    'mimetypes:'.config_cache('pixelfed.media_types'),
-                    'max:'.config_cache('pixelfed.max_photo_size'),
+                    'mimetypes:'.config_cache('pix.media_types'),
+                    'max:'.config_cache('pix.max_photo_size'),
                 ];
             },
         ]);
@@ -517,12 +517,12 @@ class ComposeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'caption' => 'nullable|string|max:'.config_cache('pixelfed.max_caption_length', 500),
+            'caption' => 'nullable|string|max:'.config_cache('pix.max_caption_length', 500),
             'media.*' => 'required',
             'media.*.id' => 'required|integer|min:1',
             'media.*.filter_class' => 'nullable|alpha_dash|max:30',
             'media.*.license' => 'nullable|string|max:140',
-            'media.*.alt' => 'nullable|string|max:'.config_cache('pixelfed.max_altext_length'),
+            'media.*.alt' => 'nullable|string|max:'.config_cache('pix.max_altext_length'),
             'cw' => 'nullable|boolean',
             'visibility' => 'required|string|in:public,private,unlisted|min:2|max:10',
             'place' => 'nullable',
@@ -578,7 +578,7 @@ class ComposeController extends Controller
         $optimize_media = (bool) $request->input('optimize_media');
 
         foreach ($medias as $k => $media) {
-            if ($k + 1 > config_cache('pixelfed.max_album_length')) {
+            if ($k + 1 > config_cache('pix.max_album_length')) {
                 continue;
             }
             $m = Media::findOrFail($media['id']);
@@ -697,7 +697,7 @@ class ComposeController extends Controller
     {
         abort_unless(config('exp.top'), 404);
         $this->validate($request, [
-            'caption' => 'nullable|string|max:'.config_cache('pixelfed.max_caption_length', 500),
+            'caption' => 'nullable|string|max:'.config_cache('pix.max_caption_length', 500),
             'cw' => 'nullable|boolean',
             'visibility' => 'required|string|in:public,private,unlisted|min:2|max:10',
             'place' => 'nullable',
@@ -790,7 +790,7 @@ class ComposeController extends Controller
             ->whereNull('status_id')
             ->findOrFail($request->input('id'));
 
-        if (config('pixelfed.media_fast_process')) {
+        if (config('pix.media_fast_process')) {
             return [
                 'finished' => true,
             ];
@@ -802,7 +802,7 @@ class ComposeController extends Controller
             case 'image/jpeg':
             case 'image/png':
             case 'video/mp4':
-                $finished = (bool) config_cache('pixelfed.cloud_storage') ? (bool) $media->cdn_url : (bool) $media->processed_at;
+                $finished = (bool) config_cache('pix.cloud_storage') ? (bool) $media->cdn_url : (bool) $media->processed_at;
                 break;
 
             default:
@@ -820,18 +820,18 @@ class ComposeController extends Controller
         $uid = $request->user()->id;
         abort_if($request->user()->has_roles && ! UserRoleService::can('can-post', $request->user()->id), 403, 'Invalid permissions for this action');
 
-        $types = config_cache('pixelfed.media_types');
+        $types = config_cache('pix.media_types');
         if (str_contains($types, ',')) {
             $types = explode(',', $types);
         }
         $default = [
             'allowed_media_types' => $types,
-            'max_caption_length' => (int) config_cache('pixelfed.max_caption_length'),
+            'max_caption_length' => (int) config_cache('pix.max_caption_length'),
             'default_license' => 1,
             'media_descriptions' => false,
-            'max_file_size' => (int) config_cache('pixelfed.max_photo_size'),
-            'max_media_attachments' => (int) config_cache('pixelfed.max_album_length'),
-            'max_altext_length' => (int) config_cache('pixelfed.max_altext_length'),
+            'max_file_size' => (int) config_cache('pix.max_photo_size'),
+            'max_media_attachments' => (int) config_cache('pix.max_album_length'),
+            'max_altext_length' => (int) config_cache('pix.max_altext_length'),
         ];
         $settings = AccountService::settings($uid);
         if (isset($settings['other']) && isset($settings['other']['scope'])) {
@@ -848,7 +848,7 @@ class ComposeController extends Controller
     public function createPoll(Request $request)
     {
         $this->validate($request, [
-            'caption' => 'nullable|string|max:'.config_cache('pixelfed.max_caption_length', 500),
+            'caption' => 'nullable|string|max:'.config_cache('pix.max_caption_length', 500),
             'cw' => 'nullable|boolean',
             'visibility' => 'required|string|in:public,private',
             'comments_disabled' => 'nullable',

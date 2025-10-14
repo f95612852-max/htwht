@@ -27,8 +27,8 @@ class Nodeinfo
                 'metadata' => [
                     'nodeName' => config_cache('app.name'),
                     'software' => [
-                        'homepage' => 'https://pixelfed.org',
-                        'repo' => 'https://github.com/pixelfed/pixelfed',
+                        'homepage' => 'https://pix.org',
+                        'repo' => 'https://github.com/pix/pix',
                     ],
                     'config' => $features,
                 ],
@@ -40,8 +40,8 @@ class Nodeinfo
                     'outbound' => [],
                 ],
                 'software' => [
-                    'name' => 'pixelfed',
-                    'version' => config('pixelfed.version'),
+                    'name' => 'pix',
+                    'version' => config('pix.version'),
                 ],
                 'usage' => [
                     'localPosts' => (int) $statuses,
@@ -55,7 +55,7 @@ class Nodeinfo
                 'version' => '2.0',
             ];
         });
-        $res['openRegistrations'] = (bool) config_cache('pixelfed.open_registration');
+        $res['openRegistrations'] = (bool) config_cache('pix.open_registration');
 
         return $res;
     }
@@ -65,7 +65,7 @@ class Nodeinfo
         return [
             'links' => [
                 [
-                    'href' => config('pixelfed.nodeinfo.url'),
+                    'href' => config('pix.nodeinfo.url'),
                     'rel' => 'http://nodeinfo.diaspora.software/ns/schema/2.0',
                 ],
             ],

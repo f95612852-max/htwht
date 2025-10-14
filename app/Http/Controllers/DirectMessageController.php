@@ -437,8 +437,8 @@ class DirectMessageController extends Controller
             'file' => function () {
                 return [
                     'required',
-                    'mimetypes:'.config_cache('pixelfed.media_types'),
-                    'max:'.config_cache('pixelfed.max_photo_size'),
+                    'mimetypes:'.config_cache('pix.media_types'),
+                    'max:'.config_cache('pix.max_photo_size'),
                 ];
             },
             'to_id' => 'required',
@@ -467,14 +467,14 @@ class DirectMessageController extends Controller
         $sizeInKbs = (int) ceil($fileSize / 1000);
         $updatedAccountSize = (int) $accountSize + (int) $sizeInKbs;
 
-        if ((bool) config_cache('pixelfed.enforce_account_limit') == true) {
-            $limit = (int) config_cache('pixelfed.max_account_size');
+        if ((bool) config_cache('pix.enforce_account_limit') == true) {
+            $limit = (int) config_cache('pix.max_account_size');
             if ($updatedAccountSize >= $limit) {
                 abort(403, 'Account size limit reached.');
             }
         }
 
-        $mimes = explode(',', config_cache('pixelfed.media_types'));
+        $mimes = explode(',', config_cache('pix.media_types'));
         if (in_array($photo->getMimeType(), $mimes) == false) {
             abort(403, 'Invalid or unsupported mime type.');
         }

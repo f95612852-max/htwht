@@ -1,5 +1,5 @@
-# Pixelfed + Docker + Docker Compose
+# Pix + Docker + Docker Compose
 
-Please see the [Pixelfed Docs (Next)](https://jippi.github.io/docker-pixelfed/) for current documentation on Docker usage.
+Please see the [Pix Docs (Next)](https://jippi.github.io/docker-pix/) for current documentation on Docker usage.
 
-The docs can be [reviewed in the pixelfed/docs-next](https://github.com/pixelfed/docs-next/pull/1) repository.
+The docs can be [reviewed in the pix/docs-next](https://github.com/pix/docs-next/pull/1) repository.

@@ -22,18 +22,18 @@
 	<div class="form-group row">
 		<label for="liberapay" class="col-sm-3 col-form-label font-weight-bold text-right">Liberapay</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="liberapay" name="liberapay" placeholder="liberapay.com/pixelfed" value="{{$sponsors['liberapay']}}">
+			<input type="text" class="form-control" id="liberapay" name="liberapay" placeholder="liberapay.com/pix" value="{{$sponsors['liberapay']}}">
 			<p class="help-text small text-muted font-weight-bold">
-				Example: liberapay.com/pixelfed
+				Example: liberapay.com/pix
 			</p>
 		</div>
 	</div>
 	<div class="form-group row">
 		<label for="opencollective" class="col-sm-3 col-form-label font-weight-bold text-right">OpenCollective</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="opencollective" name="opencollective" placeholder="opencollective.com/pixelfed" value="{{$sponsors['opencollective']}}">
+			<input type="text" class="form-control" id="opencollective" name="opencollective" placeholder="opencollective.com/pix" value="{{$sponsors['opencollective']}}">
 			<p class="help-text small text-muted font-weight-bold">
-				Example: opencollective.com/pixelfed
+				Example: opencollective.com/pix
 			</p>
 		</div>
 	</div>

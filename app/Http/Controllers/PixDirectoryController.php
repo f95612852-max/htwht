@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Storage;
 
-class PixelfedDirectoryController extends Controller
+class PixDirectoryController extends Controller
 {
     public function get(Request $request)
     {
@@ -20,11 +20,11 @@ class PixelfedDirectoryController extends Controller
             abort(404);
         }
 
-        if (! config_cache('pixelfed.directory.submission-key')) {
+        if (! config_cache('pix.directory.submission-key')) {
             abort(404);
         }
 
-        if (! hash_equals(config_cache('pixelfed.directory.submission-key'), $request->input('sk'))) {
+        if (! hash_equals(config_cache('pix.directory.submission-key'), $request->input('sk'))) {
             abort(403);
         }
 
@@ -35,15 +35,15 @@ class PixelfedDirectoryController extends Controller
 
     public function buildListing()
     {
-        $res = config_cache('pixelfed.directory');
+        $res = config_cache('pix.directory');
         if ($res) {
             $res = is_string($res) ? json_decode($res, true) : $res;
         }
 
-        $res['_domain'] = config_cache('pixelfed.domain.app');
-        $res['_sk'] = config_cache('pixelfed.directory.submission-key');
-        $res['_ts'] = config_cache('pixelfed.directory.submission-ts');
-        $res['version'] = config_cache('pixelfed.version');
+        $res['_domain'] = config_cache('pix.domain.app');
+        $res['_sk'] = config_cache('pix.directory.submission-key');
+        $res['_ts'] = config_cache('pix.directory.submission-ts');
+        $res['version'] = config_cache('pix.version');
 
         if (empty($res['summary'])) {
             $summary = ConfigCache::whereK('app.short_description')->pluck('v');
@@ -82,13 +82,13 @@ class PixelfedDirectoryController extends Controller
             $res['community_guidelines'] = json_decode($guidelines->v, true);
         }
 
-        $openRegistration = (bool) config_cache('pixelfed.open_registration');
+        $openRegistration = (bool) config_cache('pix.open_registration');
         $res['open_registration'] = $openRegistration;
 
         $curatedOnboarding = (bool) config_cache('instance.curated_registration.enabled');
         $res['curated_onboarding'] = $curatedOnboarding;
 
-        $oauthEnabled = ConfigCache::whereK('pixelfed.oauth_enabled')->first();
+        $oauthEnabled = ConfigCache::whereK('pix.oauth_enabled')->first();
         if ($oauthEnabled) {
             $keys = (file_exists(storage_path('oauth-public.key')) || config_cache('passport.public_key')) &&
                 (file_exists(storage_path('oauth-private.key')) || config_cache('passport.private_key'));
@@ -101,16 +101,16 @@ class PixelfedDirectoryController extends Controller
         }
 
         $res['feature_config'] = [
-            'media_types' => Str::of(config_cache('pixelfed.media_types'))->explode(','),
-            'image_quality' => config_cache('pixelfed.image_quality'),
-            'optimize_image' => (bool) config_cache('pixelfed.optimize_image'),
-            'max_photo_size' => config_cache('pixelfed.max_photo_size'),
-            'max_caption_length' => config_cache('pixelfed.max_caption_length'),
-            'max_altext_length' => config_cache('pixelfed.max_altext_length'),
-            'enforce_account_limit' => (bool) config_cache('pixelfed.enforce_account_limit'),
-            'max_account_size' => config_cache('pixelfed.max_account_size'),
-            'max_album_length' => config_cache('pixelfed.max_album_length'),
-            'account_deletion' => (bool) config_cache('pixelfed.account_deletion'),
+            'media_types' => Str::of(config_cache('pix.media_types'))->explode(','),
+            'image_quality' => config_cache('pix.image_quality'),
+            'optimize_image' => (bool) config_cache('pix.optimize_image'),
+            'max_photo_size' => config_cache('pix.max_photo_size'),
+            'max_caption_length' => config_cache('pix.max_caption_length'),
+            'max_altext_length' => config_cache('pix.max_altext_length'),
+            'enforce_account_limit' => (bool) config_cache('pix.enforce_account_limit'),
+            'max_account_size' => config_cache('pix.max_account_size'),
+            'max_album_length' => config_cache('pix.max_album_length'),
+            'account_deletion' => (bool) config_cache('pix.account_deletion'),
         ];
 
         $res['is_eligible'] = $this->validVal($res, 'admin') &&
@@ -120,8 +120,8 @@ class PixelfedDirectoryController extends Controller
             $this->validVal($res, 'privacy_pledge') &&
             $this->validVal($res, 'location');
 
-        if (config_cache('pixelfed.directory.testimonials')) {
-            $res['testimonials'] = collect(json_decode(config_cache('pixelfed.directory.testimonials'), true))
+        if (config_cache('pix.directory.testimonials')) {
+            $res['testimonials'] = collect(json_decode(config_cache('pix.directory.testimonials'), true))
                 ->map(function ($testimonial) {
                     $profile = AccountService::get($testimonial['profile_id']);
 

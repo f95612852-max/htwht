@@ -31,7 +31,7 @@ return [
     
     // site/about
     'photo_sharing_for_everyone'                            => 'Fotos teilen. Für Alle',
-    'pixelfed_is_an_image_sharing_platform_etc'             => 'Pixelfed ist eine Plattform zum Teilen von Bildern. Eine ethische Alternative zu zentralisierten Plattformen', // this is actually never used because it's a fallback for config_cache('app.description') and config_cache('app.short_description') which seem to be impossible to set to empty when saved via /admin/settings?t=branding
+    'pix_is_an_image_sharing_platform_etc'             => 'Pix ist eine Plattform zum Teilen von Bildern. Eine ethische Alternative zu zentralisierten Plattformen', // this is actually never used because it's a fallback for config_cache('app.description') and config_cache('app.short_description') which seem to be impossible to set to empty when saved via /admin/settings?t=branding
     'feature_packed'                                        => 'Voller Funktionen.',
     'the_best_for_the_brightest'                            => 'Das Beste für die schönsten 📸',
     'albums'                                                => 'Alben',
@@ -65,5 +65,5 @@ return [
     'opensource.or'                                         => 'oder ihren Quellcode',
     'view'                                                  => 'ansehen',
     'the_source_code_and_run_their_own_instance'            => 'und eine eigene Instanz betreiben!',
-    'open_source_in_pixelfed'                               => 'Open Source in Pixelfed',
+    'open_source_in_pix'                               => 'Open Source in Pix',
 ];

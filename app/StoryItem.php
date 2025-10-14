@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Pixelfed\Snowflake\HasSnowflakePrimary;
+use Pix\Snowflake\HasSnowflakePrimary;
 use Storage;
 
 class StoryItem extends Model

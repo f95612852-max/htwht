@@ -1,7 +1,7 @@
 <x-mail::message>
 Hello **&commat;{{$contact->user->username}}**,
 
-You contacted the admin team of {{config('pixelfed.domain.app')}} with the following inquiry:
+You contacted the admin team of {{config('pix.domain.app')}} with the following inquiry:
 
 <x-mail::panel>
 <i>{{str_limit($contact->message, 80)}}</i>
@@ -19,6 +19,6 @@ or copy and paste the following url: <a href="{{$url}}">{{$url}}</a>
 <br>
 <small>
 Thanks,<br>
-The {{ ucfirst(config('pixelfed.domain.app')) }} Admin Team
+The {{ ucfirst(config('pix.domain.app')) }} Admin Team
 </small>
 </x-mail::message>

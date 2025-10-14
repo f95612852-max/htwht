@@ -45,9 +45,9 @@ return [
             /*
              *   Max Uses
              *
-             *   Using a centralized service operated by pixelfed.org that tracks mastodon imports,
+             *   Using a centralized service operated by pix.org that tracks mastodon imports,
              *   you can set a limit of how many times a mastodon account can be imported across
-             *   all known and reporting Pixelfed instances to prevent the same masto account from
+             *   all known and reporting Pix instances to prevent the same masto account from
              *   abusing this
              */
             'enabled' => env('PF_LOGIN_WITH_MASTODON_ENFORCE_MAX_USES', true),

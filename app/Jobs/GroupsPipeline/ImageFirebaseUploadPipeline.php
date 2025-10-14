@@ -4,6 +4,7 @@ namespace App\Jobs\GroupsPipeline;
 
 use App\Models\GroupMedia;
 use App\Util\Media\Image;
+use App\Services\FirebaseService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -12,12 +13,8 @@ use Illuminate\Queue\SerializesModels;
 use Storage;
 use Illuminate\Http\File;
 use Exception;
-use GuzzleHttp\Exception\ClientException;
-use Aws\S3\Exception\S3Exception;
-use GuzzleHttp\Exception\ConnectException;
-use League\Flysystem\UnableToWriteFile;
 
-class ImageS3UploadPipeline implements ShouldQueue
+class ImageFirebaseUploadPipeline implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -50,7 +47,7 @@ class ImageS3UploadPipeline implements ShouldQueue
     {
         $media = $this->media;
 
-        if(!$media || (bool) config_cache('pixelfed.cloud_storage') === false) {
+        if(!$media || (bool) config_cache('pix.cloud_storage') === false) {
             return;
         }
 
@@ -60,7 +57,7 @@ class ImageS3UploadPipeline implements ShouldQueue
         $name = array_pop($p);
         $storagePath = implode('/', $p);
 
-        $url =  (bool) config_cache('pixelfed.cloud_storage') && (bool) config('media.storage.remote.resilient_mode') ?
+        $url =  (bool) config_cache('pix.cloud_storage') && (bool) config('media.storage.remote.resilient_mode') ?
             self::handleResilientStore($storagePath, $path, $name) :
             self::handleStore($storagePath, $path, $name);
 
@@ -76,7 +73,7 @@ class ImageS3UploadPipeline implements ShouldQueue
     protected function handleStore($storagePath, $path, $name)
     {
         return retry(3, function() use($storagePath, $path, $name) {
-            $baseDisk = (bool) config_cache('pixelfed.cloud_storage') ? config('filesystems.cloud') : 'local';
+            $baseDisk = (bool) config_cache('pix.cloud_storage') ? config('filesystems.cloud') : 'local';
             $disk = Storage::disk($baseDisk);
             $file = $disk->putFileAs($storagePath, new File($path), $name, 'public');
             return $disk->url($file);
@@ -93,7 +90,7 @@ class ImageS3UploadPipeline implements ShouldQueue
             try {
                 $disk = Storage::disk($baseDisk);
                 $file = $disk->putFileAs($storagePath, new File($path), $name, 'public');
-            } catch (S3Exception | ClientException | ConnectException | UnableToWriteFile | Exception $e) {}
+            } catch (Exception $e) {}
             return $disk->url($file);
         }, function (int $attempt, Exception $exception) {
             return $attempt * 200;

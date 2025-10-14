@@ -12,7 +12,7 @@
 	        <div class="col-xl-6 col-lg-5 col-md-7 col-12">
 	        	<div class="text-center">
 	                <a href="/">
-	                	<img src="/img/pixelfed-icon-white.svg" height="60px">
+	                	<img src="/img/pix-icon-white.svg" height="60px">
 	            	</a>
 	                <h1 class="pt-4 pb-1">Reset Password</h1>
 	                <p class="font-weight-light pb-2">Use this form to reset your password.</p>
@@ -70,7 +70,7 @@
                                         class="form-control form-control-lg bg-glass text-white{{ $errors->has('password') ? ' is-invalid' : '' }}"
 	                                	name="password"
 	                                	placeholder="{{ __('Password') }}"
-	                                	minlength="{{config('pixelfed.min_password_length')}}"
+	                                	minlength="{{config('pix.min_password_length')}}"
 	                                	maxlength="72"
 	                                	autocomplete="new-password"
 	                                	autofocus
@@ -81,7 +81,7 @@
 	                                        <strong>{{ $errors->first('password') }}</strong>
 	                                    </span>
 	                                @else
-	                                	<p class="help-text small text-muted mb-0 mt-1">Enter a new password between {{config('pixelfed.min_password_length')}}-72 characters long.</p>
+	                                	<p class="help-text small text-muted mb-0 mt-1">Enter a new password between {{config('pix.min_password_length')}}-72 characters long.</p>
 	                                @endif
 	                            </div>
 	                        </div>
@@ -96,7 +96,7 @@
                                         class="form-control form-control-lg bg-glass text-white{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
 	                                	name="password_confirmation"
 	                                	placeholder="{{ __('Confirm Password') }}"
-	                                	minlength="{{config('pixelfed.min_password_length')}}"
+	                                	minlength="{{config('pix.min_password_length')}}"
 	                                	autocomplete="new-password"
 	                                	maxlength="72"
 	                                	required>

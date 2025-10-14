@@ -19,7 +19,7 @@ return [
 
     // site/about
     'photo_sharing_for_everyone'                            => 'Compartilhamento de Fotos. Para Todos',
-    'pixelfed_is_an_image_sharing_platform_etc'             => 'Pixelfed é uma plataforma de compartilhamento de imagens, uma alternativa ética às plataformas centralizadas.',
+    'pix_is_an_image_sharing_platform_etc'             => 'Pix é uma plataforma de compartilhamento de imagens, uma alternativa ética às plataformas centralizadas.',
     'feature_packed'                                        => 'Repleto de Recursos.',
     'the_best_for_the_brightest'                            => 'O melhor para os mais brilhantes 📸',
     'albums'                                                => 'Álbuns',
@@ -53,6 +53,6 @@ return [
     'opensource.or'                                         => 'ou',
     'view'                                                  => 'ver',
     'the_source_code_and_run_their_own_instance'            => 'o código-fonte e executar sua própria instância!',
-    'open_source_in_pixelfed'                               => 'Código aberto no Pixelfed',
+    'open_source_in_pix'                               => 'Código aberto no Pix',
 
 ];

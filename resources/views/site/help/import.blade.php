@@ -6,7 +6,7 @@
         <h3 class="font-weight-bold">Import</h3>
     </div>
     <hr>
-    <p class="lead py-3">With the Import from Instagram feature, you can seamlessly transfer your photos, captions, and even hashtags from your Instagram account to Pixelfed, ensuring a smooth transition without losing your cherished memories or creative expressions.</p>
+    <p class="lead py-3">With the Import from Instagram feature, you can seamlessly transfer your photos, captions, and even hashtags from your Instagram account to Pix, ensuring a smooth transition without losing your cherished memories or creative expressions.</p>
 
     <hr class="mb-4" />
 

@@ -117,7 +117,7 @@
                         </div>
                     </div>
                     @if(
-                        (config_cache('pixelfed.open_registration') && config('remote-auth.mastodon.enabled')) ||
+                        (config_cache('pix.open_registration') && config('remote-auth.mastodon.enabled')) ||
                         (config('remote-auth.mastodon.ignore_closed_state') && config('remote-auth.mastodon.enabled'))
                     )
                     <hr>
@@ -144,7 +144,7 @@
                     </div>
                     @endif
 
-                    @if((bool) config_cache('pixelfed.open_registration') || (bool) config_cache('instance.curated_registration.enabled'))
+                    @if((bool) config_cache('pix.open_registration') || (bool) config_cache('instance.curated_registration.enabled'))
                     <hr>
 
                     <p class="text-center font-weight-bold mb-0">

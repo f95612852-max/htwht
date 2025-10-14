@@ -34,7 +34,7 @@
 						@csrf
 						<div class="form-group">
 							<label for="shortcode" class="font-weight-light">Shortcode</label>
-							<input class="form-control" id="shortcode" name="shortcode" placeholder=":pixelfed:" required>
+							<input class="form-control" id="shortcode" name="shortcode" placeholder=":pix:" required>
 							<p class="form-text small font-weight-bold">Must start and end with :</p>
 						</div>
 

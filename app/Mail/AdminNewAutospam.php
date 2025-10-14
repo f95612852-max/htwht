@@ -35,7 +35,7 @@ class AdminNewAutospam extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: '[' . config('pixelfed.domain.app') . '] Spam Post Detected (Ref: autospam-' . $this->report->id . ')',
+            subject: '[' . config('pix.domain.app') . '] Spam Post Detected (Ref: autospam-' . $this->report->id . ')',
         );
     }
 

@@ -63,8 +63,8 @@ class AcceptVerbTest extends TestCase
             'object' => [
                 'type' => 'Follow',
                 'object' => 'https://mastodon.example.org/users/admin',
-                'id' => 'https://pixelfed.dev/users/dsup#follows/4',
-                'actor' => 'https://pixelfed.dev/users/dsup',
+                'id' => 'https://pix.dev/users/dsup#follows/4',
+                'actor' => 'https://pix.dev/users/dsup',
             ],
             'nickname' => 'dsup',
             'id' => 'https://mastodon.example.org/users/admin#accepts/follows/4',

@@ -95,7 +95,7 @@ class SettingsController extends Controller
     public function removeAccountTemporary(Request $request)
     {
         $user = Auth::user();
-        abort_if(! config('pixelfed.account_deletion'), 403);
+        abort_if(! config('pix.account_deletion'), 403);
         abort_if($user->is_admin, 403);
 
         return view('settings.remove.temporary');
@@ -104,7 +104,7 @@ class SettingsController extends Controller
     public function removeAccountTemporarySubmit(Request $request)
     {
         $user = Auth::user();
-        abort_if(! config('pixelfed.account_deletion'), 403);
+        abort_if(! config('pix.account_deletion'), 403);
         abort_if($user->is_admin, 403);
         $profile = $user->profile;
         $user->status = 'disabled';
@@ -127,11 +127,11 @@ class SettingsController extends Controller
 
     public function removeAccountPermanentSubmit(Request $request)
     {
-        if (config('pixelfed.account_deletion') == false) {
+        if (config('pix.account_deletion') == false) {
             abort(404);
         }
         $user = Auth::user();
-        abort_if(! config('pixelfed.account_deletion'), 403);
+        abort_if(! config('pix.account_deletion'), 403);
         abort_if($user->is_admin, 403);
         $profile = $user->profile;
         $ts = Carbon::now()->addMonth();

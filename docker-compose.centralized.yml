@@ -11,9 +11,9 @@ services:
       - APP_ENV=local
       - APP_DEBUG=true
       - DB_HOST=db
-      - DB_DATABASE=pixelfed
-      - DB_USERNAME=pixelfed
-      - DB_PASSWORD=pixelfed
+      - DB_DATABASE=pix
+      - DB_USERNAME=pix
+      - DB_PASSWORD=pix
       - REDIS_HOST=redis
       - CENTRALIZED_MODE=true
       - AWS_ENABLED=true
@@ -21,7 +21,7 @@ services:
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
       - AWS_DEFAULT_REGION=us-east-1
-      - AWS_BUCKET=pixelfed-test
+      - AWS_BUCKET=pix-test
     volumes:
       - ./storage:/var/www/html/storage
     depends_on:
@@ -29,28 +29,28 @@ services:
       - redis
       - localstack
     networks:
-      - pixelfed
+      - pix
 
   db:
     image: mysql:8.0
     environment:
-      MYSQL_DATABASE: pixelfed
-      MYSQL_USER: pixelfed
-      MYSQL_PASSWORD: pixelfed
+      MYSQL_DATABASE: pix
+      MYSQL_USER: pix
+      MYSQL_PASSWORD: pix
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - db_data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
-      - pixelfed
+      - pix
 
   redis:
     image: redis:7-alpine
     ports:
       - "6379:6379"
     networks:
-      - pixelfed
+      - pix
 
   # LocalStack for AWS services simulation
   localstack:
@@ -66,12 +66,12 @@ services:
       - localstack_data:/tmp/localstack
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - pixelfed
+      - pix
 
 volumes:
   db_data:
   localstack_data:
 
 networks:
-  pixelfed:
+  pix:
     driver: bridge

@@ -37,7 +37,7 @@ class ProfileAliasController extends Controller
             return back()->with('error', 'Invalid account alias.');
         }
 
-        if ($nn['domain'] === config('pixelfed.domain.app')) {
+        if ($nn['domain'] === config('pix.domain.app')) {
             if (strtolower($nn['username']) == ($request->user()->username)) {
                 return back()->with('error', 'You cannot add an alias to your own account.');
             }

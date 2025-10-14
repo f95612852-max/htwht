@@ -1,6 +1,6 @@
-# Pixelfed Centralized
+# Pix Centralized
 
-نسخة مركزية من Pixelfed مع دعم AWS وإزالة نظام الفيدرة.
+نسخة مركزية من Pix مع دعم AWS وإزالة نظام الفيدرة.
 
 ## التغييرات الرئيسية
 
@@ -24,7 +24,7 @@
 ### 1. إعداد S3 للتخزين
 ```bash
 AWS_S3_ENABLED=true
-AWS_BUCKET=your-pixelfed-bucket
+AWS_BUCKET=your-pix-bucket
 AWS_ACCESS_KEY_ID=your-access-key
 AWS_SECRET_ACCESS_KEY=your-secret-key
 AWS_DEFAULT_REGION=us-east-1
@@ -48,7 +48,7 @@ AWS_CLOUDFRONT_DOMAIN=your-cloudfront-domain.cloudfront.net
 DB_CONNECTION=mysql
 DB_HOST=your-rds-endpoint.amazonaws.com
 DB_PORT=3306
-DB_DATABASE=pixelfed
+DB_DATABASE=pix
 DB_USERNAME=your-db-username
 DB_PASSWORD=your-db-password
 ```
@@ -124,4 +124,4 @@ php artisan view:cache
 
 ## الدعم
 
-هذه نسخة معدلة من Pixelfed للاستخدام المركزي مع AWS.
+هذه نسخة معدلة من Pix للاستخدام المركزي مع AWS.

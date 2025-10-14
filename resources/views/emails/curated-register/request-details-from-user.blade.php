@@ -18,5 +18,5 @@ Our onboarding team have requested the following details:
 <br>
 
 Thanks,<br>
-<a href="{{ config('app.url') }}">{{ config('pixelfed.domain.app') }}</a>
+<a href="{{ config('app.url') }}">{{ config('pix.domain.app') }}</a>
 @endcomponent

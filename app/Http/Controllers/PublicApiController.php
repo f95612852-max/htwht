@@ -732,7 +732,7 @@ class PublicApiController extends Controller
     }
 
     /**
-     *  GET /api/pixelfed/v1/statuses/{id}/pin
+     *  GET /api/pix/v1/statuses/{id}/pin
      */
     public function statusPin(Request $request, $id)
     {
@@ -763,7 +763,7 @@ class PublicApiController extends Controller
     }
 
     /**
-     *  GET /api/pixelfed/v1/statuses/{id}/unpin
+     *  GET /api/pix/v1/statuses/{id}/unpin
      */
     public function statusUnpin(Request $request, $id)
     {

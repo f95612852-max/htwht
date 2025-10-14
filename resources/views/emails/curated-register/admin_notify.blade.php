@@ -27,7 +27,7 @@ Email: <strong>{{ $verify->email }}</strong>
 </x-mail::button>
 
 Thanks,<br>
-<a href="{{ config('app.url') }}">{{ config('pixelfed.domain.app') }}</a>
+<a href="{{ config('app.url') }}">{{ config('pix.domain.app') }}</a>
 <br>
 <hr>
 <p style="font-size:10pt;">This is an automated message, please be aware that replies to this email cannot be monitored or responded to.</p>

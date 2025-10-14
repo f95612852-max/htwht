@@ -58,7 +58,7 @@
                             </div>
 
                             <hr>
-                            <p class="mb-0 small">We support migration to and from Pixelfed, Mastodon and most other platforms that use the Mastodon Account Migration <a href="https://docs.joinmastodon.org/spec/activitypub/#Move">extension</a>.</p>
+                            <p class="mb-0 small">We support migration to and from Pix, Mastodon and most other platforms that use the Mastodon Account Migration <a href="https://docs.joinmastodon.org/spec/activitypub/#Move">extension</a>.</p>
                         </div>
 
                     </div>

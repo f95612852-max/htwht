@@ -1,4 +1,4 @@
-<h2><span style="opacity:0.5;">Let's begin setting up your account on</span> <strong style="opacity: 1">{{ config('pixelfed.domain.app') }}</strong></h2>
+<h2><span style="opacity:0.5;">Let's begin setting up your account on</span> <strong style="opacity: 1">{{ config('pix.domain.app') }}</strong></h2>
 <form method="post">
     @csrf
     <input type="hidden" name="step" value="2">
@@ -17,7 +17,7 @@
                     name="username"
                     value="{{ request()->session()->get('cur-reg.form-username') }}">
                 <div class="input-group-append">
-                    <span class="input-group-text bg-dark border-dark text-muted font-weight-bold" id="username-addon">&commat;{{ config('pixelfed.domain.app') }}</span>
+                    <span class="input-group-text bg-dark border-dark text-muted font-weight-bold" id="username-addon">&commat;{{ config('pix.domain.app') }}</span>
                 </div>
             </div>
             <p class="help-text small text-muted mb-0">You can use letters, numbers, and underscores with a max length of 30 chars.</p>
@@ -59,7 +59,7 @@
         </div>
         <div class="border-top border-dark mt-3 pt-4">
             <p class="lead">
-                Our moderators manually review sign-ups. To assist in the processing of your registration, please provide some information about yourself and explain why you wish to create an account on {{ config('pixelfed.domain.app') }}.
+                Our moderators manually review sign-ups. To assist in the processing of your registration, please provide some information about yourself and explain why you wish to create an account on {{ config('pix.domain.app') }}.
             </p>
         </div>
         <div class="details-form-field">

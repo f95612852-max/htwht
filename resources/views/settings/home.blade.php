@@ -57,11 +57,11 @@
 					name="bio"
 					placeholder="{{__('settings.home.add_a_bio_here')}}"
 					rows="2"
-					data-max-length="{{config('pixelfed.max_bio_length')}}"
-					maxlength="{{config('pixelfed.max_bio_length')}}"
+					data-max-length="{{config('pix.max_bio_length')}}"
+					maxlength="{{config('pix.max_bio_length')}}"
 					v-pre>{{strip_tags(Auth::user()->profile->bio)}}</textarea>
 				<p class="form-text">
-					<span class="bio-counter float-right small text-muted">0/{{config('pixelfed.max_bio_length')}}</span>
+					<span class="bio-counter float-right small text-muted">0/{{config('pix.max_bio_length')}}</span>
 				</p>
 			</div>
 		</div>
@@ -107,7 +107,7 @@
         </div>
         @endif
         @endif
-		@if(config_cache('pixelfed.enforce_account_limit'))
+		@if(config_cache('pix.enforce_account_limit'))
 		<div class="pt-3">
 			<p class="font-weight-bold text-muted text-center">{{__('settings.home.storage_usage')}}</p>
 		</div>
@@ -182,7 +182,7 @@ $(document).ready(function() {
 			swal.close();
 		});
 
-		$('#maxAvatarSize').text(filesize({{config('pixelfed.max_avatar_size') * 1024}}, {round: 0}));
+		$('#maxAvatarSize').text(filesize({{config('pix.max_avatar_size') * 1024}}, {round: 0}));
 
 		$('#avatarInput').on('change', function(e) {
 				var file = document.getElementById('avatarInput').files[0];

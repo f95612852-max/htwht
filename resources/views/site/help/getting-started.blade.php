@@ -6,12 +6,12 @@
 	<h3 class="font-weight-bold">{{__('helpcenter.gettingStarted')}}</h3>
 </div>
 <hr>
-<p class="lead ">Welcome to Pixelfed!</p>
+<p class="lead ">Welcome to Pix!</p>
 <hr>
 <p>
 	<a class="text-dark font-weight-bold" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
 		<i class="fas fa-chevron-down mr-2"></i>
-		How do I create a Pixelfed account?
+		How do I create a Pix account?
 	</a>
 	<div class="collapse" id="collapse1">
 		<div>
@@ -20,7 +20,7 @@
 				<li>Go to <a href="{{config('app.url')}}">{{config('app.url')}}</a>.</li>
 				<li>Click on the register link at the top of the page.</li>
 				<li>Enter your name, email address, username and password.</li>
-				@if(config_cache('pixelfed.enforce_email_verification') != true)
+				@if(config_cache('pix.enforce_email_verification') != true)
 				<li>Wait for an account verification email, it may take a few minutes.</li>
 				@endif
 			</ol>
@@ -56,7 +56,7 @@
 	</a>
 	<div class="collapse" id="collapse4">
 		<div class="mt-2">
-			Pixelfed is a federated application, changing your username is not supported in every <a href="https://en.wikipedia.org/wiki/ActivityPub">federated software</a> so we cannot allow username changes. Your best option is to create a new account with your desired username.
+			Pix is a federated application, changing your username is not supported in every <a href="https://en.wikipedia.org/wiki/ActivityPub">federated software</a> so we cannot allow username changes. Your best option is to create a new account with your desired username.
 		</div>
 	</div>
 </p>

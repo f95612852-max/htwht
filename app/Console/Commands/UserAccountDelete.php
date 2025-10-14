@@ -84,9 +84,9 @@ class UserAccountDelete extends Command
             'timeout' => 5,
         ]);
 
-        $version = config('pixelfed.version');
+        $version = config('pix.version');
         $appUrl = config('app.url');
-        $userAgent = "(Pixelfed/{$version}; +{$appUrl})";
+        $userAgent = "(Pix/{$version}; +{$appUrl})";
 
         $requests = function ($audience) use ($client, $activity, $profile, $payload, $userAgent) {
             foreach ($audience as $url) {

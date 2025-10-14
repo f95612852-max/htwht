@@ -46,11 +46,11 @@
 	<p>
 		<a class="text-dark font-weight-bold" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
 			<i class="fas fa-chevron-down mr-2"></i>
-			How do I add a caption before sharing my photos or videos on Pixelfed?
+			How do I add a caption before sharing my photos or videos on Pix?
 		</a>
 		<div class="collapse" id="collapse3">
 			<div>
-				During the compose process, you will see the <span class="font-weight-bold">Caption</span> input. Captions are optional and limited to <span class="font-weight-bold">{{config_cache('pixelfed.max_caption_length')}}</span> characters.
+				During the compose process, you will see the <span class="font-weight-bold">Caption</span> input. Captions are optional and limited to <span class="font-weight-bold">{{config_cache('pix.max_caption_length')}}</span> characters.
 			</div>
 		</div>
 	</p>
@@ -104,7 +104,7 @@
 			<div>
 				You can upload the following media types:
 				<ul>
-					@foreach(explode(',', config_cache('pixelfed.media_types')) as $type)
+					@foreach(explode(',', config_cache('pix.media_types')) as $type)
 					<li class="font-weight-bold">{{$type}}</li>
 					@endforeach
 				</ul>

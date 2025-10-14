@@ -1,6 +1,6 @@
-# Centralized Pixelfed Features
+# Centralized Pix Features
 
-This document outlines the new centralized features added to this Pixelfed instance.
+This document outlines the new centralized features added to this Pix instance.
 
 ## 🔐 Social Authentication
 

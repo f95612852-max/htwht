@@ -134,10 +134,10 @@ class RegisterController extends Controller
         $rules = [
             'agecheck' => 'required|accepted',
             'rt' => $rt,
-            'name' => 'nullable|string|max:'.config('pixelfed.max_name_length'),
+            'name' => 'nullable|string|max:'.config('pix.max_name_length'),
             'username' => $usernameRules,
             'email' => $emailRules,
-            'password' => 'required|string|min:'.config('pixelfed.min_password_length').'|confirmed',
+            'password' => 'required|string|min:'.config('pix.min_password_length').'|confirmed',
         ];
 
         if ((bool) config_cache('captcha.enabled') && (bool) config_cache('captcha.active.register')) {
@@ -176,13 +176,13 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        if ((bool) config_cache('pixelfed.open_registration')) {
-            if (config('pixelfed.bouncer.cloud_ips.ban_signups')) {
+        if ((bool) config_cache('pix.open_registration')) {
+            if (config('pix.bouncer.cloud_ips.ban_signups')) {
                 abort_if(BouncerService::checkIp(request()->ip()), 404);
             }
-            $hasLimit = config('pixelfed.enforce_max_users');
+            $hasLimit = config('pix.enforce_max_users');
             if ($hasLimit) {
-                $limit = config('pixelfed.max_users');
+                $limit = config('pix.max_users');
                 $count = User::where(function ($q) {
                     return $q->whereNull('status')->orWhereNotIn('status', ['deleted', 'delete']);
                 })->count();
@@ -211,18 +211,18 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        abort_if(config_cache('pixelfed.open_registration') == false, 400);
+        abort_if(config_cache('pix.open_registration') == false, 400);
 
-        if (config('pixelfed.bouncer.cloud_ips.ban_signups')) {
+        if (config('pix.bouncer.cloud_ips.ban_signups')) {
             abort_if(BouncerService::checkIp($request->ip()), 404);
         }
 
-        $hasLimit = config('pixelfed.enforce_max_users');
+        $hasLimit = config('pix.enforce_max_users');
         if ($hasLimit) {
             $count = User::where(function ($q) {
                 return $q->whereNull('status')->orWhereNotIn('status', ['deleted', 'delete']);
             })->count();
-            $limit = config('pixelfed.max_users');
+            $limit = config('pix.max_users');
 
             if ($limit && $limit <= $count) {
                 return redirect(route('help.instance-max-users-limit'));

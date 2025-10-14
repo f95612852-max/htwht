@@ -12,11 +12,11 @@
           @endif
         </p>
         <p class="text-center text-muted small mb-0">
-          <span class="text-muted">© {{date('Y')}} {{config('pixelfed.domain.app')}}</span>
+          <span class="text-muted">© {{date('Y')}} {{config('pix.domain.app')}}</span>
           <span class="mx-2">·</span>
-          <a href="https://pixelfed.org" class="text-muted font-weight-bold" rel="noopener">Powered by Pixelfed</a>
+          <a href="https://pix.org" class="text-muted font-weight-bold" rel="noopener">Powered by Pix</a>
           <span class="mx-2">·</span>
-          <span class="text-muted">v{{config('pixelfed.version')}}</span>
+          <span class="text-muted">v{{config('pix.version')}}</span>
         </p>
     </div>
   </footer>

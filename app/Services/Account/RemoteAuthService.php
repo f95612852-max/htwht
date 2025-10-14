@@ -29,10 +29,10 @@ class RemoteAuthService
         try {
             $url = 'https://' . $domain . '/api/v1/apps';
             $res = Http::asForm()->throw()->timeout(10)->post($url, [
-                'client_name' => config('pixelfed.domain.app', 'pixelfed'),
+                'client_name' => config('pix.domain.app', 'pix'),
                 'redirect_uris' => url('/auth/mastodon/callback'),
                 'scopes' => 'read',
-                'website' => 'https://pixelfed.org'
+                'website' => 'https://pix.org'
             ]);
 
             if(!$res->ok()) {
@@ -121,7 +121,7 @@ class RemoteAuthService
 
         return Cache::remember(self::CACHE_KEY . 'domain-compatible:' . $domain, 14400, function() use($domain) {
             try {
-                $res = Http::timeout(20)->retry(3, 750)->get('https://beagle.pixelfed.net/api/v1/raa/domain?domain=' . $domain);
+                $res = Http::timeout(20)->retry(3, 750)->get('https://beagle.pix.net/api/v1/raa/domain?domain=' . $domain);
                 if(!$res->ok()) {
                     return false;
                 }
@@ -145,7 +145,7 @@ class RemoteAuthService
     public static function lookupWebfingerUses($wf)
     {
         try {
-            $res = Http::timeout(20)->retry(3, 750)->get('https://beagle.pixelfed.net/api/v1/raa/lookup?webfinger=' . $wf);
+            $res = Http::timeout(20)->retry(3, 750)->get('https://beagle.pix.net/api/v1/raa/lookup?webfinger=' . $wf);
             if(!$res->ok()) {
                 return false;
             }
@@ -167,7 +167,7 @@ class RemoteAuthService
     public static function submitToBeagle($ow, $ou, $dw, $du)
     {
         try {
-            $url = 'https://beagle.pixelfed.net/api/v1/raa/submit';
+            $url = 'https://beagle.pix.net/api/v1/raa/submit';
             $res = Http::throw()->timeout(10)->get($url, [
                 'ow' => $ow,
                 'ou' => $ou,

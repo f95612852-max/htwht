@@ -42,7 +42,7 @@ class AdminMessageResponse extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: ucfirst(strtolower(config('pixelfed.domain.app'))).' Contact Form Response [Ticket #'.$this->contact->id.']',
+            subject: ucfirst(strtolower(config('pix.domain.app'))).' Contact Form Response [Ticket #'.$this->contact->id.']',
         );
     }
 

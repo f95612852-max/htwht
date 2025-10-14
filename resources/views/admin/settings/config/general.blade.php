@@ -4,9 +4,9 @@
       <label for="app_url" class="col-sm-3 col-form-label font-weight-bold text-right">Registration</label>
       <div class="col-sm-9">
         <div class="form-check pb-2">
-          <input class="form-check-input" type="checkbox" id="open_registration" name="open_registration" {{config('pixelfed.open_registration') === true ? 'checked=""' : '' }}>
+          <input class="form-check-input" type="checkbox" id="open_registration" name="open_registration" {{config('pix.open_registration') === true ? 'checked=""' : '' }}>
           <label class="form-check-label font-weight-bold" for="open_registration">
-            {{config('pixelfed.open_registration') === true ? 'Open' : 'Closed' }}
+            {{config('pix.open_registration') === true ? 'Open' : 'Closed' }}
           </label>
           <p class="text-muted small help-text font-weight-bold">When this option is enabled, new user registration is open.</p>
         </div>
@@ -16,9 +16,9 @@
       <label for="app_url" class="col-sm-3 col-form-label font-weight-bold text-right">Email Validation</label>
       <div class="col-sm-9">
         <div class="form-check pb-2">
-          <input class="form-check-input" type="checkbox" id="enforce_email_verification" name="enforce_email_verification" {{config('pixelfed.enforce_email_verification') === true ? 'checked=""' : '' }}>
+          <input class="form-check-input" type="checkbox" id="enforce_email_verification" name="enforce_email_verification" {{config('pix.enforce_email_verification') === true ? 'checked=""' : '' }}>
           <label class="form-check-label font-weight-bold" for="open_registration">
-            {{config('pixelfed.enforce_email_verification') == true ? 'Enabled' : 'Disabled' }}
+            {{config('pix.enforce_email_verification') == true ? 'Enabled' : 'Disabled' }}
           </label>
           <p class="text-muted small help-text font-weight-bold">Enforce email validation for new user registration.</p>
         </div>
@@ -40,7 +40,7 @@
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bold text-right">Account Size</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" placeholder="1000000" name="max_account_size" value="{{config('pixelfed.max_account_size')}}">
+        <input type="text" class="form-control" placeholder="1000000" name="max_account_size" value="{{config('pix.max_account_size')}}">
         <span class="help-text font-weight-bold text-muted small">
           Max account size for users, in KB.
         </span>
@@ -49,7 +49,7 @@
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bold text-right">Max Upload Size</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" placeholder="15000" name="max_photo_size" value="{{config('pixelfed.max_photo_size')}}">
+        <input type="text" class="form-control" placeholder="15000" name="max_photo_size" value="{{config('pix.max_photo_size')}}">
         <span class="help-text font-weight-bold text-muted small">
           Max file size for uploads, in KB.
         </span>
@@ -58,7 +58,7 @@
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bold text-right">Caption Length</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" placeholder="500" name="caption_limit" value="{{config('pixelfed.max_caption_length')}}">
+        <input type="text" class="form-control" placeholder="500" name="caption_limit" value="{{config('pix.max_caption_length')}}">
         <span class="help-text font-weight-bold text-muted small">
           Character limit for captions and comments.
         </span>
@@ -67,7 +67,7 @@
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bold text-right">Max Album Size</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" placeholder="3" name="album_limit" value="{{config('pixelfed.max_album_length')}}">
+        <input type="text" class="form-control" placeholder="3" name="album_limit" value="{{config('pix.max_album_length')}}">
         <span class="help-text font-weight-bold text-muted small">
           Limit # of media per post.
         </span>
@@ -76,7 +76,7 @@
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bold text-right">Image Quality</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" placeholder="80" name="image_quality" value="{{config('pixelfed.image_quality')}}">
+        <input type="text" class="form-control" placeholder="80" name="image_quality" value="{{config('pix.image_quality')}}">
         <span class="help-text font-weight-bold text-muted small">
           Image quality. Must be a value between 1 (worst) - 100 (best).
         </span>

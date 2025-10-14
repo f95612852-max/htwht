@@ -64,7 +64,7 @@ class DomainBlocksController extends ApiController {
     abort_if(!strpos($domain, '.'), 400, 'Invalid domain');
     abort_if(!filter_var($domain, FILTER_VALIDATE_DOMAIN), 400, 'Invalid domain');
 
-    // This is because Pixelfed can't currently support wildcard domain blocks
+    // This is because Pix can't currently support wildcard domain blocks
     // We have to find something that could plausibly be an instance
     $parts = explode('.', $domain);
     if ($parts[0] == '*') {

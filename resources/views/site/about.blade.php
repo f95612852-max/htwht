@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="mobile-web-app-capable" content="yes">
-	<title>{{ config_cache('app.name') ?? 'pixelfed' }}</title>
-	<meta property="og:site_name" content="{{ config_cache('app.name') ?? 'pixelfed' }}">
-	<meta property="og:title" content="{{ config_cache('app.name') ?? 'pixelfed' }}">
+	<title>{{ config_cache('app.name') ?? 'pix' }}</title>
+	<meta property="og:site_name" content="{{ config_cache('app.name') ?? 'pix' }}">
+	<meta property="og:title" content="{{ config_cache('app.name') ?? 'pix' }}">
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="{{route('site.about')}}">
 	<meta property="og:description" content="{{config_cache('app.short_description')}}">
@@ -34,13 +34,13 @@
 		</div>
 		<div class="px-4 py-5 my-5 text-center">
 			<a href="/">
-				<img class="d-block mx-auto mb-4" src="/img/pixelfed-icon-color.svg" alt="" width="72" height="57">
+				<img class="d-block mx-auto mb-4" src="/img/pix-icon-color.svg" alt="" width="72" height="57">
 			</a>
 			
 			<h1 class="display-4 font-weight-bold py-3">{{ config_cache('about.title') ?? __('site.photo_sharing_for_everyone') }}</h1>
 			<div class="col-lg-6 mx-auto py-3">
 			  <p class="mb-4 font-weight-light text-left" style="font-size: 26px; line-height: 40px;">
-				{!! config_cache('app.description') ?? config_cache('app.short_description') ?? __('site.pixelfed_is_an_image_sharing_platform_etc') !!}
+				{!! config_cache('app.description') ?? config_cache('app.short_description') ?? __('site.pix_is_an_image_sharing_platform_etc') !!}
 			  </p>
 			</div>
 		</div>
@@ -139,7 +139,7 @@
 			<div class="row p-4 pb-0 pt-lg-5 align-items-center rounded-3">
 				<div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
 					<h1 class="display-4 font-weight-bold lh-1">{{__('site.albums')}}</h1>
-					<p class="h4 font-weight-light">{{__('site.share_posts_with_up_to')}} {{config_cache('pixelfed.max_album_length')}} {{__('site.photos')}}</p>
+					<p class="h4 font-weight-light">{{__('site.share_posts_with_up_to')}} {{config_cache('pix.max_album_length')}} {{__('site.photos')}}</p>
 				</div>
 				<div class="col-lg-6 overflow-hidden">
 					<img class="rounded-lg img-fluid filter-inkwell" src="/_landing/1.jpeg" alt="" width="720">
@@ -219,7 +219,7 @@
 						<span class="text-primary">{{$post_count}}</span>
 						{{__('site.photos_and_videos_on')}} {{config_cache('app.name')}}!
 					</p>
-					@if(config_cache('pixelfed.open_registration'))
+					@if(config_cache('pix.open_registration'))
 					<div class="section-spacer"></div>
 					<p class="display-4 font-weight-bold mb-0">
 						<a class="text-primary" href="/register">{{__('site.sign_up_today')}}</a>

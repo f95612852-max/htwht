@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:weekly-instance-scan')->weeklyOn(2, '4:20')->onOneServer();
         $schedule->command('app:cleanup-expired-app-registrations')->dailyAt(1)->onOneServer();
 
-        if ((bool) config_cache('pixelfed.cloud_storage') && (bool) config_cache('media.delete_local_after_cloud')) {
+        if ((bool) config_cache('pix.cloud_storage') && (bool) config_cache('media.delete_local_after_cloud')) {
             $schedule->command('media:s3gc')->hourlyAt(15);
         }
 
@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
             $schedule->command('app:import-remove-deleted-accounts')->hourlyAt(37)->onOneServer();
             $schedule->command('app:import-upload-clean-storage')->twiceDailyAt(1, 13, 32)->onOneServer();
 
-            if (config('import.instagram.storage.cloud.enabled') && (bool) config_cache('pixelfed.cloud_storage')) {
+            if (config('import.instagram.storage.cloud.enabled') && (bool) config_cache('pix.cloud_storage')) {
                 $schedule->command('app:import-upload-media-to-cloud-storage')->hourlyAt(39)->onOneServer();
             }
         }

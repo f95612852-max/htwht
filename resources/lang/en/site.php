@@ -31,7 +31,7 @@ return [
 
     // site/about
     'photo_sharing_for_everyone'                            => 'Photo Sharing. For Everyone',
-    'pixelfed_is_an_image_sharing_platform_etc'             => 'Pixelfed is an image sharing platform, an ethical alternative to centralized platforms.', // this is actually never used because it's a fallback for config_cache('app.description') and config_cache('app.short_description') which seem to be impossible to set to empty when saved via /admin/settings?t=branding
+    'pix_is_an_image_sharing_platform_etc'             => 'Pix is an image sharing platform, an ethical alternative to centralized platforms.', // this is actually never used because it's a fallback for config_cache('app.description') and config_cache('app.short_description') which seem to be impossible to set to empty when saved via /admin/settings?t=branding
     'feature_packed'                                        => 'Feature Packed.',
     'the_best_for_the_brightest'                            => 'The best for the brightest 📸',
     'albums'                                                => 'Albums',
@@ -65,5 +65,5 @@ return [
     'opensource.or'                                         => 'or',
     'view'                                                  => 'view',
     'the_source_code_and_run_their_own_instance'            => 'the source code and run their own instance!',
-    'open_source_in_pixelfed'                               => 'Open source in Pixelfed',
+    'open_source_in_pix'                               => 'Open source in Pix',
 ];

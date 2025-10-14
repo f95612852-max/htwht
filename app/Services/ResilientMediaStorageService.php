@@ -5,10 +5,6 @@ namespace App\Services;
 use Storage;
 use Illuminate\Http\File;
 use Exception;
-use GuzzleHttp\Exception\ClientException;
-use Aws\S3\Exception\S3Exception;
-use GuzzleHttp\Exception\ConnectException;
-use League\Flysystem\UnableToWriteFile;
 
 class ResilientMediaStorageService
 {
@@ -16,7 +12,7 @@ class ResilientMediaStorageService
 
     public static function store($storagePath, $path, $name)
     {
-        return (bool) config_cache('pixelfed.cloud_storage') && (bool) config('media.storage.remote.resilient_mode') ?
+        return (bool) config_cache('pix.cloud_storage') && (bool) config('media.storage.remote.resilient_mode') ?
             self::handleResilientStore($storagePath, $path, $name) :
             self::handleStore($storagePath, $path, $name);
     }
@@ -24,7 +20,7 @@ class ResilientMediaStorageService
     public static function handleStore($storagePath, $path, $name)
     {
         return retry(3, function() use($storagePath, $path, $name) {
-            $baseDisk = (bool) config_cache('pixelfed.cloud_storage') ? config('filesystems.cloud') : 'local';
+            $baseDisk = (bool) config_cache('pix.cloud_storage') ? config('filesystems.cloud') : 'local';
             $disk = Storage::disk($baseDisk);
             $file = $disk->putFileAs($storagePath, new File($path), $name, 'public');
             return $disk->url($file);
@@ -41,7 +37,7 @@ class ResilientMediaStorageService
             try {
                 $disk = Storage::disk($baseDisk);
                 $file = $disk->putFileAs($storagePath, new File($path), $name, 'public');
-            } catch (S3Exception | ClientException | ConnectException | UnableToWriteFile | Exception $e) {}
+            } catch (Exception $e) {}
             return $disk->url($file);
         }, function (int $attempt, Exception $exception) {
             return $attempt * 200;

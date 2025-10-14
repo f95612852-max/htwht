@@ -30,7 +30,7 @@ class ImportUploadMediaToCloudStorage extends Command
     {
         if(
             (bool) config('import.instagram.storage.cloud.enabled') === false ||
-            (bool) config_cache('pixelfed.cloud_storage') === false
+            (bool) config_cache('pix.cloud_storage') === false
         ) {
             $this->error('Aborted. Cloud storage is not enabled for IG imports.');
             return;

@@ -8,7 +8,7 @@
 </p>
 
 <p class="ottext">
-    Thank you for signing up to {{config('pixelfed.domain.app')}}!
+    Thank you for signing up to {{config('pix.domain.app')}}!
 </p>
 
 <p class="ottext">

@@ -29,7 +29,7 @@ class AdminMessage extends Mailable
      */
     public function build()
     {
-        $admins = config('pixelfed.domain.app') . ' admins';
+        $admins = config('pix.domain.app') . ' admins';
         return $this->markdown('emails.notification.admin_message')
             ->with(['msg' => $this->msg])
             ->subject('Message from ' . $admins);

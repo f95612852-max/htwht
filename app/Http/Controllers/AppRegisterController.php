@@ -20,7 +20,7 @@ class AppRegisterController extends Controller
     public function index(Request $request)
     {
         abort_unless(config('auth.in_app_registration'), 404);
-        $open = (bool) config_cache('pixelfed.open_registration');
+        $open = (bool) config_cache('pix.open_registration');
         if (! $open || $request->user()) {
             return redirect('/');
         }
@@ -31,7 +31,7 @@ class AppRegisterController extends Controller
     public function store(Request $request)
     {
         abort_unless(config('auth.in_app_registration'), 404);
-        $open = (bool) config_cache('pixelfed.open_registration');
+        $open = (bool) config_cache('pix.open_registration');
         if (! $open || $request->user()) {
             return redirect('/');
         }
@@ -60,7 +60,7 @@ class AppRegisterController extends Controller
             ]);
             DB::rollBack();
 
-            return redirect()->away("pixelfed://verifyEmail?{$errorParams}");
+            return redirect()->away("pix://verifyEmail?{$errorParams}");
         }
 
         $registration = AppRegister::create([
@@ -79,7 +79,7 @@ class AppRegisterController extends Controller
                 'message' => 'Failed to send verification code',
             ]);
 
-            return redirect()->away("pixelfed://verifyEmail?{$errorParams}");
+            return redirect()->away("pix://verifyEmail?{$errorParams}");
         }
 
         DB::commit();
@@ -90,13 +90,13 @@ class AppRegisterController extends Controller
             'status' => 'success',
         ]);
 
-        return redirect()->away("pixelfed://verifyEmail?{$queryParams}");
+        return redirect()->away("pix://verifyEmail?{$queryParams}");
     }
 
     public function verifyCode(Request $request)
     {
         abort_unless(config('auth.in_app_registration'), 404);
-        $open = (bool) config_cache('pixelfed.open_registration');
+        $open = (bool) config_cache('pix.open_registration');
         if (! $open || $request->user()) {
             return redirect('/');
         }
@@ -122,7 +122,7 @@ class AppRegisterController extends Controller
     public function resendVerification(Request $request)
     {
         abort_unless(config('auth.in_app_registration'), 404);
-        $open = (bool) config_cache('pixelfed.open_registration');
+        $open = (bool) config_cache('pix.open_registration');
         if (! $open || $request->user()) {
             return redirect('/');
         }
@@ -133,7 +133,7 @@ class AppRegisterController extends Controller
     public function resendVerificationStore(Request $request)
     {
         abort_unless(config('auth.in_app_registration'), 404);
-        $open = (bool) config_cache('pixelfed.open_registration');
+        $open = (bool) config_cache('pix.open_registration');
         if (! $open || $request->user()) {
             return redirect('/');
         }
@@ -163,7 +163,7 @@ class AppRegisterController extends Controller
             ]);
             DB::rollBack();
 
-            return redirect()->away("pixelfed://verifyEmail?{$errorParams}");
+            return redirect()->away("pix://verifyEmail?{$errorParams}");
         }
 
         $registration = $exists->update([
@@ -181,7 +181,7 @@ class AppRegisterController extends Controller
                 'message' => 'Failed to send verification code',
             ]);
 
-            return redirect()->away("pixelfed://verifyEmail?{$errorParams}");
+            return redirect()->away("pix://verifyEmail?{$errorParams}");
         }
 
         DB::commit();
@@ -192,13 +192,13 @@ class AppRegisterController extends Controller
             'status' => 'success',
         ]);
 
-        return redirect()->away("pixelfed://verifyEmail?{$queryParams}");
+        return redirect()->away("pix://verifyEmail?{$queryParams}");
     }
 
     public function onboarding(Request $request)
     {
         abort_unless(config('auth.in_app_registration'), 404);
-        $open = (bool) config_cache('pixelfed.open_registration');
+        $open = (bool) config_cache('pix.open_registration');
         if (! $open || $request->user()) {
             return redirect('/');
         }
@@ -207,8 +207,8 @@ class AppRegisterController extends Controller
             'email' => 'required|email:rfc,dns,spoof,strict|unique:users,email|exists:app_registers,email',
             'verify_code' => ['required', 'digits:6', 'numeric'],
             'username' => $this->validateUsernameRule(),
-            'name' => 'nullable|string|max:'.config('pixelfed.max_name_length'),
-            'password' => 'required|string|min:'.config('pixelfed.min_password_length'),
+            'name' => 'nullable|string|max:'.config('pix.max_name_length'),
+            'password' => 'required|string|min:'.config('pix.min_password_length'),
         ]);
 
         $email = strtolower($request->input('email'));
@@ -241,7 +241,7 @@ class AppRegisterController extends Controller
 
         sleep(random_int(8, 10));
         $user = User::findOrFail($user->id);
-        $token = $user->createToken('Pixelfed App', ['read', 'write', 'follow', 'push']);
+        $token = $user->createToken('Pix App', ['read', 'write', 'follow', 'push']);
         $tokenModel = $token->token;
         $clientId = $tokenModel->client_id;
         $clientSecret = DB::table('oauth_clients')->where('id', $clientId)->value('secret');
@@ -260,7 +260,7 @@ class AppRegisterController extends Controller
         return response()->json([
             'status' => 'success',
             'token_type' => 'Bearer',
-            'domain' => config('pixelfed.domain.app'),
+            'domain' => config('pix.domain.app'),
             'expires_in' => $expiresIn,
             'access_token' => $token->accessToken,
             'refresh_token' => $refreshToken->id,

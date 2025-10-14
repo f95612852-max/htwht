@@ -36,7 +36,7 @@ class FetchMissingMediaMimeType extends Command
                 continue;
             }
 
-            if (! in_array($res->header('content-type'), explode(',', config_cache('pixelfed.media_types')))) {
+            if (! in_array($res->header('content-type'), explode(',', config_cache('pix.media_types')))) {
                 continue;
             }
 

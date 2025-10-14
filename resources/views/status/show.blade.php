@@ -19,9 +19,9 @@ if($s['content_text']) {
 }
 $desc = false;
 if($displayName && $captionPreview) {
-    $desc = $displayName . ': "' . $captionPreview . '" - Pixelfed';
+    $desc = $displayName . ': "' . $captionPreview . '" - Pix';
 } else if($displayName) {
-    $desc = $displayName . ': Shared a new post - Pixelfed';
+    $desc = $displayName . ': Shared a new post - Pix';
 }
 
 @endphp

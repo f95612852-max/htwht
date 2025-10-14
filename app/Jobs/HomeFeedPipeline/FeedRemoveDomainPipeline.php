@@ -87,7 +87,7 @@ class FeedRemoveDomainPipeline implements ShouldQueue, ShouldBeUniqueUntilProces
                 continue;
             }
             $host = strtolower(parse_url($status['url'], PHP_URL_HOST));
-            if($host === strtolower(config('pixelfed.domain.app')) || !$host) {
+            if($host === strtolower(config('pix.domain.app')) || !$host) {
                 continue;
             }
             if($host === $domain) {

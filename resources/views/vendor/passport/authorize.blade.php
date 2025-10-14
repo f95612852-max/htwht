@@ -38,7 +38,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="text-center mb-5">
-                    <img src="/img/pixelfed-icon-grey.svg">
+                    <img src="/img/pix-icon-grey.svg">
                 </div>
                 <p class="text-center h3 font-weight-light mb-3">Authorize {{ $client->name }}</p>
                 <div class="card card-default shadow-none border">

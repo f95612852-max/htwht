@@ -1,9 +1,9 @@
 @component('mail::message')
-# New Message from {{config('pixelfed.domain.app')}}
+# New Message from {{config('pix.domain.app')}}
 
 Hello,
 
-You recently applied to join our Pixelfed community using the &commat;**{{ $verify->username }}** username.
+You recently applied to join our Pix community using the &commat;**{{ $verify->username }}** username.
 
 The admins have a message for you:
 
@@ -14,7 +14,7 @@ The admins have a message for you:
 Please do not respond to this email, any replies will not be seen by our admin team.
 
 Thanks,<br>
-<a href="{{ config('app.url') }}">{{ config('pixelfed.domain.app') }}</a>
+<a href="{{ config('app.url') }}">{{ config('pix.domain.app') }}</a>
 <br>
 <hr>
 <p style="font-size:10pt;">This is an automated message on behalf of our admin team, please be aware that replies to this email cannot be monitored or responded to.</p>

@@ -12,7 +12,7 @@
 	        <div class="col-xl-6 col-lg-5 col-md-7 col-12">
 	        	<div class="text-center">
 	                <a href="/">
-	                	<img src="/img/pixelfed-icon-white.svg" height="60px">
+	                	<img src="/img/pix-icon-white.svg" height="60px">
 	            	</a>
 	                <h1 class="pt-4 pb-1">Reset Password</h1>
 	                <p class="font-weight-light pb-2">Send a password reset mail to reset your password</p>

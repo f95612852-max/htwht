@@ -5,8 +5,8 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-12 col-md-7">
             <div class="logo">
-                <img src="/img/pixelfed-icon-color.svg" width="40" height="40" alt="Pixelfed Logo">
-                <p class="font-weight-bold mb-0">Pixelfed</p>
+                <img src="/img/pix-icon-color.svg" width="40" height="40" alt="Pix Logo">
+                <p class="font-weight-bold mb-0">Pix</p>
             </div>
 
             @include('auth.curated-register.partials.progress-bar', ['step' => $step ?? 1])

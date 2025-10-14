@@ -71,7 +71,7 @@ class AvatarOptimize implements ShouldQueue
             strip: true
         );
 
-        $quality = config_cache('pixelfed.image_quality');
+        $quality = config_cache('pix.image_quality');
 
         $encoder = null;
         switch ($extension) {
@@ -110,7 +110,7 @@ class AvatarOptimize implements ShouldQueue
             Cache::forget('avatar:'.$avatar->profile_id);
             $this->deleteOldAvatar($avatar->media_path, $this->current);
 
-            if ((bool) config_cache('pixelfed.cloud_storage') && (bool) config_cache('instance.avatar.local_to_cloud')) {
+            if ((bool) config_cache('pix.cloud_storage') && (bool) config_cache('instance.avatar.local_to_cloud')) {
                 $this->uploadToCloud($avatar);
             } else {
                 $avatar->cdn_url = null;

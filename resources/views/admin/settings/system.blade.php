@@ -23,9 +23,9 @@
   	<div class="col-12 col-md-3">
   		<div class="card shadow-none border mb-3 border-left-blue">
   			<div class="card-body text-center">
-  				<p class="font-weight-ultralight h2 mb-0 text-truncate" title="{{$sys['pixelfed']}}" data-toggle="tooltip">{{$sys['pixelfed']}}</p>
+  				<p class="font-weight-ultralight h2 mb-0 text-truncate" title="{{$sys['pix']}}" data-toggle="tooltip">{{$sys['pix']}}</p>
   			</div>
-  			<div class="card-footer font-weight-bold py-0 text-center bg-white">Pixelfed</div>
+  			<div class="card-footer font-weight-bold py-0 text-center bg-white">Pix</div>
       </div>
   	</div>
     <div class="col-12 col-md-3">
@@ -105,7 +105,7 @@
 $(document).ready(function() {
 
   function latestRelease() {
-    let api = 'https://api.github.com/repos/pixelfed/pixelfed/releases';
+    let api = 'https://api.github.com/repos/pix/pix/releases';
     delete window.axios.defaults.headers.common['X-CSRF-TOKEN'];
     axios.get(api)
       .then(res => {

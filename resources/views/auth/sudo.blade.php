@@ -12,7 +12,7 @@
 	        <div class="col-lg-5">
 	            <div class="text-center">
 	                <a href="/">
-	                	<img src="/img/pixelfed-icon-white.svg" height="60px">
+	                	<img src="/img/pix-icon-white.svg" height="60px">
 	            	</a>
 	                <h1 class="pt-4 pb-1">Sudo Mode</h1>
 	                <p class="font-weight-light lead pb-2">Confirm password to continue</p>

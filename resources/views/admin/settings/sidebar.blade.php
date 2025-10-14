@@ -9,7 +9,7 @@
       <li class="nav-item pl-3 {{request()->is('settings/email')?'active':''}}">
         <a class="nav-link font-weight-light text-muted" href="{{route('settings.email')}}">Email</a>
       </li> --}}
-      @if(config('pixelfed.user_invites.enabled'))
+      @if(config('pix.user_invites.enabled'))
       <li class="nav-item pl-3 {{request()->is('settings/invites*')?'active':''}}">
         <a class="nav-link font-weight-light text-muted" href="{{route('settings.invites')}}">Invites</a>
       </li>
@@ -52,7 +52,7 @@
         <a class="nav-link font-weight-light text-muted" href="{{route('settings.dataexport')}}">Data Export</a>
       </li>
 
-      @if(config('pixelfed.oauth_enabled') == true)
+      @if(config('pix.oauth_enabled') == true)
       {{-- <li class="nav-item pl-3 {{request()->is('settings/applications')?'active':''}}">
         <a class="nav-link font-weight-light text-muted" href="{{route('settings.applications')}}">Applications</a>
       </li> --}}

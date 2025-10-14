@@ -27,24 +27,24 @@ class Config
             }
 
             return [
-                'version' => config('pixelfed.version'),
-                'open_registration' => (bool) config_cache('pixelfed.open_registration'),
+                'version' => config('pix.version'),
+                'open_registration' => (bool) config_cache('pix.open_registration'),
                 'show_legal_notice_link' => (bool) config('instance.has_legal_notice'),
                 'uploader' => [
-                    'max_photo_size' => (int) config_cache('pixelfed.max_photo_size'),
-                    'max_caption_length' => (int) config_cache('pixelfed.max_caption_length'),
-                    'max_altext_length' => (int) config_cache('pixelfed.max_altext_length', 150),
-                    'album_limit' => (int) config_cache('pixelfed.max_album_length'),
-                    'image_quality' => (int) config_cache('pixelfed.image_quality'),
+                    'max_photo_size' => (int) config_cache('pix.max_photo_size'),
+                    'max_caption_length' => (int) config_cache('pix.max_caption_length'),
+                    'max_altext_length' => (int) config_cache('pix.max_altext_length', 150),
+                    'album_limit' => (int) config_cache('pix.max_album_length'),
+                    'image_quality' => (int) config_cache('pix.image_quality'),
 
-                    'max_collection_length' => (int) config_cache('pixelfed.max_collection_length', 18),
+                    'max_collection_length' => (int) config_cache('pix.max_collection_length', 18),
 
-                    'optimize_image' => (bool) config_cache('pixelfed.optimize_image'),
-                    'optimize_video' => (bool) config_cache('pixelfed.optimize_video'),
+                    'optimize_image' => (bool) config_cache('pix.optimize_image'),
+                    'optimize_video' => (bool) config_cache('pix.optimize_video'),
 
-                    'media_types' => config_cache('pixelfed.media_types'),
-                    'mime_types' => config_cache('pixelfed.media_types') ? explode(',', config_cache('pixelfed.media_types')) : [],
-                    'enforce_account_limit' => (bool) config_cache('pixelfed.enforce_account_limit'),
+                    'media_types' => config_cache('pix.media_types'),
+                    'mime_types' => config_cache('pix.media_types') ? explode(',', config_cache('pix.media_types')) : [],
+                    'enforce_account_limit' => (bool) config_cache('pix.enforce_account_limit'),
                 ],
 
                 'activitypub' => [
@@ -56,17 +56,17 @@ class Config
 
                 'site' => [
                     'name' => config_cache('app.name'),
-                    'domain' => config('pixelfed.domain.app'),
+                    'domain' => config('pix.domain.app'),
                     'url' => config('app.url'),
                     'description' => config_cache('app.short_description'),
                 ],
 
                 'account' => [
-                    'max_avatar_size' => config('pixelfed.max_avatar_size'),
-                    'max_bio_length' => config('pixelfed.max_bio_length'),
-                    'max_name_length' => config('pixelfed.max_name_length'),
-                    'min_password_length' => config('pixelfed.min_password_length'),
-                    'max_account_size' => config('pixelfed.max_account_size'),
+                    'max_avatar_size' => config('pix.max_avatar_size'),
+                    'max_bio_length' => config('pix.max_bio_length'),
+                    'max_name_length' => config('pix.max_name_length'),
+                    'min_password_length' => config('pix.min_password_length'),
+                    'max_account_size' => config('pix.max_account_size'),
                 ],
 
                 'username' => [
@@ -82,14 +82,14 @@ class Config
                         'local' => true,
                         'network' => (bool) config('federation.network_timeline'),
                     ],
-                    'mobile_apis' => (bool) config_cache('pixelfed.oauth_enabled'),
+                    'mobile_apis' => (bool) config_cache('pix.oauth_enabled'),
                     'mobile_registration' => config('auth.in_app_registration'),
                     'stories' => (bool) config_cache('instance.stories.enabled'),
-                    'video' => Str::contains(config_cache('pixelfed.media_types'), 'video/mp4'),
+                    'video' => Str::contains(config_cache('pix.media_types'), 'video/mp4'),
                     'import' => [
-                        'instagram' => (bool) config_cache('pixelfed.import.instagram.enabled'),
+                        'instagram' => (bool) config_cache('pix.import.instagram.enabled'),
                         'mastodon' => false,
-                        'pixelfed' => false,
+                        'pix' => false,
                     ],
                     'label' => [
                         'covid' => [

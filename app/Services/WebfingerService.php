@@ -73,7 +73,7 @@ class WebfingerService
             $res = Http::retry(3, 100)
                 ->acceptJson()
                 ->withHeaders([
-                    'User-Agent' => '(Pixelfed/'.config('pixelfed.version').'; +'.config('app.url').')',
+                    'User-Agent' => '(Pix/'.config('pix.version').'; +'.config('app.url').')',
                 ])
                 ->timeout(20)
                 ->get($url);

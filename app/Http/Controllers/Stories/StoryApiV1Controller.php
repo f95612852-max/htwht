@@ -268,7 +268,7 @@ class StoryApiV1Controller extends Controller
                 return [
                     'required',
                     'mimetypes:image/jpeg,image/jpg,image/png,video/mp4',
-                    'max:'.config_cache('pixelfed.max_photo_size'),
+                    'max:'.config_cache('pix.max_photo_size'),
                 ];
             },
             'duration' => 'sometimes|integer|min:0|max:30',
@@ -390,7 +390,7 @@ class StoryApiV1Controller extends Controller
                 'mimes:jpeg,jpg,png',
                 File::image()
                     ->min(10)
-                    ->max(((int) config_cache('pixelfed.max_photo_size')) ?: (6 * 1024))
+                    ->max(((int) config_cache('pix.max_photo_size')) ?: (6 * 1024))
                     ->dimensions(Rule::dimensions()->width(1080)->height(1920)),
             ],
             'overlays' => 'nullable|array|min:0|max:4',
@@ -731,7 +731,7 @@ class StoryApiV1Controller extends Controller
 
     protected function storeMedia($photo, $user)
     {
-        $mimes = explode(',', config_cache('pixelfed.media_types'));
+        $mimes = explode(',', config_cache('pix.media_types'));
         if (in_array($photo->getMimeType(), [
             'image/jpeg',
             'image/png',

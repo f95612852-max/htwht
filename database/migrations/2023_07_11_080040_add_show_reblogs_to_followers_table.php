@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('followers', function (Blueprint $table) {
-            $table->boolean('show_reblogs')->default(true)->index()->after('local_following');
+            $table->boolean('show_reblogs')->default(true)->index()->after('following_id');
             $table->boolean('notify')->default(false)->index()->after('show_reblogs');
         });
     }

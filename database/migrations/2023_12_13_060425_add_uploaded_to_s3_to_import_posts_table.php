@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('import_posts', function (Blueprint $table) {
-            $table->boolean('uploaded_to_s3')->default(false)->index()->after('skip_missing_media');
+            // Changed from 'uploaded_to_s3' to 'uploaded_to_cloud' for Firebase compatibility
+            $table->boolean('uploaded_to_cloud')->default(false)->index()->after('skip_missing_media');
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('import_posts', function (Blueprint $table) {
-            $table->dropColumn('uploaded_to_s3');
+            $table->dropColumn('uploaded_to_cloud');
         });
     }
 };

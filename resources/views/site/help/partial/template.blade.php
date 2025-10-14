@@ -1,4 +1,4 @@
-@extends('layouts.anon', ['title' => 'Pixelfed Help Center'])
+@extends('layouts.anon', ['title' => 'Pix Help Center'])
 
 @section('content')
 

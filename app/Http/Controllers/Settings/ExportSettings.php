@@ -51,7 +51,7 @@ trait ExportSettings
         $userId = Auth::id();
 
         $userExportPath = 'user_exports/'.$userId;
-        $filename = 'pixelfed-following.json';
+        $filename = 'pix-following.json';
         $tempPath = $userExportPath.'/'.$filename;
 
         if (! Storage::exists($userExportPath)) {
@@ -97,7 +97,7 @@ trait ExportSettings
                 200,
                 [
                     'Content-Type' => 'application/json',
-                    'Content-Disposition' => 'attachment; filename="pixelfed-following.json"',
+                    'Content-Disposition' => 'attachment; filename="pix-following.json"',
                 ]
             );
 
@@ -115,7 +115,7 @@ trait ExportSettings
         $userId = Auth::id();
 
         $userExportPath = 'user_exports/'.$userId;
-        $filename = 'pixelfed-followers.json';
+        $filename = 'pix-followers.json';
         $tempPath = $userExportPath.'/'.$filename;
 
         if (! Storage::exists($userExportPath)) {
@@ -161,7 +161,7 @@ trait ExportSettings
                 200,
                 [
                     'Content-Type' => 'application/json',
-                    'Content-Disposition' => 'attachment; filename="pixelfed-followers.json"',
+                    'Content-Disposition' => 'attachment; filename="pix-followers.json"',
                 ]
             );
 
@@ -201,7 +201,7 @@ trait ExportSettings
         $profile = Auth::user()->profile;
         $userId = Auth::id();
         $userExportPath = self::STORAGE_BASE.'/'.$userId;
-        $filename = 'pixelfed-statuses.json';
+        $filename = 'pix-statuses.json';
         $tempPath = $userExportPath.'/'.$filename;
 
         if (! Storage::exists($userExportPath)) {
@@ -247,7 +247,7 @@ trait ExportSettings
                 200,
                 [
                     'Content-Type' => 'application/json',
-                    'Content-Disposition' => 'attachment; filename="pixelfed-statuses.json"',
+                    'Content-Disposition' => 'attachment; filename="pix-statuses.json"',
                 ]
             );
 

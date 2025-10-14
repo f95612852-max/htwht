@@ -34,6 +34,13 @@ return [
 
     'connections' => [
 
+        'firestore' => [
+            'driver' => 'firestore',
+            'project_id' => env('FIREBASE_PROJECT_ID'),
+            'credentials' => env('FIREBASE_CREDENTIALS_PATH'),
+            'database' => env('FIREBASE_DATABASE_URL'),
+        ],
+
         'sqlite' => [
             'driver'   => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),

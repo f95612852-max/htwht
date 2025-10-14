@@ -80,7 +80,7 @@ class ImportEmojis extends Command
 
             $emoji = $customEmoji ?? new CustomEmoji();
             $emoji->shortcode = $shortcode;
-            $emoji->domain = config('pixelfed.domain.app');
+            $emoji->domain = config('pix.domain.app');
             $emoji->disabled = $this->option('disabled');
             $emoji->save();
 

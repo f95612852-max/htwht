@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Rules\EmailNotBanned;
-use App\Rules\PixelfedUsername;
+use App\Rules\PixUsername;
 
 class RemoteOidcController extends Controller
 {
@@ -94,7 +94,7 @@ class RemoteOidcController extends Controller
                 'min:2',
                 'max:30',
                 'unique:users,username',
-                new PixelfedUsername(),
+                new PixUsername(),
             ],
             'name' => 'nullable|max:30',
         ]);

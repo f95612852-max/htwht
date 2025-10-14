@@ -51,7 +51,7 @@ class FixHashtags extends Command
         $this->info('   /_/   /_/_/|_|\___/_/_/  \___/\__,_/     ');
         $this->info(' ');
         $this->info(' ');
-        $this->info('Pixelfed version: ' . config('pixelfed.version'));
+        $this->info('Pix version: ' . config('pix.version'));
         $this->info(' ');
         $this->info('Running Fix Hashtags command');
         $this->info(' ');

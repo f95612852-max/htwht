@@ -1,7 +1,7 @@
 {
-    "name": "pixelfed/pixelfed-centralized",
-    "description": "Centralized photo sharing platform with AWS integration.",
-    "keywords": ["framework", "laravel", "pixelfed", "centralized", "social", "network", "aws"],
+    "name": "pix/pix-centralized",
+    "description": "Centralized photo sharing platform with Firebase integration.",
+    "keywords": ["framework", "laravel", "pix", "centralized", "social", "network", "firebase"],
     "license": "AGPL-3.0-only",
     "type": "project",
     "require": {
@@ -13,7 +13,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-openssl": "*",
-        "aws/aws-sdk-php": "^3.0",
+        "kreait/firebase-php": "^7.0",
         "bacon/bacon-qr-code": "^3.0",
         "brick/math": "^0.11",
         "buzz/laravel-h-captcha": "^1.0.4",
@@ -31,7 +31,7 @@
         "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.9",
         "laravel/ui": "^4.2",
-        "league/flysystem-aws-s3-v3": "^3.0",
+
         "league/iso3166": "^2.1|^4.0",
         "league/oauth2-client": "^2.8",
         "league/uri": "^7.4",

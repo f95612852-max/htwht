@@ -101,7 +101,7 @@ View Report
 @endif
 
 <p style="font-size: 12px;color: #cccccc;text-align: center;">
-This is an automated email that is intended for administrators of {{ config('pixelfed.domain.app')}}.<br />
+This is an automated email that is intended for administrators of {{ config('pix.domain.app')}}.<br />
 If you received this email by mistake, kindly disregard and delete this email.
 </p>
 

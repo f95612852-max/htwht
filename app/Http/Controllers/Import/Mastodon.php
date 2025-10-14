@@ -8,7 +8,7 @@ trait Mastodon
 {
 	public function mastodon()
 	{
-		if(config_cache('pixelfed.import.instagram.enabled') != true) {
+		if(config_cache('pix.import.instagram.enabled') != true) {
 			abort(404, 'Feature not enabled');
 		}
 		return view('settings.import.mastodon.home');

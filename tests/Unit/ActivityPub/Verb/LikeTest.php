@@ -22,7 +22,7 @@ class LikeTest extends TestCase
                 'creator' => 'http://mastodon.example.org/users/admin#main-key',
                 'created' => '2018-02-17T18:57:49Z',
             ],
-            'object' => 'http://pixelfed.dev/p/1',
+            'object' => 'http://pix.dev/p/1',
             'nickname' => 'dsup',
             'id' => 'http://mastodon.example.org/users/admin#likes/2',
             'actor' => 'http://mastodon.example.org/users/admin',

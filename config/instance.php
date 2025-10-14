@@ -3,7 +3,7 @@
 return [
     'force_https_urls' => env('FORCE_HTTPS_URLS', true),
 
-    'description' => env('INSTANCE_DESCRIPTION', 'Pixelfed - Photo sharing for everyone'),
+    'description' => env('INSTANCE_DESCRIPTION', 'Pix - Photo sharing for everyone'),
 
     'contact' => [
         'enabled' => env('INSTANCE_CONTACT_FORM', false),
@@ -44,7 +44,7 @@ return [
     'page' => [
         '404' => [
             'header' => env('PAGE_404_HEADER', 'Sorry, this page isn\'t available.'),
-            'body' => env('PAGE_404_BODY', 'The link you followed may be broken, or the page may have been removed. <a href="/">Go back to Pixelfed.</a>'),
+            'body' => env('PAGE_404_BODY', 'The link you followed may be broken, or the page may have been removed. <a href="/">Go back to Pix.</a>'),
         ],
         '503' => [
             'header' => env('PAGE_503_HEADER', 'Service Unavailable'),
@@ -156,7 +156,7 @@ return [
         'nag' => [
             'enabled' => (bool) env('INSTANCE_NOTIFY_APP_GATEWAY', true),
             'api_key' => env('PIXELFED_PUSHGATEWAY_KEY', false),
-            'endpoint' => 'push.pixelfed.net',
+            'endpoint' => 'push.pix.net',
         ],
     ],
 

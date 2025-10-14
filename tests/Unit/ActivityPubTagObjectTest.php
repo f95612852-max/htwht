@@ -36,48 +36,48 @@ class ActivityPubTagObjectTest extends TestCase
     }
 
     #[Test]
-    public function pixelfed_hashtags(): void
+    public function pix_hashtags(): void
     {
         $res = [
             "tag" => [
                 [
                     "type" => "Mention",
-                    "href" => "https://pixelfed.social/dansup",
-                    "name" => "@dansup@pixelfed.social"
+                    "href" => "https://pix.social/dansup",
+                    "name" => "@dansup@pix.social"
                 ],
                 [
                     "type" => "Hashtag",
-                    "href" => "https://pixelfed.social/discover/tags/dogsofpixelfed",
+                    "href" => "https://pix.social/discover/tags/dogsofpix",
                     "name" => "#dogsOfPixelFed"
                 ],
                 [
                     "type" => "Hashtag",
-                    "href" => "https://pixelfed.social/discover/tags/doggo",
+                    "href" => "https://pix.social/discover/tags/doggo",
                     "name" => "#doggo"
                 ],
                 [
                     "type" => "Hashtag",
-                    "href" => "https://pixelfed.social/discover/tags/dog",
+                    "href" => "https://pix.social/discover/tags/dog",
                     "name" => "#dog"
                 ],
                 [
                     "type" => "Hashtag",
-                    "href" => "https://pixelfed.social/discover/tags/drake",
+                    "href" => "https://pix.social/discover/tags/drake",
                     "name" => "#drake"
                 ],
                 [
                     "type" => "Hashtag",
-                    "href" => "https://pixelfed.social/discover/tags/blacklab",
+                    "href" => "https://pix.social/discover/tags/blacklab",
                     "name" => "#blacklab"
                 ],
                 [
                     "type" => "Hashtag",
-                    "href" => "https://pixelfed.social/discover/tags/iconic",
+                    "href" => "https://pix.social/discover/tags/iconic",
                     "name" => "#Iconic"
                 ],
                 [
                     "type" => "Hashtag",
-                    "href" => "https://pixelfed.social/discover/tags/majestic",
+                    "href" => "https://pix.social/discover/tags/majestic",
                     "name" => "#majestic"
                 ]
             ]
@@ -98,23 +98,23 @@ class ActivityPubTagObjectTest extends TestCase
     }
 
     #[Test]
-    public function pixelfed_mentions(): void
+    public function pix_mentions(): void
     {
         $res = [
             "tag" => [
                 [
                     "type" => "Mention",
-                    "href" => "https://pixelfed.social/dansup",
-                    "name" => "@dansup@pixelfed.social"
+                    "href" => "https://pix.social/dansup",
+                    "name" => "@dansup@pix.social"
                 ],
                 [
                     "type" => "Hashtag",
-                    "href" => "https://pixelfed.social/discover/tags/dogsofpixelfed",
+                    "href" => "https://pix.social/discover/tags/dogsofpix",
                     "name" => "#dogsOfPixelFed"
                 ],
                 [
                     "type" => "Hashtag",
-                    "href" => "https://pixelfed.social/discover/tags/doggo",
+                    "href" => "https://pix.social/discover/tags/doggo",
                     "name" => "#doggo"
                 ],
             ]

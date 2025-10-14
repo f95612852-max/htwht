@@ -57,7 +57,7 @@ class ImageResizePipeline implements ShouldQueue
 
         $path = $media->media_path;
         $file = storage_path('app/'.$path);
-        $quality = config_cache('pixelfed.image_quality');
+        $quality = config_cache('pix.image_quality');
 
         $orientations = [
             'square' => [

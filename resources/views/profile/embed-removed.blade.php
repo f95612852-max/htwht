@@ -7,10 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="mobile-web-app-capable" content="yes">
 
-	<title>Pixelfed | 404 Embed Not Found</title>
+	<title>Pix | 404 Embed Not Found</title>
 
-	<meta property="og:site_name" content="{{ config_cache('app.name', 'pixelfed') }}">
-	<meta property="og:title" content="{{ $title ?? config_cache('app.name', 'pixelfed') }}">
+	<meta property="og:site_name" content="{{ config_cache('app.name', 'pix') }}">
+	<meta property="og:title" content="{{ $title ?? config_cache('app.name', 'pix') }}">
 	<meta name="medium" content="image">
 	<meta name="theme-color" content="#10c5f8">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,10 +40,10 @@
 	<div class="embed-card border">
 		<div class="card status-card-embed card-md-rounded-0 card-body shadow-none rounded-0">
 			<div class="text-center p-5">
-				<img src="/img/pixelfed-icon-color.svg" width="40px" height="40px">
-				<p class="h2 py-3 font-weight-bold">Pixelfed</p>
+				<img src="/img/pix-icon-color.svg" width="40px" height="40px">
+				<p class="h2 py-3 font-weight-bold">Pix</p>
 				<p style="font-size:14px;font-weight: 500;" class="px-2 py-4">Cannot display profile embed, it may be deleted or set to private.</p>
-				<p><a href="{{config('app.url')}}" class="font-weight-bold" target="_blank">Visit Pixelfed</a></p>
+				<p><a href="{{config('app.url')}}" class="font-weight-bold" target="_blank">Visit Pix</a></p>
 			</div>
 		</div>
 	</div>

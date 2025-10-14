@@ -48,13 +48,13 @@ return [
             'retry_after' => 90,
         ],
 
+        // SQS disabled - using Redis/Database queue instead
         'sqs' => [
-            'driver' => 'sqs',
-            'key'    => env('SQS_KEY', 'your-public-key'),
-            'secret' => env('SQS_SECRET', 'your-secret-key'),
-            'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
-            'queue'  => env('SQS_QUEUE', 'your-queue-name'),
-            'region' => env('SQS_REGION', 'us-east-1'),
+            'driver' => 'database', // Fallback to database queue
+            'table' => 'jobs',
+            'queue' => 'default',
+            'retry_after' => 90,
+            'after_commit' => true,
         ],
 
         'redis' => [

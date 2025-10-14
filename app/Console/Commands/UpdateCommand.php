@@ -20,7 +20,7 @@ class UpdateCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Run pixelfed schema updates between versions.';
+    protected $description = 'Run pix schema updates between versions.';
 
     /**
      * Create a new command instance.
@@ -77,7 +77,7 @@ class UpdateCommand extends Command
         $path = storage_path('app/version.json');
         $contents = [
             'commit_hash' => exec('git rev-parse HEAD'),
-            'version' => config('pixelfed.version'),
+            'version' => config('pix.version'),
             'timestamp' => date('c')
         ];
         $json = json_encode($contents, JSON_PRETTY_PRINT);

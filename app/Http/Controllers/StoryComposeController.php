@@ -56,7 +56,7 @@ class StoryComposeController extends Controller
                 return [
                     'required',
                     'mimetypes:image/jpeg,image/png,video/mp4,image/jpg',
-                    'max:'.config_cache('pixelfed.max_photo_size'),
+                    'max:'.config_cache('pix.max_photo_size'),
                 ];
             },
         ]);
@@ -116,7 +116,7 @@ class StoryComposeController extends Controller
 
     protected function storePhoto($photo, $user)
     {
-        $mimes = explode(',', config_cache('pixelfed.media_types'));
+        $mimes = explode(',', config_cache('pix.media_types'));
         if (in_array($photo->getMimeType(), [
             'image/jpeg',
             'image/png',
@@ -133,7 +133,7 @@ class StoryComposeController extends Controller
             $fpath = storage_path('app/'.$path);
 
             $img = $this->imageManager->read($fpath);
-            $quality = config_cache('pixelfed.image_quality');
+            $quality = config_cache('pix.image_quality');
             $encoder = in_array($photo->getMimeType(), ['image/jpeg', 'image/jpg']) ?
                 new JpegEncoder($quality) :
                 new PngEncoder;
@@ -181,7 +181,7 @@ class StoryComposeController extends Controller
                 $constraint->upsize();
             });
 
-            $quality = config_cache('pixelfed.image_quality');
+            $quality = config_cache('pix.image_quality');
             $extension = pathinfo($path, PATHINFO_EXTENSION);
 
             if (in_array(strtolower($extension), ['jpg', 'jpeg'])) {

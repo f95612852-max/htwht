@@ -163,7 +163,7 @@ class Classifier
 			})
 			->all();
 		return json_encode([
-			'_ns' => 'https://pixelfed.org/ns/nlp',
+			'_ns' => 'https://pix.org/ns/nlp',
 			'_v' => '1.0',
 			'documents' => $this->documents,
 			'words' => $words

@@ -12,38 +12,38 @@ class WebfingerTest extends TestCase
     public function webfingerTest()
     {
         $expected = [
-            'domain' => 'pixelfed.org',
+            'domain' => 'pix.org',
             'username' => 'dansup',
         ];
-        $actual = Nickname::normalizeProfileUrl('acct:dansup@pixelfed.org');
+        $actual = Nickname::normalizeProfileUrl('acct:dansup@pix.org');
         $this->assertEquals($expected, $actual);
 
         $expected = [
-            'domain' => 'pixelfed.org',
+            'domain' => 'pix.org',
             'username' => 'dansup_',
         ];
-        $actual = Nickname::normalizeProfileUrl('acct:dansup@pixelfed.org');
+        $actual = Nickname::normalizeProfileUrl('acct:dansup@pix.org');
         $this->assertNotEquals($expected, $actual);
 
         $expected = [
-            'domain' => 'pixelfed.org',
+            'domain' => 'pix.org',
             'username' => 'dansup',
         ];
-        $actual = Nickname::normalizeProfileUrl('acct:@dansup@pixelfed.org');
+        $actual = Nickname::normalizeProfileUrl('acct:@dansup@pix.org');
         $this->assertEquals($expected, $actual);
 
         $expected = [
-            'domain' => 'pixelfed.org',
+            'domain' => 'pix.org',
             'username' => 'dansup',
         ];
-        $actual = Nickname::normalizeProfileUrl('dansup@pixelfed.org');
+        $actual = Nickname::normalizeProfileUrl('dansup@pix.org');
         $this->assertEquals($expected, $actual);
 
         $expected = [
-            'domain' => 'pixelfed.org',
+            'domain' => 'pix.org',
             'username' => 'dansup',
         ];
-        $actual = Nickname::normalizeProfileUrl('@dansup@pixelfed.org');
+        $actual = Nickname::normalizeProfileUrl('@dansup@pix.org');
         $this->assertEquals($expected, $actual);
     }
 }

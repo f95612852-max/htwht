@@ -109,7 +109,7 @@
 
 						<div class="media-body">
 							<p class="font-weight-bold mb-0">{{ $emoji->shortcode }}</p>
-							@if($emoji->domain != config('pixelfed.domain.app'))
+							@if($emoji->domain != config('pix.domain.app'))
 							<p class="text-muted small mb-0">{{ $emoji->domain }}</p>
 							@endif
 						</div>

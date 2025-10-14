@@ -10,11 +10,11 @@ class NodeinfoService
 {
     public static function get($domain)
     {
-        $version = config('pixelfed.version');
+        $version = config('pix.version');
         $appUrl = config('app.url');
         $headers = [
             'Accept' => 'application/json',
-            'User-Agent' => "(Pixelfed/{$version}; +{$appUrl})",
+            'User-Agent' => "(Pix/{$version}; +{$appUrl})",
         ];
 
         $url = 'https://'.$domain;

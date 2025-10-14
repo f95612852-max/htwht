@@ -14,7 +14,7 @@
   </div>
   @else
   <div>
-    <p class="lead mb-5">The following guidelines are not a legal document, and final interpretation is up to the administration of {{config('pixelfed.domain.app')}}; they are here to provide you with an insight into our content moderation policies:</p>
+    <p class="lead mb-5">The following guidelines are not a legal document, and final interpretation is up to the administration of {{config('pix.domain.app')}}; they are here to provide you with an insight into our content moderation policies:</p>
     <div class="py-4">
       <h5 class="pb-3">The following types of content will be removed from the public timeline:</h5>
       <ul>
