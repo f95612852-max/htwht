@@ -8,6 +8,7 @@ use App\Hashtag;
 use App\Jobs\ImageOptimizePipeline\ImageOptimize;
 use App\Jobs\StatusPipeline\NewStatusPipeline;
 use App\Jobs\VideoPipeline\VideoThumbnail;
+use App\Jobs\VideoPipeline\VideoOptimize;
 use App\Media;
 use App\MediaTag;
 use App\Models\Poll;
@@ -23,6 +24,7 @@ use App\Services\PlaceService;
 use App\Services\SnowflakeService;
 use App\Services\UserRoleService;
 use App\Services\UserStorageService;
+use App\Services\VideoValidationService;
 use App\Status;
 use App\Transformer\Api\MediaTransformer;
 use App\UserFilter;
@@ -105,6 +107,14 @@ class ComposeController extends Controller
 
         abort_if(in_array($photo->getMimeType(), $mimes) == false, 400, 'Invalid media format');
 
+        // Validate video duration if it's a video file
+        if (str_starts_with($photo->getMimeType(), 'video/')) {
+            $videoValidation = VideoValidationService::validateVideo($photo);
+            if (!$videoValidation['valid']) {
+                abort(400, implode(', ', $videoValidation['errors']));
+            }
+        }
+
         $storagePath = MediaPathService::get($user, 2);
         $path = $photo->storePublicly($storagePath);
         $hash = \hash_file('sha256', $photo);
@@ -140,6 +150,7 @@ class ComposeController extends Controller
 
             case 'video/mp4':
                 VideoThumbnail::dispatch($media)->onQueue('mmo');
+                VideoOptimize::dispatch($media)->onQueue('mmo');
                 $preview_url = '/storage/no-preview.png';
                 $url = '/storage/no-preview.png';
                 break;

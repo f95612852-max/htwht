@@ -96,6 +96,10 @@
                             <div class="profile-details">
                                 <div class="d-none d-md-flex username-bar pb-3 align-items-center">
                                     <span class="font-weight-ultralight h3 mb-0">{{profile.username}}</span>
+                                    <span v-if="profile.is_verified" class="fa-stack ml-1" title="Verified Account" data-toggle="tooltip" style="height:1em; line-height:1em; max-width:19px;">
+                                        <i class="fas fa-certificate text-primary fa-stack-1x"></i>
+                                        <i class="fas fa-check text-white fa-sm fa-stack-1x" style="font-size:7px;"></i>
+                                    </span>
                                     <span v-if="profile.id != user.id && user.hasOwnProperty('id')">
                                         <span class="pl-4" v-if="relationship.following == true">
                                             <a :href="'/account/direct/t/'+profile.id"  class="btn btn-outline-secondary font-weight-bold btn-sm py-1 text-dark mr-2 px-3 btn-sec-alt" style="border:1px solid #dbdbdb;" data-toggle="tooltip" title="Message">Message</a>

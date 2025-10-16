@@ -44,6 +44,7 @@ return [
 
     'limits' => [
         'max_photo_size' => env('MAX_PHOTO_SIZE', 15000), // KB
+        'max_video_duration' => env('MAX_VIDEO_DURATION', 40), // seconds
         'max_album_length' => env('MAX_ALBUM_LENGTH', 10),
         'max_caption_length' => env('MAX_CAPTION_LENGTH', 500),
         'max_bio_length' => env('MAX_BIO_LENGTH', 125),
